@@ -1,0 +1,21 @@
+% Il faut utiliser amsmath sinon les matrices ne s'affichent pas
+\usepackage{amsmath}
+
+
+\textbf{1) Donner la formulation de la pseudo-inverse de $X$ connaissant sa SVD : $X = \sum_{i=1}^r s_i U_i V_{i}^T$ avec $r=\mathrm{rg}(X)$ et $s_1 > ... > s_r > 0$.}
+
+\bigskip
+
+La d\'ecomposition en valeur singuli\`ere (SVD) permet d'\'etudier la pseudo-inverse d'une matrice $X$ (dite aussi inverse g\'en\'eralis\'e ou inversion de Moore-Penrose) qu'on note $X^{+}$ et son effet sur les valeurs singuli\`eres $s_1,...,s_r$ de $X$.
+
+\bigskip
+
+Soit une matrice $X$ de rang $r$. On r\'ealise une SVD sur $X$ avec $V \in \mathbf{R}^{n \times r}$, $ U \in \mathbf{R}^{p\times r}$ et $ S \in \mathbf{R}^{r\times r}$ :
+
+$$ X = V S U^T = V \begin{pmatrix} s_1 & & (0) \\ & \ddots & \\ (0) & & s_r  \end{pmatrix} U^T = \sum_{k=1}^{r} s_k V_k U_k^T $$
+
+\bigskip
+
+La pseudo-inverse de $X$ connaissant sa SVD s'\'ecrit :
+
+$$ X^{+} = (V S U^T)^{+} = U S^{-1} V^T = U \begin{pmatrix} s_1^{-1} & & (0) \\ & \ddots & \\ (0) & & s_r^{-1}  \end{pmatrix} V^T = \sum_{k=1}^{r} s_k^{-1} U_k V_k^T $$

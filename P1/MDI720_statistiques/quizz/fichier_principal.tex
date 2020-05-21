@@ -1,0 +1,103 @@
+% documentclass
+% set font size=11 (11pt)
+% set paper format=A4 (a4paper)
+% set equation alignment to left (fleqn)
+\documentclass[11pt,a4paper,fleqn]{article}
+
+
+% Preamble
+% use the inputenc and fontenc packages to use French accents
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% allow for arbitrary font size
+\usepackage{anyfontsize}
+% set the font as Time New Roman (the Latex equivalent, at least)
+% \usepackage{mathptmx}
+% set the size of the document margins using the geometry package
+\usepackage[lmargin=0.97in,rmargin=0.97in,tmargin=1.4in,bmargin=1.4in]{geometry}
+% turn the color of footnote markers to black
+\renewcommand\thefootnote{\textcolor{black}{\arabic{footnote}}}
+% suppress indents on footnotes
+\usepackage[hang,flushmargin]{footmisc}
+% automatically generates colored brackets around references
+\usepackage{fncylab} \labelformat{equation}{(#1)}
+% supress indent on new paragraphs
+\setlength{\parindent}{0pt}
+% use the amsmath package to include mathematical symbols
+\usepackage{amsmath}
+% suppress the space between the left margin and the equations (fleqn still leaves some space by default)
+\setlength{\mathindent}{0pt}
+% create a new environment to left flush the equation with the align environment
+\makeatletter
+\newenvironment{lflalign}{ \vspace{-3mm}%
+  \def\align@preamble{%
+    &\strut@
+    \setboxz@h{\@lign$\m@th\displaystyle{####}$}%
+    \ifmeasuring@\savefieldlength@\fi
+    \set@field
+    \hfil
+    \tabskip\z@skip
+    &\setboxz@h{\@lign$\m@th\displaystyle{{}####}$}%
+    \ifmeasuring@\savefieldlength@\fi
+    \set@field
+    \hfil
+    \tabskip\alignsep@
+  }
+  \flalign}
+{\endflalign}
+\makeatother
+% use the ammssymb package to use mathematical symbols
+\usepackage{amssymb}
+% create new commands for mathematical symbols
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\Pb}{\mathbb{P}}
+% declare the cmsy (computer modern symbol) math alphabet to define appropriate fonts for the U and N mathematical symbols
+\DeclareMathAlphabet\mathbcal{OMS}{cmsy}{m}{n}
+% create new commands for mathematical symbols
+\DeclareMathOperator{\E}{\mathbcal{E}}
+\DeclareMathOperator{\Ex}{\mathbb{E}}
+\DeclareMathOperator{\F}{\mathbcal{F}}
+\DeclareMathOperator{\G}{\mathbcal{G}}
+\DeclareMathOperator{\M}{\mathbcal{M}}
+\DeclareMathOperator{\HH}{\mathbcal{H}}
+\DeclareMathOperator{\QQ}{\mathbcal{Q}}
+\DeclareMathOperator{\PP}{\mathbcal{P}}
+\DeclareMathOperator{\Noo}{\mathbcal{N}}
+\DeclareMathOperator{\U}{\mathbcal{U}}
+% use the bbm package to be able to use the double stroke 1 for the indicator function
+\usepackage{bbm}
+\DeclareMathOperator{\ind}{\mathbbmss{1}}
+% use the bm package to use bold characters in math mode
+\usepackage{bm}
+% create a new command for black square bullets
+\newcommand{\bs}{\scalebox{0.7}{$\blacksquare$} \hspace{2mm}}
+% use the relsize package to be abe to change the size of mathematical symbols
+\usepackage{relsize}
+% define a new command for in-line small summation
+\newcommand{\ssumm}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Sigma}}}}} \hspace{0.5mm}}
+% define a new command for in-line small products
+\newcommand{\sprod}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Pi}}}}} \hspace{0.5mm}}
+% Use the caption package to customize captions (titles) of tables and graphs
+\usepackage[font=small,labelfont=bf]{caption}
+% use float package to force figure the be positioned where indicated
+\usepackage{float}
+% use the graphicx package to be able to resize tables
+\usepackage{graphicx}
+
+
+\begin{document}
+
+% command to check unused bibliography entries
+% \nocite{*}
+
+\input{1_general}
+\input{2_moindres_carres_unidimensionnels}
+\input{3_moindres_carres}
+\input{4_ridge}
+\input{5_lasso}
+\input{7_test}
+
+\end{document} 

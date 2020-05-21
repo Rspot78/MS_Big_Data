@@ -1,0 +1,303 @@
+Aide
+
+info (GNU) : obtenir le manuel GNU info d'une commande.
+apropos : liste les pages de manuel contenant dans leur description le(s) mot(s) clé(s) recherché(s).
+man : obtenir le manuel d'une commande. Le formatage du texte est réalisé avec le préprocesseur troff.
+help : obtenir de l'aide pour une commande interne du shell.
+which ou whereis : où se trouve ce programme ?
+whatis : liste quelles commandes sont en rapport avec un mot-clef.
+Commande --help : affiche une aide succincte et liste les arguments qui peuvent être passés à la commande Commande en question. Cette option est la forme longue de l'option Commande -h, des premiers systèmes UNIX.
+
+Commandes générales
+
+history : affiche ou vide l'historique des commandes.
+type : affiche le type de la commande (alias, exécutable, etc.) et précise sa nature. s'il s'agit d'un programme trouvé sur $PATH, il affiche le chemin absolu. (ex: "type vi" vs "type vim")
+uname -a : affiche des informations sur la version du noyau et sur le type d'architecture du processeur
+uname -X : affiche des informations sur la version du noyau, le nom du hostname et le nombre de processeurs (spécifique à Solaris et SCO Unix).
+Communications
+mesg : contrôler l'accès à votre terminal par d'autres personnes (par write).
+talk : faire une conversation avec un autre utilisateur du système.
+wall : envoyer un message à tous les utilisateurs du système (Write ALL).
+write : envoyer un message à un utilisateur en particulier (voir mesg).
+
+Écran
+
+clear : efface le contenu affiché à l'écran.
+less (GNU) : affiche le contenu d'un fichier texte, avec une progression ligne par ligne ou page par page et la possibilité de retourner en arrière et d'effectuer une recherche ; beaucoup plus élaboré que son prédécesseur more, less est son opposé (le nom de ce programme comporte une touche d'humour car less signifie moins, alors que more signifie plus) ;
+more : affiche le contenu d'un fichier texte, page par page (la page correspond à la taille du terminal) ;
+screen : permet d'ouvrir des programmes associés à des écrans virtuels desquels l'utilisateur peut se détacher et auxquels il peut de nouveau s'attacher plus tard.
+twin : simule en mode texte (ncurses) un écran graphique.
+
+Éditeurs de texte
+
+ed : éditeur de texte orienté ligne. (EDitor), éditeur standard d'UNIX (IEEE Std 1003.1-2004 POSIX)
+emacs : éditeur de texte
+nano : éditeur de texte
+pico : éditeur de texte
+vi : éditeur de texte présent dans presque tous les systèmes Unix. (Visual Interface)
+vim : voir vi (VI aMélioré, ou VI iMproved).
+Fichiers et répertoires
+cd : change le répertoire courant. (Change Directory)
+cp : copie un fichier (CoPy), peut copier une liste de fichiers dans un autre répertoire en conservant leur nom.
+dd : Effectue une copie d'un fichier avec possibilité de conversion du format (Copy and Convert, mais cc étant déjà pris, les lettres suivantes de l'alphabet ont été choisies, soit dd).
+dir : équivalent à ls (DIRectory), n'existait pas à l'origine d'UNIX
+df : affiche l'utilisation des disques. (Disk Free)
+du : affiche l'utilisation du disque. (Disk Usage)
+file : affiche le type de fichier en lisant son en-tête.
+ln : crée un lien avec un autre dossier ou fichier. (LiNk)
+ls : affiche la liste des fichiers dans le dossier courant ou d'un autre dossier. (LiSt)
+mkdir : crée un ou plusieurs répertoires (MaKe DIRectory)
+mv : déplace (ou renomme) un fichier, y compris si c'est un répertoire (MoVe), peut déplacer une liste de fichiers dans un autre répertoire en conservant leur nom.
+pwd : affiche le chemin du dossier courant. (Print Working Directory)
+rm : supprime un/des fichier(s) ou des répertoires (avec l'option -r). (ReMove)
+rmdir : supprime un ou plusieurs répertoires (ReMove DIRectory) s'il est (ou s'ils sont) vide(s)
+touch : change la date de modification d'un fichier, en le créant s'il n'existait pas.
+lsof : affiche la liste des fichiers ouverts. (LiSt Open Files)
+
+Manipulations d'archives et compressions
+
+bzip2/bunzip2 : compresse et décompresse des fichiers
+cpio : copie de fichiers à partir de ou vers une archive cpio/tar
+gzip/gunzip : compresse et décompresse des fichiers. (Gnu ZIPper)
+pax : un outil qui rassemble les fonctions de tar et de cpio
+tar : manipulation d'archives, capable de fonctionner avec bzip2 ou gzip. (Tape ARchiver)
+zip/unzip : compresse et décompresse des fichiers. (ZIP)
+zcat : affiche un fichier compressé (comme cat, mais décompresse au passage)
+
+Recherche
+
+find : recherche récursive, à partir d'un répertoire, de fichiers ayant des caractéristiques données.
+locate : recherche un fichier à partir de la dernière version de la base de données des fichiers (base généralement créée par updatedb). Beaucoup plus rapide que find, mais moins flexible.
+whereis : recherche une commande dans le PATH et les pages de man correspondants (éventuellement dans MANPATH) et retourne le ou les chemins d'accès complet(s).
+Si une commande existe avec plusieurs extensions différentes, il les liste toutes (exemple : whereis fsck listera non seulement le chemin complet de fsck, mais aussi celui de fsck.ext2). Il recherche aussi l'éventuelle présence des fichiers sources.
+which : renvoie le chemin d'accès complet d'une commande.
+Gestion des disques/points de montage
+df : affiche l'espace libre sur les partitions (Disk Free).
+dump/restore : sauvegarde et restauration d'un système de fichiers.
+fsck : effectue une vérification du système de fichiers (FileSystem ChecK). En fonction du type de partition, il appelle l'utilitaire correspondant.
+e2fsck (ou fsck.ext2) pour ext2 ou ext3 (N.B. : fsck.ext2 et e2fsck sont identiques, il s'agit de 2 liens vers le même fichier).
+reiserfsck pour ReiserFS
+cramfsck pour cramfs
+fsck.jfs pour JFS
+fsck.xfs pour XFS
+fsck.minix pour le système de fichier de minix
+fsck.xiafs pour Xiafs
+fsdb : débogueur de système de fichiers, pour les experts.
+hdparm : réglages d'un disque IDE.
+sdparm : réglages d'un disque SCSI
+mkfs : crée un système de fichiers. (MaKe FileSystem).
+mount : attache un système de fichiers sur un point de montage.
+umount : détache un système de fichiers. (UnMOUNT). « unmount » reste autorisé.
+sync : pour imposer l'écriture des tampons sur le disque (par exemple, avant un arrêt électrique brutal).
+tune2fs : pour le paramétrage d'une partition ext2 ou ext3
+cryptsetup : chiffrement d'image disque transparent.
+
+Manipulation de texte
+
+awk : effectue des opérations sur les fichiers (afficher une colonne, la traiter, ..) (initiales de ses créateurs : Aho, Kernighan, Weinberger)
+cat : concatène des fichiers texte. Peut aussi servir à simplement afficher ou lire un fichier. (conCATenate)
+cut : supprime une partie des lignes d'un fichier selon un critère.
+diff : affiche les différences entre deux fichiers.
+sdiff : une version améliorée de diff.
+dos2unix : convertit les retours à la ligne d'un fichier pour qu'elles soient compatibles avec le monde Unix. Sur certaines distribution, cette commande a été remplacée par fromdos
+echo : affiche une ligne de texte donnée en paramètre.
+expr : évaluer une expression (mathématique ou sur une chaîne de caractères)
+fgrep : affiche les lignes qui contiennent une chaîne de caractères donnée (grep -f sous Linux).
+grep et egrep : affiche les lignes qui contiennent une expression régulière donnée, egrep (grep étendu) est plus riche en possibilités.
+head : affiche les premières lignes d'un fichier. (opposé de tail)
+join :fusionne les lignes de deux fichiers contenant un ou plusieurs champs identiques.
+nl : permet de numéroter les lignes d'un fichier.
+read : lit une chaîne de caractères à partir de l'entrée standard.
+sed : effectue des transformations sur un flux de texte (Stream EDitor)
+sort : trie les lignes d'un texte selon l'ordre alphabétique (ou numérique avec l'option -n).
+strings : affiche seulement les caractères imprimables (ASCII) d'un fichier binaire.
+tail : affiche les dernières lignes d'un fichier. (opposé de head)
+tee : copie de l'entrée standard sur la sortie standard et vers un fichier. (le nom vient de la forme de la lettre T, qui a aussi une « entrée » et deux « sorties »)
+tr : transpose ou élimine des caractères dans une chaîne (TRanspose)
+uniq : recopie les données en entrée en ne conservant qu'un unique exemplaire de lignes identiques consécutives.
+unix2dos : convertit les retours à la ligne d'un fichier pour qu'elles soient compatibles avec le monde DOS.
+wc : permet de compter le nombre de caractères, de mots ou de lignes dans un fichier.
+
+Permissions
+
+chgrp : change le groupe propriétaire d'un fichier. (CHange GRouP)
+chmod : change les permissions en lecture, écriture et/ou exécution d'un fichier. (CHange MODes)
+chown : change le propriétaire, et éventuellement le groupe propriétaire d'un fichier. (CHange OWNer)
+getfacl, setfacl : respectivement, lister ou modifier les ACL de fichier (grossièrement, c'est l'équivalent du CACLS pour le NTFS de Windows)
+
+Processus
+
+at : permet de programmer l'exécution une seule fois d'une commande dans le futur.
+bg : met en arrière-plan un process en stand-by (quitté avec ctrl-Z) comme s'il était lancé avec &.
+cron :permet de programmer l'exécution d'un programme dans le futur, de façon cyclique.
+fg : reprend la main (foreground) d'un programme en background (ou quitté avec ctrl-Z ou lancé avec &).
+free : affiche des informations sur l'utilisation de la mémoire.
+sleep : suspend l'exécution d'un processus pendant un intervalle de temps.
+fuser : affiche quel processus utilise le fichier donné en paramètre.
+kill : envoyer un signal à un processus donné, généralement pour y mettre fin
+Signal SIGTERM (15) par défaut : arrêter le processus proprement
+63 signaux possibles de SIGHUP (1) à SIGRTMAX (63)
+Valeur la plus utilisée : SIGKILL (9), qui termine brutalement un processus
+killall : tue tous les processus d'un certain type, ou leur envoie un signal donné.
+killall5 : tue tous les processus
+nohup : permet de lancer un processus qui restera actif même après la déconnexion de l'utilisateur l'ayant initié
+nice : exécute une commande avec une priorité modifiée.
+pidof : donne le PID du processus spécifié
+pkill : même commande que kill, mais par son nom au lieu de son numéro.
+ps : affiche les processus en cours d'exécution (Process Status)
+pstree : affiche l'arbre des processus en cours d'exécution.
+renice : modifie la priorité d'un processus.
+top : programme interactif qui affiche les processus les plus actifs selon un critère donné.
+xkill : permet de tuer une application lancée sous X
+vmstat : affiche les statistiques système (consommation CPU, mémoire virtuelle)
+
+Shells
+
+bash (GNU) : Shell compatible sh de GNU (Bourne Again Shell)
+sh : Shell standard (Bourne Shell)
+csh : C-shell, sa syntaxe de commandes est proche du langage C
+tcsh : amélioration de csh
+ksh : Korn Shell, le plus répandu parmi les UNIX commerciaux
+zsh : Z Shell
+dash : Debian Almquist Shell
+Services et démarrage
+dmesg : affiche les messages apparus au démarrage du système et contrôle les tampons de messages du Noyau.
+init : change le niveau d'exécution (runlevel) du système.
+runlevel : donne le niveau d'exécution en cours
+service : démarre, arrête ou redémarre un service, sur certaines distributions linux (Red Hat et ses cousins et aussi Debian)
+who
+who -r : même chose que runlevel
+who -b : date de dernier boot (basé sur /proc/uptime1)
+who -m : même chose que Who am I
+who am I : affiche l'identifiant (login) initial
+whoami affiche l'identifiant (login) avec lequel on est connecté
+
+Réseaux
+
+alpine : logiciel de messagerie électronique en mode texte.
+curl : transfert des données de ou vers un serveur, supporte plusieurs protocoles parmi les plus courants.
+dhclient ou pump : permet à un client DHCP d'obtenir son adresse Internet Protocol
+De façon plus détaillée, le client DHCP cherche un serveur DHCP, via plusieurs requêtes DHCPDISCOVER en broadcast, puis si tout se passe bien, il fait un DHCPREQUEST adressé au serveur trouvé, il reçoit ensuite de ce serveur un DHCPACK qui lui donne un bail pour une adresse IP
+Les ports utilisés sont 67 (BOOTP serveur) et 68 (BOOTP client)
+ftp : client FTP en ligne de commande.
+host : affiche le nom d'hôte ou l'adresse IP de la machine en argument.
+hostname : affiche ou modifie le nom d'hôte de la machine.
+ifconfig : configurer et afficher les paramètres d'une interface réseau la deuxième ligne contient l'adresse IP
+irssi : un client IRC en mode texte
+iwconfig : pour les réseaux sans fil (affichage et configuration)2
+links : navigateur web en mode texte
+lynx : navigateur web en mode texte
+mail : lire ou envoyer des courriels.
+nslookup : permet de connaître l'adresse IP d'un ordinateur, via un serveur DNS.
+ping : effectue un ping sur une machine distante, utilise ICMP.
+route : manipulation des tables de routage.
+rsh : Shell à distance (Remote SHell) (déprécié au profit de SSH qui apporte le chiffrement).
+rsync : synchronise un dossier entre deux machines distantes (Remote SYNChronization).
+sftp : client FTP en mode sécurisé, appelé SFTP.
+scp : copie distante sécurisée (Secure Copy).
+ssh : client SSH (Secure SHell).
+traceroute : trace la route vers une machine distante routeur par routeur, en utilisant le protocole ICMP.
+tnsping : vérifie si un service Oracle répond sur un serveur.
+w3m : encore un navigateur en mode texte
+wget : (Www GET) télécharge des fichiers via les protocoles HTTP, HTTPS et FTP.
+whois : informations sur les enregistrements de noms de domaine ou d'adresses IP
+
+Environnement de programmation
+
+cc : compilateur C d’Unix
+cpp : préprocesseur pour le langage C (et C++)
+lint : analyseur statique de code source en langage C
+lex et yacc : resp. l’analyseur lexical et l’analyseur syntaxique pour le langage C (équivalents Linux : flex et GNU Bison).
+cflow : génère un organigramme à partir d'un code source C
+ltrace : affiche l'appel des libraries (.so) par un programme.
+strace : affiche les appels système d'un programme avec leurs arguments ainsi que les signaux. Utile notamment pour déboguer.
+f77 : compilateur Fortran 77 d’Unix
+make : moteur de compilation/édition de liens/archivage d'une bibliothèque logicielle ou d’un exécutable
+
+Utilisateurs
+
+chfn : modifie les informations finger de l'usager. (CHange FiNger)
+chsh : modifie le shell par défaut de l'usager. (CHange SHell)
+finger : donne des renseignements sur l'utilisateur
+groupadd : ajoute un groupe d'utilisateurs.
+groupmod : modifier les paramètres d'un groupe utilisateur déjà créé par la commande groupadd. Cette commande a les mêmes options que la commande groupadd.
+groupdel : supprime un groupe d'utilisateurs.
+su : commence un nouveau shell ou une autre commande en changeant l'utilisateur. (Switch User)
+id : affiche l'identité de l'utilisateur.
+sudo : exécute un processus avec les droits d'un autre utilisateur selon les règles définies dans le fichier /etc/sudoers
+users : liste Compacte des utilisateurs connectés dans le système ('who' est meilleur).
+useradd : ajoute un utilisateur au système.
+usermod : modifie les paramètres d'un compte utilisateur déjà créé par la commande useradd. Cette commande a les mêmes options que la commande useradd.
+userdel : supprime un utilisateur du système.
+visudo : modifie le fichier /etc/sudoers atomiquement, afin de donner des droits pour l'utilisation de la commande sudo
+w : affiche la liste des utilisateurs connectés et ce qu'ils sont en train de faire.
+who : affiche la liste des utilisateurs connectés au système.
+whoami et who am i : savoir sous quel nom d'utilisateur (ou d'administrateur) on est connecté (en anglais Who am I?, « Qui suis-je ? ») ; whoami ne donne pas le même résultat que who am i si l'on est en cours de substitution d'utilisateur (su). Avec who am i, on obtient toujours l'identité de départ (par exemple, si l'utilisateur gerard adopte l'identité de root avec su, whoami retourne root tandis que who am i renvoie bien gerard).
+
+Commande pour X Window System (X11)
+
+startx pour lancer manuellement l'interface graphique
+Lister des informations graphiques :
+xdpyinfo : informations générales sur le serveur graphique
+xwininfo : l'utilisateur lance cette commande, puis il clique sur la fenêtre qui l'intéresse et il obtient des informations très détaillées sur les caractéristiques graphiques de cette fenêtre
+editres : éditeur de ressources graphiques
+xev : crée une fenêtre et montre quels sont les évènements générés par les différentes actions sur cette fenêtre (MotionNotify, LeaveNotify, ButtonPress, VisibilityNotify, Expose...etc)
+xhost : pour contrôler l'accès au serveur X Window System
+xmodmap : utilitaire pour clavier et souris (tend à disparaître)
+xrdb : utilitaire pour la base de données des ressources X Window System
+xset : paramétrer les préférences d'un utilisateur
+xvidtune : tuning de X Window System
+xwd : réalise une capture d'écran
+xeyes : ouvre une fenêtre contenant deux yeux qui suivent le pointeur de la souris, utile pour tester
+
+Configuration X.org
+
+Pour configurer xorg.conf :
+X -configure
+Lance le serveur graphique et tente de le configurer automatiquement
+xorgcfg : outil graphique
+xorg86config : outil en mode texte
+
+Outil de configuration XFree86
+
+Pour configurer X Window System (fichiers XF86Config, XF86Config-4 et autres, selon les distributions)
+Xfree86 -autoconfig
+Lance le serveur graphique et tente de le configurer automatiquement (si cela ne marche pas, on peut aussi tenter XFree86 -configure)
+xf86cfg : outil graphique
+xf86config (en minuscule) : outil en mode texte
+Sur debian et les distributions dérivées :
+dpkg-reconfigure xserver-xfree86 pour reconfigurer le serveur graphique
+De nombreuses questions vous seront posées
+dpkg-reconfigure xserver-common
+Pour attribuer le droit de lancer le serveur X, soit à root, soit aux utilisateurs de la console, soit à tout le monde
+Sur SuSE : sax2
+Sur Mandriva : XFdrake
+Sur Red Hat : redhat-config-xfree86
+Sur d'anciennes versions de linux : XF86Setup
+
+Module
+
+Voir Loadable Kernel Module
+Sous Linux:
+lsmod : lister les modules
+modinfo : détailler un module (description, fichier, auteur, licence, paramètres...)
+modprobe : outil qui permet d'ajouter et de supprimer des modules du noyau, en gérant les dépendances logicielles
+Les très basiques insmod et rmmod pour respectivement ajouter ou supprimer des modules.
+depmod : pour générer les fichiers de dépendances logicielles
+Sous FreeBSD:
+kldstat : permet de lister les modules chargés.
+kldload et kldunload : permettent respectivement de charger ou décharger des modules.
+
+PCMCIA
+
+cardctl : vérification des cartes PCMCIA
+cardinfo : affichage des informations de configuration des cartes PCMCIA
+cardmgr : gestion des cartes PCMCIA
+lspcmcia : affichage des cartes PCMCIA connectées à l'ordinateur
+
+Divers
+
+alias : permet de remplacer au moment de l'invocation une série de caractères par une autre.
+Exemple : alias tux='echo "Tux faim. Tux veut poisson."' Maintenant, si vous tapez tux[RETURN] Tux vous signalera qu'il souhaiterait être nourri.
+swapon et swapoff : activer l'utilisation d'une mémoire de masse pour servir de zone d'échange (en anglais swap space) pour la mémoire virtuelle.
+Références

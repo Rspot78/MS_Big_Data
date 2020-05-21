@@ -1,0 +1,42 @@
+\vspace{5mm}
+
+{\fontsize{12pt}{22pt} \textbf{2. Moindres carrés unidimensionnels:}\par}
+
+\vspace{5mm}
+
+On observe $\bm{y}=(y_1, \hdots, y_n)^T$ et $\bm{x}=(x_1, \hdots, x_n)^T$.
+
+1) La fonction $(\theta_0, \theta_1)\rightarrow \frac{1}{2} \ssumm{}{}_{i=1}^n (y_i-\theta_0-\theta_1 x_i)^2$ est-elle convexe ou concave?  \vspace{2mm}
+
+On considère la fonction $f=(y_i-\theta_0-\theta_1 x_i)^2$. Pour estimer sa convexité, on calcule sa Hessienne: \\
+\begin{lflalign}
+\ & \ \frac{\partial f}{\partial \theta_0} = -2 (y_i-\theta_0-\theta_1 x_i) \nonumber \\
+\ & \ \frac{\partial^2 f}{\partial \theta_0^2} = 2 \nonumber \\
+\ & \ \frac{\partial f}{\partial \theta_1} = -2 x_i (y_i-\theta_0-\theta_1 x_i) \nonumber \\
+\ & \ \frac{\partial^2 f}{\partial \theta_1^2} = 2 x_i^2 \nonumber \\
+\ & \ \frac{\partial^2 f}{\partial \theta_1 \partial \theta_2} = 2 x_i \nonumber
+\end{lflalign}
+
+La Hessienne $H$ est donc donnée par $H=\left( \begin{matrix} 2 & 2 x_i \\ 2 x_i & 2 x_i^2 \end{matrix} \right)$. On note que la matrice est singulière (sa seconde colonne est la première multipliée par $x_i$), donc au moins une de ses valeurs propres est 0. En utilisant le fait que la trace est la somme des valeurs propres, on obtient que la seconde valeur propre est $2(1+x_i^2)$, qui est toujours positive. Donc la Hessienne $H$ est symétrique semi-définie positive, et la function $f$ est convexe. Comme la fonction $(\theta_0, \theta_1)\rightarrow \frac{1}{2} \ssumm{}{}_{i=1}^n (y_i-\theta_0-\theta_1 x_i)^2$ est une somme de fonctions convexes, elle est convexe elle-même. \vspace{5mm}
+
+2) Donner la formule $(\hat{\theta}_0, \hat{\theta}_1)$ des estimateurs des moindres carrés où $\hat{\theta}_0$ correspond au coefficient des constantes et $\hat{\theta}_1$ correspond à l'influence de $x$ sur $y$. On les exprimera en fonction des $x_i, y_i, \bar{x}_n, \bar{y}_n$.   \vspace{2mm}
+
+On cherche à minimiser la fonction $f(\theta_0, \theta_1) = \frac{1}{2} \ssumm{i=1}{n} (y_i - \theta_1 x_i - \theta_0)^2$. Pour un jeu de données $(x_i, y_i)$ fixé, c'est une fonction de $\theta_0$ et $\theta_1$. D'après le théorme de Fermat, un minimum de $f$ est à chercher parmi les couples $(\theta_0, \theta_1)$ qui annulent le gradient de $f$: \\
+$\frac{\partial f}{\partial \theta_0} = 0 \Leftrightarrow \ssumm{i=1}{n} (-1) (y_i - \theta_1 x_i - \theta_0) = 0$ \\
+$\frac{\partial f}{\partial \theta_1} = 0 \Leftrightarrow \ssumm{i=1}{n} (-x_i) (y_i - \theta_1 x_i - \theta_0) = 0$ \\
+
+En divisant par $n$:\\
+$\frac{\partial f}{\partial \theta_0} = 0 \Leftrightarrow \frac{1}{n} \ssumm{i=1}{n} y_i - \theta_1 \frac{1}{n} \ssumm{i=1}{n} x_i - \frac{1}{n} \ssumm{i=1}{n} \theta_0 = 0$ \\
+$\frac{\partial f}{\partial \theta_1} = 0 \Leftrightarrow \frac{1}{n} \ssumm{i=1}{n} (x_i y_i) - \theta_1 \frac{1}{n} \ssumm{i=1}{n} x_i^2 - \theta_0 \frac{1}{n} \ssumm{i=1}{n} x_i = 0$ \\
+
+En notant avec le symbole barre les moyennes $\bar{x}$ et $\bar{y}$:\\
+$\frac{\partial f}{\partial \theta_0} = 0 \Leftrightarrow \bar{y} - \theta_1 \bar{x} = \theta_0  \hspace{31mm} (1)$ \\
+$\frac{\partial f}{\partial \theta_1} = 0 \Leftrightarrow  \frac{1}{n} \ssumm{i=1}{n} (x_i y_i) - \theta_1 \frac{1}{n} \ssumm{i=1}{n} x_i^2 = \theta_0 \bar{x} \hspace{5mm} (2)$ \\
+
+Ce qui constitute un système de deux équations à deux inconnues $\theta_0$ et $\theta_1$. En multipliant (1) par $\bar{x}$ et en soustrayant la ligne obtenue à l'équation (2), on obtient: \\
+$\frac{\partial f}{\partial \theta_0} = 0 \Leftrightarrow \theta_0 = \bar{y} - \theta_1 \bar{x} \hspace{11mm}$ \\
+$\frac{\partial f}{\partial \theta_1} = 0 \Leftrightarrow \theta_1 = \frac{\frac{1}{n} \ssumm{i=1}{n} x_i y_i - \bar{x} \bar{y}}{\frac{1}{n} \ssumm{i=1}{n} x_i^2 - \bar{x}^2} \hspace{5mm}$ \\
+
+
+
+

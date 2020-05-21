@@ -1,0 +1,25 @@
+créer un répertoire à distance depuis rlegrand vers C130-01:
+ssh rlegrand@c130-01 mkdir -p /cal/homes/rlegrand/tmp/rlegrand
+ssh 'user'@'machine distante' mkdir -p 'repertoire distant cible'
+
+effacer un répertoire à distance depuis rlegrand vers C130-01:
+ssh rlegrand@c130-01 rm -r /cal/homes/rlegrand/tmp/rlegrand
+ssh 'user'@'machine distante' rm -r 'repertoire distant cible'
+
+transférer un fichier à distance depuis rlegrand vers C130-01:
+scp ~/tmp/rlegrand/local.txt rlegrand@c130-01:/cal/homes/rlegrand/tmp/rlegrand
+scp 'chemin fichier source' 'user'@'machine distante':'repertoire distant cible'
+
+télécharger vers rlegrand un fichier en provenance de C130-01:
+scp rlegrand@c130-01:/cal/homes/rlegrand/tmp/rlegrand/local.txt ~/tmp
+scp 'user'@'machine source':'chemin fichier source' 'repertoire local cible' 
+
+transférer un fichier à distance depuis C130-01 vers C130-04:
+scp rlegrand@c130-01:/cal/homes/rlegrand/tmp/rlegrand/local.txt rlegrand@c130-04:/cal/homes/rlegrand/tmp/rlegrand
+scp 'user'@'from_host':'/remote/directory/file.txt' 'user'@'to_host':'/remote/directory/'
+
+
+
+
+
+

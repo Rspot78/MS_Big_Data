@@ -1,0 +1,96 @@
+Pour utiliser le :paste:
+- on ctrl+C le texte qu'on veut coller.
+- on tape :paste dans le shell
+- ctrl+maj+V pour coller le texte
+- ctrl+D pour quitter et interpreter correctement
+
+
+
+Pour créer le premier RDD:
+val rdd = sc.textFile("/home/romain/TP_Spark/README.md")
+
+
+
+Les premières commandes:
+
+rdd.count
+-> compte le nombre de lignes dans le RDD
+
+val flattenedRdd = rdd.flatMap(line => line.split(" "))
+-> fait un split sur chaque ligne de rdd, et explose les array de chaque ligne pour créer une ligne par mot
+
+flattenedRdd.count
+-> renvoie le nombre de mots : 109
+
+flattenedRdd.take(5).foreach(println)
+-> renvoie le print des 5 premières lignes
+
+val mappedRdd = flattenedRdd.map(word => (word, 1))
+-> fait un map sur chaque élement (mot) de flattenedRdd, associant à chaque "mot" le tuple ("mot",1)
+
+val reducedRdd = mappedRdd.reduceByKey((i, j) => i + j)
+-> fait un reduceByKey sur chaque élement ("mot", 1) de mappedRdd, regroupant par clé et additionnant les totaux
+
+
+
+Trier le rdd obtenu:
+
+val sortedRdd = reducedRdd.sortBy(wordAndCount => wordAndCount._2, ascending=false)
+  .take(10)
+  .foreach(println)
+-> ne pas oublier le :paste
+-> tri par ordre alphabétique selon le second argument (la valeur, donc le nombre d'occurrences)
+
+
+
+Word count avec un dataframe
+
+val df = spark.read.text("/home/romain/TP_Spark/README.md")
+-> créer le dataframe
+df.show(5)
+-> montrer le dataframe
+
+
+Même wordcount qu'avec un RDD
+
+val wordCountDF = df
+  .withColumn("word", split($"value", " "))
+  .withColumn("word", explode($"word")) // équivalent du flatten plus haut
+  .groupBy("word")
+  .count
+-> crée le wordcount et l'évalue
+
+wordCountDF
+  .orderBy($"count".desc)
+  .show(5)
+-> trie et display les résultats
+
+wordCountDF
+  .withColumn("word", lower($"word"))
+  .groupBy("word")
+  .agg(sum($"count") as "count") // agg : le point d'entrée des fonctions d'agrégation
+  .orderBy($"count".desc)
+  .show(5)
+-> fait le tri en passant les mots en minuscules
+
+
+
+Bonus : Persistance
+
+val rdd = sc.textFile("/home/romain/TP_Spark/README.md").flatMap(line => line.split(" "))
+rdd.map(word => (word, 1)).reduceByKey((i, j) => i + j).collect.foreach(println)
+
+
+rdd.persist
+-> force l'exécution et la persistance
+rdd.count
+
+scala> rdd.unpersist()
+-> libère l'espace mémoire du rdd
+
+
+
+
+
+
+

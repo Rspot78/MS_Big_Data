@@ -1,0 +1,157 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% start and quit Spark
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% open Spark shell (Scala)
+spark-shell
+
+% leave Scala Spark shell (Scala)
+:q
+
+% open Python Spark shell (Python)
+pyspark
+
+% close Python Spark shell (Python)
+quit()
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% create RDD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% manually create a RDD of singletons (Python)
+rdd1=sc.parallelize(['A','B','D','A','C','C','D','A'])
+
+% manually create a RDD of tuples (Python)
+rdd2=sc.parallelize([('A','B'),('A','D'),('B','C'),('B','D'),('B','E')])
+
+% create RDD from local text file (Python)
+rdd3=sc.textFile("/home/romain/TP1/gulliver.txt")
+
+% display values RDD
+rdd1.collect()
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic operations on RDD
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% manually create a RDD of tuples (Python)
+rdd1=sc.parallelize([('A','B'),('A','D'),('B','C'),('B','D'),('B','E')])
+rdd1.mapValues(lambda x: x+'OK')
+
+% min/max: regular min or max
+rdd1.max()
+
+
+% map: function 'func' applied to all elements of rdd
+rdd1.map(lambda x: x+'OK')
+rdd2.map(lambda tuple: tuple[0])
+
+
+% filter: eliminate rdd entries based on condition
+rdd1.filter(lambda x: x>='B')
+
+
+% flatmap: similar to map but 'unlists' the different output lists to merge them into a single one
+% seems to work only on items assimilable to collections! (list, arrays, but for instance not tuples)
+rdd4=sc.parallelize([[3,2,5],[4,8],[1],[9,9,9,9],[5,1,0]])
+% compare
+rdd4.map(lambda list: list[:-1])
+rdd4.flatMap(lambda list: list[:-1])
+
+
+% groupByKey: creates lists of values sharing the same key
+rdd2.groupByKey
+% note: base command only yields an object. To turn it into a list, use mapValues(list)
+rdd2.groupByKey().mapValues(list)
+
+
+% union: creates the union of two rdds
+rdd1.union(rdd2).collect()
+
+
+% join: regular natural join
+rdd2.join(rdd2).collect()
+
+
+% cogroup: for each key k in rdd1 and rdd2, return a resulting rdd that contains a tuple with the list of values for that key in rdd1 as well as rdd2
+rdd1 = sc.parallelize([("a", 1), ("b", 4)])
+rdd2 = sc.parallelize([("a", 2)])
+[(x, tuple(map(list, y))) for x, y in sorted(list(rdd1.cogroup(rdd2).collect()))]
+
+
+% distinct: eliminates duplicate elements
+rdd1.distinct()
+
+
+% reduce: combines elements
+rdd1.reduce(lambda a,b:a+b)
+
+
+% fold: same as reduce, but splits the set in two partitions (by default), and adds a "zero value" at the beginning of the reduce and of each partition
+rdd1.fold('gr',lambda a,b:a+b)
+
+rdd1=sc.parallelize([1,2,3,4,5,6])
+rdd1.fold(0,lambda a,b:a+b).collect()
+
+
+
+% aggregate: takes a rdd and 3 arguments: a "zero value" similar to fold, a function applying to partitions elements, and a function applying to the processed partitions
+rdd1.aggregate('666',lambda a,b:a+b, lambda a,b:b+a)
+
+
+% reduce, fold and aggregate all have a 'ByKey' version which is usually more interesting, as it parallelizes over different keys.
+% reduceByKey
+rdd1=sc.parallelize([ (1,"paul"),(2,"anne"), (1,"emile"),(2,"marie"),(1,"victor") ])
+[(1, 'paul'), (2, 'anne'), (1, 'emile'), (2, 'marie'), (1, 'victor')]
+print rdd1.reduceByKey(lambda a,b: a+"-"+b).collect()
+[(2, 'anne-marie'), (1, 'paul-emile-victor')]
+% groupByKey
+print rdd1.groupByKey().collect()
+[(2, 'anne-marie'), (1, 'paul-emile-victor')]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dataframes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% create dataframe from scratch
+df1=spark.createDataFrame([('A','B'),('A','D'),('B','C'),('B','D'),('B','E')] , ["col1", "col2"])
+
+% convert RDD to dataframe
+rdd1=sc.parallelize([('A','B'),('A','D'),('B','C'),('B','D'),('B','E')])
+df1=rdd1.toDF(["col1","col2"])
+
+% to display
+df1.show()
+
+% select: to select one column
+df1.select("col1")
+
+% agg: to use methods working on entire columns, like: avg, max, min, sum, count
+df1.agg({"col1":"count"})
+df1.agg({"col2":"max"})
+
+% groupBy: use in conjonction with agg to first group by some key, then use the agg method keywise
+df1.groupBy("col1").agg({"col1":"count"})
+
+% join: regular inner join
+from pyspark.sql.functions import col
+df1.alias("d1").join(df2.alias("d2"),col("d1.col1") == col("d2.col2")).show()
+
+% filter: filter column on criterion
+df1.filter(df1["col1"]>"A")
+
+% withColumn: concatenate a new column to dataframe
+from pyspark.sql.functions import concat, col, lit
+df1.withColumn("col2",df1.col2)
+df1.withColumn('col_n', concat(col("col1"), lit(" "), col("col2")))
+
+from pyspark.sql.functions import lit
+df1=df1.withColumn("col4", lit(0))
+
+
+

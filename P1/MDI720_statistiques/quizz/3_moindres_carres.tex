@@ -1,0 +1,212 @@
+\vspace{5mm}
+
+{\fontsize{12pt}{22pt} \textbf{3. Moindres carrés:}\par}
+
+\vspace{5mm}
+
+1) Ecrire un pseudo-code de descente de gradient pour résoudre le problème des moindres carrés.  \vspace{2mm}
+\underline{Initialisation} \\
+$(\theta_0^0, \theta_1^0)$: valeurs initiales de $\theta$ \\
+$T$: nombre maximum d'itérations \\
+$\varepsilon$: critère d'arrêt \\
+$\alpha$: pas de l'algorithme \\
+
+\underline{Boucle} \\
+for $1 \leq t \leq T$: \\ \\
+\phantom{a} \hspace{4mm} $(\theta_0^{t+1}, \theta_1^{t+1}) := (\theta_0^{t+1}, \theta_1^{t+1}) - \alpha . \nabla f(\theta_0^{t}, \theta_1^{t})$ \\
+\phantom{a} \hspace{4mm} avec (selon le cours) $\nabla f(\theta_0^{t}, \theta_1^{t}) = X^T (X \theta - Y)$ \\ \\
+\phantom{a} \hspace{4mm} soit (en utilisant la fonction de la question 2.2): \\
+\phantom{a} \hspace{4mm} $\theta_0^{t+1} := \theta_0^t + \alpha \ssumm{i=1}{n} (y_i - \theta_0 - \theta_1 x_i)$ \\
+\phantom{a} \hspace{4mm} $\theta_1^{t+1} := \theta_1^t + \alpha \ssumm{i=1}{n} x_i (y_i - \theta_0 - \theta_1 x_i)$ \\ \\
+\phantom{a} \hspace{4mm} Stop si critère inférieur à $\varepsilon$ \\ \\
+Fin de la boucle \\ \\
+Return $(\theta_0^T, \theta_1^T)$ \\
+
+Critères d'arrêt possibles: \\
+$\| \nabla f(\theta_0^{t}, \theta_1^{t}) \| \leq \varepsilon$ \\
+$| f(\theta_0^{t+1}, \theta_1^{t+1}) - f(\theta_0^{t}, \theta_1^{t}) | \leq \varepsilon$ \\
+$ \| \theta^{t+1} - \theta^{t} \| \leq \varepsilon$ \hspace{5mm} avec $\theta = (\theta_0, \theta_1)$ \\
+$ \frac{\| \theta^{t+1} - \theta^{t} \|}{\| \theta^{t} \|} \leq \varepsilon$ \hspace{5mm} avec $\theta = (\theta_0, \theta_1)$
+\vspace{5mm}
+
+
+10)  On suppose que X est de rang plein et on note $\hat{\theta}$ l’estimateur OLS. On note $\tilde{X}=(X_1,\hdots,X_p)$.On change l’échelle d’une des variables: $X_k$ est remplacé par $X_k b$, où $b>0$. \\
+a) Soit $X_b=(1, X_1,\hdots, X_k b, \hdots, X_p)$. Montrer que $X_b = X D$ où $D$ est une matrice diagonale que l’on précisera. \\
+On utilise simplement la définition de $X_b$ pour obtenir: \\
+$X_b
+= \left( \begin{matrix} 1 & X_1 & \hdots & X_k b & \hdots & X_p \end{matrix} \right)
+= \left( \begin{matrix} 1 \times 1 & 1 \times X_1 & \hdots & b \times X_k & \hdots & 1 \times X_p \end{matrix} \right)$ \\
+$ \left( \begin{matrix} 1 & X_1 & \hdots & X_k & \hdots & X_p \end{matrix} \right) \times
+\left( \begin{matrix} 1 & & & & & \\ & 1 & & & & \\ & & \ddots & & & \\ & & & b & & \\ & & & & \ddots & \\ & & & & & 1 \end{matrix} \right)
+= X D$ \\ \\
+$D$ est donc la matrice identité de dimension $p+1$ dont l'entrée diagonale $k+1$ est remplacée par $b$. \\
+b)  Soit $\hat{\theta}_{b,n}$ l’estimateur OLS associé à $X_b$. Exprimer $\hat{\theta}_{b,n}$ en fonction de $\hat{\theta}_{n}$ et de $D$. \\
+Par les équations normales, l'estimateur OLS $\hat{\theta}_{b,n}$ est égal à: \\
+$\hat{\theta}_{b,n}
+=(X_b^T X_b)^{-1}(X_b^T y)
+=[(X D)^T (X D)]^{-1}[(X D)^T y]
+=[D^T X^T X D]^{-1}[D^T X^T y]$ \\
+$=[D^{-1} (X^T X)^{-1} (D^T)^{-1}] \ [D^T X^T y]
+=D^{-1} (X^T X)^{-1} X^T y
+=D^{-1} \hat{\theta}_{n}$ \\
+Autrement dit, l'estimateur $\hat{\theta}_{b,n}$ est égal à l'estimateur $\hat{\theta}_{n}$ dont le coefficient $k+1$ a été multiplié par $1/b$. \\
+c) Donner la variance de $\hat{\theta}_{b,n}$. \\
+On utilise simplement les propriétés de la variance (et le fait que $D$ est diagonale) pour obtenir: \\
+$Var(\hat{\theta}_{b,n})=Var(D^{-1} \hat{\theta}_{n})=(D^{-1})^2 Var(\hat{\theta}_{n})=\sigma^2 (D^{-1})^2 (X^T X)^{-1}$ \\
+d) La prédiction donnée par le modèle est: \\
+$\hat{y}_b
+=X_b \hat{\theta}_{b,n}
+=(X D) (D^{-1} \hat{\theta}_{n})
+=X \hat{\theta}_{n}
+=\hat{y}$ \\
+Autrement dit, la prédiction n'est elle pas affectée par le changement d'échelle d'une des variables. \vspace{2mm}
+
+11) Donner une formule explicite du problème $argmin_\theta \ \frac{1}{2} (y-X \theta)^T \Omega (y-X \theta)$ pour une matrice $\Omega=diag(w_1, \hdots, w_n)$ définie positive, dans le cas où $X$ est de plein rang. \\
+On commence par développer la forme quadratique: \\
+$\frac{1}{2} (y-X \theta)^T \Omega (y-X \theta)
+=\frac{1}{2} \left[ y^T \Omega y + \theta^T X^T \Omega X \theta - 2 \theta^T X^T \Omega y \right]$ \\
+(où pour obtenir le terme $2 \theta^T X^T \Omega y$ on a utilisé le fait qu'un scalaire est égal à sa transposée, et que $\Omega$ est symétrique). \\
+Pour trouver l'argmin, on utilisera les règles suivantes de dérivées matricielles:\\
+- Si $a$ et $b$ sont des vecteurs, on a: $\frac{\partial b^T a}{\partial b} = a$. Cela implique que: $\frac{\partial 2 \theta^T X^T \Omega y}{\partial \theta} = 2 X^T \Omega y$. \\
+- Si $A$ est une matrice symétrique et $b$ un vecteur, on a: $\frac{\partial b^T A b}{\partial b} = 2 A b$. Cela implique que: $\frac{\partial \theta^T X^T \Omega X \theta}{\partial \theta} = 2 X^T \Omega X \theta$. \\
+On conclut que:
+\begin{lflalign}
+& \ \frac{\partial }{\partial \theta}\left( \ \frac{1}{2} (y-X \theta)^T \Omega (y-X \theta) \right)=0 \nonumber \\
+\Leftrightarrow \ & \ \frac{\partial }{\partial \theta} \left( \frac{1}{2} \left[ y^T \Omega y + \theta^T X^T \Omega X \theta - 2 \theta^T X^T \Omega y \right] \right)=0 \nonumber \\
+\Leftrightarrow \ & \ \frac{1}{2} \left( 2 X^T \Omega y - 2 X^T \Omega X \theta \right) = 0 \nonumber \\
+\Leftrightarrow \ & \ X^T \Omega y - X^T \Omega X \theta = 0 \nonumber \\
+\Leftrightarrow \ & \ X^T \Omega X \theta = X^T \Omega y \nonumber \\
+\Leftrightarrow \ & \  \hat{\theta} = (X^T \Omega X)^{-1} (X^T \Omega y) \nonumber
+\end{lflalign}
+
+
+
+
+\bigskip
+\bigskip
+
+\textbf{12). Dans le cas du mod\'ele de régression avec désign aléatoire, décrire l'asymptotique de l'estimateur des moindre carr\'ees. On donnera la loi asymptotique de $\sqrt{n} (\hat \beta - \beta^{*})$.}
+
+\bigskip
+
+(Le mod\'ele \textit{Random Design} n'a pas \'et\'e trait\'e en cours. En revanche, une question sur la loi asymptotique avec le mod\'ele gaussien peut tomber).
+
+\bigskip
+
+\begin{itemize}
+	\item \textit{Mod\'ele gaussien}
+\end{itemize}
+
+Pour \'etudier la convergence de $\hat \beta$, on fait appel au th\'eor\`eme central limite (TCL). On se base sur le calcul du biais $\hat \beta$ :
+
+$$ \hat \beta - \beta^{*} = (X^T X)^{-1} X^T \varepsilon $$
+
+$\hat \beta - \beta^{*}$ est une combinaison lin\'eaire certaine de lois ind\'ependantes $\varepsilon_i$ ce qui permet d'appliquer le TCL (condition 1).
+
+\bigskip
+
+Pour la variance, on suppose que l'hypoth\`ese suivante est v\'erifi\'e avec $V_X$ une matrice finie definie-positive (les variables explicatives conservent de la variance quand $n \rightarrow +\infty$, soit plus d'observations apportent plus d'information ce qui exclut la possibilit\'e d'une multicolin\'earit\'e stricte au niveau asymptotique) :
+
+$$ \lim_{n\rightarrow +\infty} \frac{1}{n}(X^T X)^{-1} = V_X $$
+
+D'où (condition 2) :
+
+$$ \lim_{n\rightarrow +\infty} \mathbf{V}(\sqrt{n} (\hat \beta - \beta^{*})) = \lim_{n\rightarrow +\infty} n \sigma^2 (X^T X)^{-1} = \lim_{n\rightarrow +\infty} \sigma^2 \Bigl(\frac{X^T X}{n}\Bigl)^{-1} = \sigma^2 V_X^{-1} $$
+
+\bigskip
+
+Cons\'equence, en partant du r\'esultat que :
+
+$$ \sqrt{n} (\beta - \beta^{*}) \sim \mathcal{N}(0, \sigma (X^T X)^{-1} ) $$
+
+\bigskip
+
+On d\'eduit que $\beta - \beta^{*}$ converge en loi vers :
+
+$$ \sqrt{n} (\beta - \beta^{*}) \rightarrow  \mathcal{N}(0, \sigma V_X^{-1} )$$
+
+\bigskip
+
+\begin{itemize}
+	\item \textit{Mod\'ele d\'esign al\'eatoire}
+\end{itemize}
+
+(Hors programme)
+
+\bigskip
+\bigskip
+
+\textbf{13) Dans le cas du mod\'ele de r\'egression avec design d\'eterministe et bruit gaussien centr\'e de variance $\sigma^2$, donner la loi de l'estimateur des moindre carr\'ees $\hat \beta$.}
+
+\bigskip
+
+Dans le mod\'ele gaussien, les perturbations (ou le bruit blanc) $(\varepsilon_i)_{i=1,...,n}$ sont des variables aléatoires réelles gaussiennes telles que : $ \varepsilon_i \sim^{i.i.d} \mathcal{N}(0,\sigma^2)$ et en forme vectorielle $ \varepsilon \sim^{i.i.d} \mathcal{N}(0,\sigma^2 I_n)$.
+
+\bigskip
+
+Or les variables à expliquer $Y$ suivent aussi une loi gaussienne puisque $Y = X\beta^{*} + \varepsilon$ est une combinaison linéaire additive de variables al\'eatoires gaussiennes. D'où : $Y_i \sim \mathcal{N}(X_i^T\beta^{*},\sigma^2)$.
+
+\bigskip
+
+$\hat \beta$ est une combinaison lin\'eaire certaine des $Y_i$, d'où à l'instar de $Y$, le vecteur $\hat \beta$ suit aussi une loi normale d'esp\'erance $\mu$ et de variance-covariance $\Sigma$. Le calcul du biais et de la variance de l'estimateur $\hat \beta$ nous donne ces 2 quantit\'es :
+
+$$ \mathbf{E}(\hat \beta) = \beta^{*} \qquad \mathbf{V}(\hat \beta) = \sigma^2 (X^T X)^{-1}$$
+
+Ainsi :
+
+$$ \hat \beta \sim \mathcal{N}(\beta^{*},\sigma^2 (X^T X)^{-1}) $$
+
+Et en particulier :
+
+$$ j = 1,...,p \qquad \hat \beta_{j} \sim \mathcal{N}(\beta_j^{*},\sigma^2 (X^T X)^{-1}_{j,j}) $$
+
+\bigskip
+\bigskip
+
+
+
+
+
+
+
+\vspace{5mm}
+
+14) Dans le cas du modèle de régression avec design déterministe où X est de plein rang p, donner la valeur du risque de prédiction. \\
+
+$$ Rpred(\hat{\theta}_n) = E\left[\| Y^* - \hat{Y} \|^2_2\right] $$
+$$ Rpred(\hat{\theta}_n)  = E\left[\| X(\hat{\theta}_n - \theta^*) \|^2_2\right] $$
+$$ Rpred(\hat{\theta}_n) = E \left[ \| X(X^TX)^{-1}X^T \epsilon \|^2_2 \right] $$
+On pose $H_x = X(X^TX)^{-1}X^T$, on remarque que $H_x$ est un projecteur orthogonal et on écrit :
+$$ Rpred(\hat{\theta}_n) = E\left[ \epsilon^TH_x\epsilon \right]$$
+$$ = E\left[ tr(H_x \epsilon \epsilon^T)\right]$$
+$$ = tr(H_x E(\epsilon\epsilon^T) $$ Comme $Cov(\epsilon) = \sigma^2 I_n$
+$$ = \sigma^2 tr(H_x)$$
+
+Comme $H_x$ est un projecteur orthogonal on a :
+\smallbreak
+$$
+\begin{cases}
+    H_x^T = H_x  \\
+    H_x^2 = H_x
+\end{cases} $$
+
+Donc les valeurs propres de $\lambda_i$ de $H_x$ on pour propriété :
+$$\lambda_i^2 = \lambda_i \Longleftrightarrow
+\begin{cases}
+    \lambda_i = 0  \\
+    \lambda_i = 1
+\end{cases} $$
+
+Ainsi :
+$$ Rpred = \sigma^2 tr(H_x)$$
+$$ = \sigma^2 \sum^n_{k=1} \lambda_k$$ avec $\lambda_k$ les vp de $H_x$
+$$ = \sigma^2 rang(H_x)$$
+
+Avec l'hypothèse de rang plein $Ker(X) = \{0\}$ on a :
+$$dim(Vect(X)) = p$$
+$H_x$ étant le projecteur orthgonal sur Vect(X), on obtient $rang(H_x) = p$
+donc
+$$Rpred(\hat{\theta}_n) = \sigma^2 p$$
+
+
+

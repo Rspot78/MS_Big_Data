@@ -1,0 +1,33 @@
+\vspace{5mm}
+
+{\fontsize{12pt}{22pt} \textbf{7. Test:}\par}
+
+\vspace{5mm}
+
+1) Pour des X1,...,Xn identiquement distribuées à valeur dans {0,1} décrire une procédure de test de l’hypothèse $p = P(X_1=1)=1/2$ contre son contraire.
+
+On pose:
+$$\begin{cases}
+    H_0: p =P(X_1) = \frac{1}{2}  \\
+    H_1: p = P(X_1=1) \neq \frac{1}{2}
+\end{cases} $$
+\\
+
+\noindent
+On choisit comme statistique de test
+
+$$ T_i = \sqrt{n}\frac{\hat{p}- p}{\hat{\sigma}} $$
+avec l'etismateur de l'espérance de X $$\hat{p} = \frac{1}{n}\sum^n_{i=1} X_i $$ , $p = \frac{1}{2}$
+
+et $$\sigma^2 = \frac{1}{n}\sum^n_{i=1}{(X_i- \hat{p})^2} = \hat{p} - \hat{p}^2$$ 
+
+\noindent
+On suppose n assez grand pour que $$T_i \sim \mathcal{N}(0,\,1)\,.$$
+
+\noindent
+On note $\alpha$ notre niveau de précision. Pour ne pas rejeter l'hypothèse $H_0$, on doit avoir:
+$$ \sqrt{n}\frac{\hat{p}-p}{\hat{\sigma}} <= t_{1-\frac{\alpha}{2}}$$ avec $t_{1-\frac{\alpha}{2}}$ le quantile de la loi normale centrée réduite
+
+\noindent
+On a la région de rejet R:
+$$ R=[-t_{1-\frac{\alpha}{2}}; t_{1-\frac{\alpha}{2}}]$$

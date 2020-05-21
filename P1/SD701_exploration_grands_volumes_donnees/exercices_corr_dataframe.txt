@@ -1,0 +1,64 @@
+% exercise (easy)
+
+
+df1=spark.createDataFrame([('A',42),('B',17),('A',12),('B',99)] , ["col1", "col2"])
+df2=df1.groupBy("col1").avg("col2")
+
+
+
+% exercise (medium)
+
+from pyspark.sql.functions import concat, col, lit
+df1=spark.createDataFrame([('A','A'),('B','C'),('C','E')] , ["col1", "col2"])
+df2=df1.select("col1").withColumn("col2", lit(0))
+df3=df1.select("col2").withColumn("col1", lit(1))
+df4=df2.union(df3)
+df5=df4.groupBy("col1").agg({"col2":"sum"}).withColumnRenamed("sum(col2)", "col2")
+df6=df5.filter(df5["col2"]==0).select("col1").show()
+
+
+
+% exercise (hard)
+
+% This is the correction for the actual exercise, that is, find accounts which have 
+% more followers than the number of followers in any account they follow
+
+% create initial RDD and reformulate for later subtraction
+rdd1=sc.parallelize([('A','B'),('A','D'),('B','C'),('B','D'),('C','E')])
+rdd2=rdd1.map(lambda (x,y): ((x,y), 0))
+% get number of followers for each account
+temp1=rdd1.map(lambda x: (x[0], 0))
+temp2=rdd1.map(lambda x: (x[1], 1))
+rdd3=temp1.union(temp2).reduceByKey(lambda a,b: a+b)
+% identify whether an account has more followers than the other accounts
+% returns 0 if this is indeed the case, and -1 otherwise
+temp3=rdd3.cartesian(rdd2)
+rdd4=temp3.map(lambda (x,y):((x[0],y[0]),int(x[1]>=y[1])-1))
+% filter to keep only the pairs in rdd4 that appear in rdd1 (the pairs "A follows B" of interest)
+% unwanted rows
+temp4=rdd4.subtractByKey(rdd2)
+% wanted rows
+rdd5=rdd4.subtractByKey(temp4)
+% finally, keep only accounts which have more followers than any followed account
+% group by first key and sum
+temp5=rdd5.map(lambda (a,b): (a[0],b)).reduceByKey(lambda a,b: a+b)
+% keep only accounts with 0 sum (those which have only positive comparisons in terms of followers)
+rdd6=temp5.filter(lambda x: x[1]==0).keys()
+
+% This is the correction for the solution proposed by Louis Jachiet
+% it corresponds to a different question: which accounts have more followers than accounts followed?
+
+% create initial RDD
+rdd1=sc.parallelize([('A','B'),('A','D'),('B','C'),('B','D'),('C','E')])
+% compute the rumber of followers for each account
+temp1=rdd1.map(lambda x: (x[0], 0))
+temp2=rdd1.map(lambda x: (x[1], 1))
+rdd2=temp1.union(temp2).reduceByKey(lambda a,b: a+b)
+% compute the number of followees for each account
+temp3=rdd1.map(lambda x: (x[0], -1))
+temp4=rdd1.map(lambda x: (x[1], 0))
+rdd3=temp3.union(temp4).reduceByKey(lambda a,b: a+b)
+% join and compute final comparison
+rdd4=rdd2.union(rdd3).reduceByKey(lambda a,b: a+b).filter(lambda x: x[1]>=0).keys()
+
+

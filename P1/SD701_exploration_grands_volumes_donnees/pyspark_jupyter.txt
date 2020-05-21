@@ -1,0 +1,10 @@
+Pour pouvoir utiliser Pyspark sur Jupyter notebook:
+- ouvrir le shell et tapper : jupyter-notebook
+- dans la première cellule du notebook, tapper:
+import findspark
+findspark.init()
+import pyspark
+
+Note: dans mon cas on doit passer par le shell. Si on ouvre Jupyter par Anaconda, 
+il ne démarre pas correctement et pyspark ne peut pas être importé.
+Une question de path, apparemment...

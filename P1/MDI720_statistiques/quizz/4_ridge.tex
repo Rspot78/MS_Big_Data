@@ -1,0 +1,109 @@
+\vspace{5mm}
+
+{\fontsize{12pt}{22pt} \textbf{4. Ridge:}\par}
+
+\vspace{5mm}
+
+On note $\hat \theta = {\rm arg} \displaystyle\min_{\theta} \frac{1}{2}\| \mathbf{y} -X \theta \|_2^2+ \frac{\lambda}{2}\|\theta\|_2^2$ l’estimateur Ridge
+
+Soit $f: \theta \mapsto \frac{1}{2}||Y-X\theta||_2^2+\frac{\lambda}{2}||\theta||_2^2$ \\
+
+1) Quand $X=Id_n$ on a $n=p+1$ et $f(\theta)=\frac{1}{2}||Y-Id_n\theta||_2^2+\frac{\lambda}{2}||\theta||_2^2$ \\
+
+Pour des questions de notations, on utilisera $Id_n=Id_{p+1}=Id$ \\
+
+$f(\theta)=\frac{1}{2}\Sigma_{i=1}^n(Y_i-Id_i\theta)^2+\frac{\lambda}{2} \Sigma_{i=1}^n \theta_i^2$ \\
+
+Le minimum de la fonction est atteint lorsque $\nabla f(\theta) = 0$ \\
+
+$\nabla f(\theta) = 0 => \forall k=1,...,p: \frac{\partial f(\theta)}{\partial \theta_k}=0$ \\
+
+$\frac{\partial f(\theta)}{\partial \theta_k}=2\frac{1}{2} (-Id_{i,k}) \Sigma_{i=1}^n (Y_i-\Sigma_{j=1}^pId_{i,j}\theta_j)+2\frac{\lambda}{2} \theta_k$ \\
+
+$~~~~~~~=-\Sigma_{i=1}^n(Id_{i,k}Y_i-Id_{i,k}Id_i\theta)+\lambda \theta_k$ \\
+
+Donc $\nabla f(\theta)=-\Sigma_{i=1}^n(Id_i^TY_i-Id_i^TId_i\theta)+\lambda \theta=-\Sigma_{i=1}^nId_i^TY_i+\Sigma_{i=1}^nId_i^TId_i \theta +\lambda \theta$ \\
+
+$~~~~~~~~~~~~~~~~~=-Y+\theta+\lambda \theta$ \\
+
+$\nabla f(\theta) = 0 => \theta = \frac{1}{1+\lambda}Y= \hat{\theta}_{n,\lambda}^{Ridge} $\\
+
+
+2) Pour $X \in \mathbb{R}^{n \times p}$ quelconque, $f(\theta)=\frac{1}{2}\Sigma_{i=1}^n(Y_i-X_i\theta)^2+\frac{\lambda}{2} \Sigma_{i=1}^n \theta_i^2$ \\
+
+Comme pour la question 1), \\
+$\nabla f(\theta) = 0 => \forall k=1,...,p: \frac{\partial f(\theta)}{\partial \theta_k}=0$ \\
+
+$\frac{\partial f(\theta)}{\partial \theta_k}=2\frac{1}{2} (-X_{i,k}) \Sigma_{i=1}^n (Y_i-\Sigma_{j=1}^pX_{i,j}\theta_j)+2\frac{\lambda}{2} \theta_k$ \\
+
+$~~~~~~~=-\Sigma_{i=1}^n(X_{i,k}Y_i-X_{i,k}X_i\theta)+\lambda \theta_k$ \\
+
+Donc $\nabla f(\theta)=-\Sigma_{i=1}^n(X_i^TY_i-X_i^TX_i\theta)+\lambda \theta=-X^TY+X^TX\theta + \lambda \theta$ \\
+
+Ainsi $\nabla f(\theta)=0 => -X^TY+X^TX\theta + \lambda \theta=0$ \\
+$=> (X^TX + \lambda Id_n)\theta = X^TY => \theta = (X^TX + \lambda Id_n)^{-1} X^TY = \hat{\theta}_{n,\lambda}^{Ridge} $ \\
+
+3) Donner la variance de l'estimateur Ridge sous l’hypothèse que le bruit $\mathbf{y} -X \theta^*$ est centré et de variance $\sigma^2 {\rm Id}_n$.
+
+$$\hat \theta_{\lambda}^{rdg} = (X^\top X+\lambda Id_p)^{-1}X^\top Y$$
+$$Var(\hat \theta_{\lambda}^{rdg}) = Var((X^\top X+\lambda Id_p)^{-1}X^\top Y)$$ 
+$$ = ((X^\top X+\lambda Id_p)^{-1}X^\top) Var(Y) ((X^\top X+\lambda Id_p)^{-1}X^\top)^\top$$ 
+$$ = (X^\top X+\lambda Id_p)^{-1}X^\top Var(X \theta^\star + \epsilon)X(X^\top X+\lambda Id_p)^{-1}$$ 
+$$ = (X^\top X+\lambda Id_p)^{-1}X^\top Var(\epsilon)X(X^\top X+\lambda Id_p)^{-1}$$ 
+$$ = \sigma^2 (X^\top X+\lambda Id_p)^{-1}X^\top X(X^\top X+\lambda Id_p)^{-1}$$ 
+
+En remarquant que $X^\top X$ et $(X^\top X+\lambda Id_p)^{-1}$ sont diagonalisables dans la même base, on pose:
+
+$$(X^\top X+\lambda Id_p)^{-1} = PA^{-1}P^{-1}$$
+$$X^\top X = PBP^{-1}$$
+
+Avec $A^{-1}$ et $B$ deux matrices diagonales.
+
+On a alors:
+
+$$Var(\hat \theta_{\lambda}^{rdg}) = \sigma^2PA^{-1}P^{-1}PBP^{-1}PA^{-1}P^{-1}$$
+$$ = \sigma^2PA^{-1}BA^{-1}P^{-1}$$
+$$ = \sigma^2PA^{-1}A^{-1}BP^{-1}$$
+$$ = \sigma^2PA^{-1}Id_pA^{-1}Id_pBP^{-1}$$
+$$ = \sigma^2PA^{-1}P^{-1}PA^{-1}P^{-1}PBP^{-1}$$
+$$ = \sigma^2 (X^\top X+\lambda Id_p)^{-1} (X^\top X+\lambda Id_p)^{-1}X^\top X$$
+$$ = \sigma^2 (X^\top X+\lambda Id_p)^{-2} X^\top X$$
+
+
+4) Donner en fonction de X,y,D $\in {\Re}^{p*p}$  et $\lambda$ une formule  explicite de :
+
+$$\hat \theta={\rm arg} \displaystyle\min_{\theta} \frac{1}{2}\| \mathbf{y} -X \theta \|_2^2+ \frac{\lambda}{2}\|D\theta\|_2^2$$
+
+Posons $$ f(\theta) = \frac{1}{2}\| \mathbf{y} -X \theta \|_2^2+ \frac{\lambda}{2}\|D\theta\|_2^2 = \frac{1}{2}\| \mathbf{y}\|^2 - \langle \theta,X^\top y \rangle + \frac{1}{2} (\theta)^\top X^\top X (\theta)$$
+       
+Si  $\nabla f(\theta)$ est le gradient de $f(\theta)$ alors:
+
+
+$$f(\theta + h)=f(\theta) +\langle h,\nabla f(\theta) \rangle  + o(h)   \hspace{5mm} \hspace{5mm} (a)$$ 
+
+
+Développons:
+
+$$f(\theta+ h)= \frac{1}{2}\| \mathbf{y}\|^2 - \langle \theta+h,X^\top y \rangle + \frac{1}{2} (\theta+h)^\top X^\top X (\theta+h)+ \frac{\lambda}{2}(\theta+h)^\top D^\top D (\theta+h)$$
+
+$$=\frac{1}{2}\| \mathbf{y}\|^2-\langle \theta,X^\top y \rangle - \langle h,X^\top y \rangle$$
+$$+\frac{1}{2} \theta^\top X^\top X \theta+\frac{1}{2} h^\top X^\top X \theta$$
+$$+\frac{1}{2} \theta^\top X^\top X h+\frac{1}{2} h^\top X^\top X h $$
+$$+ \frac{\lambda}{2} \theta^\top D^\top D \theta+\frac{\lambda}{2} \theta^\top D^\top D h$$
+$$+\frac{\lambda}{2} h^\top D^\top D \theta +\frac{\lambda}{2} h^\top D^\top D h$$
+
+Après regroupement approprié nous avons:
+
+$$f(\theta+ h)= f(\theta)+\langle h,X^\top X \theta+\lambda D^\top D \theta - X^\top y \rangle+(\theta^\top X^\top X+h^\top X^\top X+\lambda h^\top D^\top D )\frac{h}{2} \hspace{5mm} (b)$$
+
+En comparant (a) et (b) nous avons par identification:
+
+$$\nabla f(\theta) = X^\top X \theta + \lambda D^\top D \theta - X^\top y $$
+
+$$\nabla f(\hat \theta)=0$$ équivaut à :
+
+$$(X^\top X + \lambda D^\top D)\hat \theta= X^\top y$$ 
+
+
+
+

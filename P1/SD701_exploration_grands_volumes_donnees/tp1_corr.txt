@@ -1,0 +1,233 @@
+2.1
+
+L=[i for i in range(3000)]
+rdd1=sc.parallelize(L)
+
+
+2.2
+
+C=rdd1.map(lambda x: x**3)
+C.reduce(lambda a,b:a+b)
+
+
+2.3
+
+% crée un rdd qui génère une liste des dernières valeurs de chaque nombre du rdd C:
+temp1=C.map(lambda x: x%10)
+% crée un rdd qui a chaque nombre de temp1 associe la valeur 1: on obtient une liste de tuples (val,1), et val est considéré comme une clé:
+temp2=temp1.map(lambda digit: (digit, 1))
+% fais un reduceByKey qui pour chaque clé va faire la somme de toutes les 1 correspondants:
+final=temp2.reduceByKey(lambda a, b: a+b)
+final.collect()
+
+
+2.4
+
+% crée la fonction qui permet de lister les chiffres contenus dans un nombre
+def digits(i):
+	return [e for e in str(i)] (nota: sous shell, indentation avec tab)
+% obtient un rdd qui casse les chiffres au sein de chaque nombre; on obtient une liste de listes de chiffres;
+temp1=C.map(lambda x: digits(x))
+% faire un flatmap pour fusionner toutes les listes en une liste unique:
+temp2=temp1.flatMap(lambda list: list)
+% crée un rdd qui a chaque nombre de temp2 associe la valeur 1: on obtient une liste de tuples (val,1), et val est considéré comme une clé:
+temp3=temp2.map(lambda digit: (digit, 1))
+% fais un reduceByKey qui pour chaque clé va faire la somme de toutes les 1 correspondants:
+final=temp3.reduceByKey(lambda a, b: a+b)
+final.collect()
+
+
+3.1
+
+% déclarer le degré de précision K
+K=3000
+L=[i for i in range(K)]
+temp1=sc.parallelize(L)
+% créer une liste de toutes les paires possibles avec cartesian
+temp2=temp1.cartesian(temp1)
+
+
+3.2
+
+% créer une correspondance avec les paires qui renvoie 1 si la condition est remplie, 0 sinon
+temp3=temp2.map(lambda (x, y) : int(((2*x+1)**2 + (2*y+1)**2) < (2*K)**2))
+% compter le nombre de 1 en faisant la somme de tous les éléments
+temp4=temp3.reduce(lambda a,b:a+b)
+
+
+3.3
+
+% obtenir le résultat final comme la ratio du total de paire et celui du nombre de paires qui remplissent la condition, multiplié par 4
+final=float(temp4)/float(temp2.count())*4
+final
+
+
+4.1 getting the dataset
+
+% télécharger le set à:
+http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+
+4.2 getting the dataset into an RDD
+
+% import packages
+% in practice, the cleaning done by the first package and function (re with function future_pattern) did not work
+% I thus had to find a fix with unicodedata, creating the normaliseStr function
+import re 
+import unicodedata
+import math
+
+future_pattern = re.compile("""([^,"]+|"[^"]+")(?=,|$)""") 
+
+def parseCSV(line): 
+	return future_pattern.findall(line) 
+
+def normaliseStr(unicode_chain):
+	return unicodedata.normalize('NFKD', unicode_chain).encode('ascii', 'ignore')
+
+path_data = "/home/romain/movie_small"
+ratingsFile = sc.textFile(path_data+"/ratings.csv").map(normaliseStr).map(parseCSV) 
+ratingsFile.take(30)
+moviesFile = sc.textFile(path_data+"/movies.csv").map(normaliseStr).map(parseCSV) 
+moviesFile.take(30)
+
+4.3 cleaning data
+
+ratings = ratingsFile.filter(lambda x: x[0]!="userId").map(lambda x: (str(x[0]), str(x[1]), float(x[2]), int(x[3])))
+movies = moviesFile.filter(lambda x: x[0]!="movieId").map(lambda x: (str(x[0]), str(x[1]), str(x[2])))
+ratings.take(30)
+movies.take(30)
+
+4.4 10 best movies of all times
+
+4.5 and 4.6 Average and better ratings
+
+% rdd with average movie rating by ID
+% standard mean
+rdd1 = ratings.map(lambda x: (x[1], x[2])).groupByKey().mapValues(lambda x: round(sum(x)/len(x),2))
+% slight penalization for small number of ratings
+rdd2 = ratings.map(lambda x: (x[1], x[2])).groupByKey().mapValues(lambda x: round(sum(x)/(1+len(x)),2))
+% heavy penalization for small number of ratings
+rdd3 = ratings.map(lambda x: (x[1], x[2])).groupByKey().mapValues(lambda x: round(sum(x)/max(20,len(x)),2))
+% extreme penalization for small number of ratings with log averaging
+import math
+rdd4 = ratings.map(lambda x: (x[1], x[2])).groupByKey().mapValues(lambda x: round(sum(x)/math.log(1+len(x)),2))
+
+% rdd with all movie IDs
+rdd5 = movies.map(lambda x: (x[0], x[1]))
+
+% join and sorted by descending order
+rdd6 = rdd1.join(rdd5).map(lambda x: x[1]).sortBy(lambda x: -x[0])
+rdd6.take(10)
+rdd7 = rdd2.join(rdd5).map(lambda x: x[1]).sortBy(lambda x: -x[0])
+rdd7.take(10)
+rdd8 = rdd3.join(rdd5).map(lambda x: x[1]).sortBy(lambda x: -x[0])
+rdd8.take(10)
+rdd9 = rdd4.join(rdd5).map(lambda x: x[1]).sortBy(lambda x: -x[0])
+rdd9.take(10)
+
+
+5. Movie recommendation
+
+% list of movies rated by user 1
+rddu1 = ratings.filter(lambda x: x[0]=="1").map(lambda x: (x[1], x[2])).join(movies).map(lambda x: (x[1][1], x[1][0])).sortBy(lambda x: x[0])
+for movie in rddu1.collect(): print(movie)
+
+
+5.1 Similarity
+
+def similarity(id1, id2, rdd):
+	if id1 == id2:
+		return 0
+	% list all movies rated by id1
+	temp1 = rdd.filter(lambda x: x[0] == id1).map(lambda x: (x[1], x[2]))
+	% list all movies rated by id2
+	temp2 = rdd.filter(lambda x: x[0] == id2).map(lambda x: (x[1], x[2]))
+	% obtain a 2-column rdd with common ratings, with id1 ratings in col1 and id2 ratings in col2
+	temp3 = temp1.union(temp2).groupByKey().mapValues(list).filter(lambda x: len(x[1])==2).map(lambda x: (x[1][0],x[1][1]))
+	% convert to iterable
+	temp4 = [x for x in temp3.toLocalIterator()]
+	% obtain col1 and col2
+	col1=[]
+	col2=[]
+	for element in temp4:
+		col1.append(element[0])
+		col2.append(element[1])
+	if len(col1) == 0:
+		return 0
+	avg1 = sum(col1)/len(col1)
+	var1 = sum((element - avg1) ** 2 for element in col1)/len(col1)
+	avg2 = sum(col2)/len(col2)
+	var2 = sum((element - avg2) ** 2 for element in col2)/len(col2)
+	if var1*var2 == 0:
+		return 0
+	summ=0
+	for ii in range(len(col1)):
+		summ = summ + (col1[ii]-avg1) * (col2[ii]-avg2)
+	if summ<0:
+		return 0
+	return math.log(1+len(col1)) * summ / (len(col1)*math.sqrt(var1*var2))
+
+
+% compute rdd with all pairs for user 1
+
+% list of all users
+temp1 = ratings.map(lambda x: x[0]).distinct().map(lambda x: int(x)).sortBy(lambda x: x).map(lambda x: str(x)).toLocalIterator()
+
+users = [x for x in temp1]
+
+simil=[]
+for user in users:
+	simil.append((user,similarity('1', user, ratings)))
+
+
+
+5.2 Grade of a movie
+
+% turn simil into rdd
+temp1=sc.parallelize(simil)
+
+% rdd with only userID, movieID and rating:
+temp2 = ratings.map(lambda x: (x[0], [x[1], x[2]]))
+
+% join with simil:
+temp3 = temp2.join(temp1)
+
+% map to retain only movie ID, rating and similarity:
+temp4 = temp3.map(lambda x:(x[1][0][0],x[1][0][1],x[1][1]))
+
+% map again to create the rating*simil term in numerator:
+temp5 = temp4.map(lambda x:(x[0], (x[1]*x[2], x[2])))
+
+% reduce by key to obtain summations both in numerators and denominators
+temp6 = temp5.reduceByKey(lambda x,y:(x[0]+y[0],x[1]+y[1]))
+
+% mapValues to obtain result
+temp7 = temp6.mapValues(lambda x: x[0]/(0.5+x[1]))
+
+% join with movies to get title, remove ID, sort descending
+temp8 = movies.map(lambda x: (x[0], x[1])).join(temp7).map(lambda x: (x[1][1],x[1][0])).sortBy(lambda x: -x[0])
+
+% display results
+temp9 = [x for x in temp8.toLocalIterator()]
+for ii in range(21):
+	print(temp9[ii][1] + ' => ' + str(temp9[ii][0]))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

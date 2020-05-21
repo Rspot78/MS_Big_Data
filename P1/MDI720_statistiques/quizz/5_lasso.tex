@@ -1,0 +1,53 @@
+\vspace{5mm}
+
+{\fontsize{12pt}{22pt} \textbf{5. Lasso :}\par}
+
+\vspace{5mm}
+
+1) Exprimer $\eta_{\lambda}(z) = arg min_{\ x \in \R} \ x \mapsto \frac{1}{2}(z-x)^2 + \lambda|x|$ en fonction du signe de $z$ et de la partie positive $(.)_{+}$.
+
+\bigskip
+Posons 
+$$f(x) = \frac{1}{2}(z-x)^2 + \lambda x$$ 
+avec $z$ et $\lambda$ cte, $\lambda \geqslant 0$
+\medskip
+
+\underline{1\textsuperscript{er} cas :} $x \geqslant 0$ 
+   $$f(x) = \frac{1}{2}(z-x)^2 + \lambda x$$
+   $$f'(x)= -(z-x) + \lambda$$
+alors $$f'(x) = 0 \ \Leftrightarrow \ x = z - \lambda$$
+Ce qui est vérifié dans notre cas si $z \geqslant \lambda$. \\
+Sinon, si $z < \lambda$, alors 
+$$\underset{x}{argmin} \ f(x) = \underset{x}{argmin} \ \frac{1}{2} x^2 - (z-\lambda)x + z^2$$
+Cette parabole atteint son minimum sur $\R^+$ en $x = 0$ puisque les racines sont $0$ et $2(z-\lambda)$.
+\smallskip
+Ainsi, pour $x \geqslant 0$
+$$\begin{cases}
+    x = z - \lambda \ \ si \ z \geqslant \lambda \\
+    x = 0 \ \ sinon
+\end{cases}$$
+
+
+\underline{2\textsuperscript{ème} cas :} $x \leqslant 0$ 
+   $$f(x) = \frac{1}{2}(z-x)^2 - \lambda x$$
+   $$f'(x)= -(z-x) - \lambda$$
+alors $$f'(x) = 0 \ \Leftrightarrow \ x = z + \lambda$$
+Ce qui est vérifié dans notre cas si $z \leqslant - \lambda$. \\
+Sinon, si $z > - \lambda$, alors on reprend notre raisonnement sur la parabole qui atteindra de la même manière son minimum en $x=0$.
+
+\smallskip
+Ainsi, pour $x \leqslant 0$
+$$\begin{cases}
+    x = z + \lambda \ \ si \ z \leqslant - \lambda \\
+    x = 0 \ \ sinon
+\end{cases}$$
+
+\bigskip
+
+\underline{Conclusion :} 
+\begin{itemize}
+    \item \boldmath $z \geqslant \lambda$ \unboldmath, $ \eta_{\lambda}(z) = z - \lambda = |z| - \lambda = $ \boldmath $sign(z) \ (|z| - \lambda) $ \unboldmath
+    \item \boldmath $|z| \leqslant \lambda$, $ \eta_{\lambda}(z) = 0$ \unboldmath
+    \item \boldmath $z \leqslant - \lambda$ \unboldmath, $\eta_{\lambda}(z) = z + \lambda = - |z| + \lambda = - (|z| - \lambda) = sign(z) \ (|z| - \lambda)$ d'où \\ \boldmath $\eta_{\lambda}(z) = sign(z) \ (|z| - \lambda)_{+}$ \unboldmath 
+\end{itemize}
+
