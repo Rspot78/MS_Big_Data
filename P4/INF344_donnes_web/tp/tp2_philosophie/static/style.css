@@ -1,0 +1,223 @@
+/* CSS style for overall title */
+
+#image_1{
+  width: 100px;
+  position: absolute;	
+  left: 30px;
+  top: 30px;
+}
+
+#title_1{
+  font-size: 30px;
+  position: absolute;	
+  left: 155px;
+  top: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+#title_2{
+  font-size: 26px;
+  position: absolute;	
+  left: 155px;
+  top: 50px;
+  font-style: italic;
+  color: black;
+}
+
+#label_1{
+  font-size: 26px;
+  position: absolute;	
+  left: 30px;
+  top: 295px;
+}
+
+#input_1{
+  font-size: 18px;
+  position: absolute;	
+  left: 30px;
+  top: 335px;
+  width: 335px;
+  height: 22px;
+  font-family: "Times New Roman";
+  text-indent: 10px;
+}
+
+#submit_1{
+  font-size: 18px;
+  position: absolute;	
+  left: 30px;
+  top: 380px;
+  width: 340px;
+  height: 30px;
+  font-family: "Times New Roman";
+}
+
+#image_2{
+  width: 600px;
+  position: absolute;	
+  left: 800px;
+  top: 30px;
+  opacity: 0.75;
+}
+
+#comment_1{
+  font-size: 18px;
+  position: absolute;	
+  left: 800px;
+  top: 385px;
+  font-style: italic;
+}
+
+.victory_1{
+  position: absolute;
+  top: 130px;
+  left: 30px;
+  color: rgb(5, 126, 5);
+  font-size: 24px;
+}
+
+.victory_2{
+  position: absolute;
+  top: 160px;
+  left: 30px;
+  font-size: 24px;
+}
+
+.victory_3{
+  position: absolute;
+  top: 190px;
+  left: 30px;
+  font-size: 24px;
+}
+
+.defeat_1{
+  position: absolute;
+  top: 130px;
+  left: 30px;
+  color: rgb(199, 5, 5);
+  font-size: 24px;
+}
+
+.defeat_2{
+  position: absolute;
+  top: 160px;
+  left: 30px;
+  font-size: 24px;
+}
+
+.defeat_3{
+  position: absolute;
+  top: 190px;
+  left: 30px;
+  font-size: 24px;
+}
+
+#label_2{
+  font-size: 26px;
+  position: absolute;	
+  left: 30px;
+  top: 295px;
+}
+
+#title_3{
+  font-size: 76px;
+  position: absolute;	
+  left: 70px;
+  top: 70px;
+  font-weight: bold;
+}
+
+#rect_1{
+  position: absolute;	
+  left: 30px;
+  top: 340px;
+  width: 400px;
+  height: 460px;
+  border: 1px solid;
+  border-radius: 12px;
+}
+
+#form_1{
+  position: relative;	
+  left: 30px;
+  top: 10px;
+  font-size: 20px;
+  margin: 20px 0px 10px 0px;
+}
+
+#rect_1 #form_1 label:hover {
+  font-style: italic;
+}
+
+.button_1{
+  margin: 0px 5px 15px 5px;
+}
+
+#button_2{
+  position: absolute;	
+  left: 70px;
+  top: 360px;
+  width: 200px;
+  height: 35px;
+  font-size: 20px;
+  font-family: "Times New Roman";
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#label_3{
+  font-size: 46px;
+  position: absolute;	
+  left: 500px;
+  top: 420px;
+  font-weight: bold;
+}
+
+#label_4{
+  font-size: 66px;
+  position: absolute;	
+  left: 600px;
+  top: 600px;
+  font-weight: bold;
+}
+
+#image_3{
+  width: 500px;
+  position: absolute;	
+  left: 1000px;
+  top: 30px;
+  opacity: 0.75;
+}
+
+#comment_2{
+  font-size: 18px;
+  position: absolute;	
+  left: 1100px;
+  top: 365px;
+  font-style: italic;
+}
+
+#image_4{
+  width: 300px;
+  position: absolute;	
+  left: 1100px;
+  top: 420px;
+  opacity: 0.75;
+}
+
+#comment_3{
+  font-size: 18px;
+  position: absolute;	
+  left: 1140px;
+  top: 740px;
+  font-style: italic;
+}
+
+#comment_4{
+  font-size: 18px;
+  position: absolute;	
+  left: 1095px;
+  top: 765px;
+  font-style: italic;
+}

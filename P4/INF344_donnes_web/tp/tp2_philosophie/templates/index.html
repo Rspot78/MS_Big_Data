@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <title>Tous les chemins mènent à la philosophie</title>
+  </head>
+
+  <body>
+    <a href="/">
+      <img id = "image_1" src="/static/wiki_sphere.png">
+      <p id = "title_1"> Wikipedia </p>
+      <p id = "title_2"> Tous les chemins mènent à la philosophie! </p>
+    </a>
+
+    {% block body %}
+      {# Début du bloc "body", dont vous devez modifier le contenu #}
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <p class="{{ category }}"> 
+              {{ message }}
+            </p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <img id = "image_2" src="/static/socrate.jpg">
+      <p id = "comment_1"> La Mort de Socrate, père de la philosophie, Jacques-Louis David (1787) </p>
+
+      <form action="/new-game" method="post">
+        <label id = "label_1" for="mot">Choisissez votre page de départ:</label><br>
+        <input id = "input_1" type="text" name="start" placeholder="ex: ornithorynque"><br>
+        <input id = "submit_1" type="submit" value="Envoyer">
+      </form>
+
+      {# Fin du bloc "body" #}
+    {% endblock %}
+  </body>
+</html>

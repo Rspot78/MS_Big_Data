@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block body %}
+
+    <p id = "title_3"> {{ session.title }} </p>
+    <label id = "label_2"> Quelle sera votre prochaine page?</label>
+
+    <div id = "rect_1"> 
+        <form id = "form_1" action="/move" method="post">
+            <!-- first button is special since it must be set to "checked" (no button is checked by default) -->
+            <input class="button_1" type="radio" name="destination" value="{{session.content[0]}}" id={{session.content[0]}} checked>
+            <label for={{session.content[0]}}>{{session.content[0]}}</label><br>
+            <!-- other buttons can be added with a regular loop -->
+            {% for element in session.content[1:] %}
+                <input class="button_1" type="radio" name="destination" value="{{element}}" id={{element}}>
+                <label for={{element}}>{{element}}</label><br>
+            {% endfor %}
+            <input id = "button_2" type="submit" value="Envoyer"> 
+        </form>
+    </div>
+
+    <label id = "label_3" > Score actuel: </label>
+    <label id = "label_4" > {{ session.score }} </label>
+
+    <img id = "image_3" src="/static/ecole_athene.jpg">
+    <label id = "comment_2" > L'école d'Athènes, Raphaël, 1508-1512 </label>
+
+    <img id = "image_4" src="/static/lumieres.png">
+    <label id = "comment_3" > Les philosophes des Lumières: </label>
+    <label id = "comment_4" > Montesquieu, Voltaire, Rousseau et Diderot </label>
+
+{% endblock %}
