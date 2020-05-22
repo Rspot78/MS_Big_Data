@@ -1,0 +1,42 @@
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 200px;					
+    height: 30px;					
+    padding: 2px;				
+    font: 14px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+
+div.tooltip2 {	
+    position: absolute;			
+    text-align: left;			
+    width: 250px;					
+    height: 210px;					
+    padding: 25px;				
+    font: 14px sans-serif;		
+    background: #e7e7e7;	
+    border: 0.5px solid black;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+
+button {
+  position: absolute;
+  background-color: #e7e7e7; 
+  color: black;
+  border: 0.5px solid black;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 8px;
+  width: 300px;
+  height: 30px;
+}
