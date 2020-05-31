@@ -16,9 +16,16 @@ if len(sys.argv) != 3:
     sys.exit(-1)
 
 def extractMail(content):
-    # Code goes here
-    # this function should return a list of string
-    return []
+    # define email adress in the dullest way: something between two whitespaces with a '@' somewhere in the string
+    temp1 = re.findall('\S+@\S+', content)
+    # do some cleaning: get rid of possible undesirable characters at beginning/end of string
+    temp3 = []
+    for element in temp1:
+        temp2 = element.strip("<>(){}[]~#-|_=+")
+        # check that email adress is not empty (nothing before or after '@')
+        if (temp2[0] != '@') and (temp2[-1] != '@'):
+            temp3.append(temp2)
+    return temp3
 
 inputContent = ""
 with open(sys.argv[1], 'r', encoding="utf-8") as input:
@@ -27,4 +34,32 @@ with open(sys.argv[1], 'r', encoding="utf-8") as input:
 with open(sys.argv[2], 'w', encoding="utf-8") as output:
     for mail in extractMail(inputContent):
         output.write(mail + "\n")
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
