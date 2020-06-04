@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="/css/fpo_8.css" />
+<script type="text/javascript">
+var plstart = new Date();
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-174791-1']);
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="title" content="FPO IP Research &amp; Communities" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Complete Patent Searching Database and Patent Data Analytics Services." />
+<title>FPO IP Research &amp; Communities</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!--[if IE 6]>
+    <link href="/css/ie6.min.css" rel="stylesheet">
+<![endif]-->
+
+
+<link rel="shortcut icon" href="/images/favicon_1.ico"/>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-1586334167197709",
+        enable_page_level_ads: true
+    });
+</script></head>
+<body>
+
+<div>
+    <a name="top"></a>
+
+    <div class="container">
+        
+<div class="header">
+    <div class="row-fluid top">
+
+        <div class="pull-left figure">
+            <a href="/" onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Logo']);"></a>
+        </div>
+
+
+        <div class="pull-right" style="width: 750px;">
+                        <div class="loginForm">
+                <form class="form-inline form-mini pull-right" action="/login.html" method="post">
+                    <input type="hidden" name="src" value="header_login">
+                    <input id="UID-top" name="UID" type="text" class="input-large" placeholder="Email">
+                    <input id="PWD-top" name="PWD" type="password" class="input-small" placeholder="Password">
+                    <button type="submit" class="btn btn-mini btn-primary"
+                            onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Login']);">Login
+                    </button>
+                    <a class="btn btn-mini btn-info" href="/register.html"
+                            onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Create']);">Sign up
+                    </a>
+                </form>
+            </div>
+            
+
+            <div class="searchForm well">
+                <form id="quick_result" name="quick_result" class="form-inline" action="/result.html" method="get">
+
+                    <input type="hidden" name="sort" value="relevance">
+                    <input type="hidden" name="srch" value="top">
+
+
+                    <div class="searchBox pull-left">
+                        <input type="text" name="query_txt" placeholder="Enter your search here"
+                               class="search-query" id="topSearchBox">
+
+                        <div class="btn-group">
+                            <button name="submit" class="btn btn-primary" type="submit"
+                                    onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'Search']);">Search
+                            </button>
+                            <button id="searchBox_dropdown" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/search.html"
+                                       onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'SearchExpert']);document.cookie = 'searchTab=#expert';">
+                                    Expert Search</a>
+                                </li>
+                                <li><a href="/search.html"
+                                       onclick="_gaq.push(['_trackEvent', 'Header', 'Click', 'SearchQuick']);document.cookie = 'searchTab=#quick';">
+                                    Quick Search</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sideCollections pull-right">
+                        <ul id="header_search_top" class="borderBottom ul-mini ">
+                            <li>
+                                <label class="checkbox">
+                                    <input type="checkbox" id="patents_us" name="patents_us"
+                                           value="on" checked="checked">US Patents/Apps
+                                </label>
+                            </li>
+
+                            <li>
+                                <label class="checkbox">
+                                    <input type="checkbox" id="patents_other" name="patents_other"
+                                           value="on">Other
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </form>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="navbar navbar-inverse center" id="primaryNavBar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li><a href="/"></a></li>
+                    <li><a href="/search.html">SEARCH</a></li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Research']);">
+                            RESEARCH</a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/mpep"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'MPEP']);">
+                            MPEP 2.0</a>
+                    </li>
+                    <li>
+                        <a href="/tools-resources.html"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Resources']);">
+                            TOOLS &amp; RESOURCES
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/acclaimip" onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'AcclaimIP']);">
+                            ACCLAIM IP
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://research.freepatentsonline.com/help"
+                           onclick="_gaq.push(['_trackEvent', 'Navbar', 'Click', 'Help']);">HELP</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+<div class="clearfix"></div>        <div>
+
+            <div id="dhtmltooltip"></div>
+            
+<form id="results" name="results" method="post" class="form-horizontal" action="/result.html"><input type="hidden" name="p" id="p" value="" /><input type="hidden" name="query_txt" id="query_txt" value="video" /><input type="hidden" name="stemming" id="quickstemming" value="" /><input type="hidden" name="sort" id="quicksort" value="relevance" /><input type="hidden" name="patents" id="quickpatents" value="on" /><input type="hidden" name="patents_us" id="quickpatentsus" value="on" /><input type="hidden" name="patents_other" id="quickpatentsother" value="on" /><input type="hidden" name="uspat" id="quickuspat" value="" /><input type="hidden" name="usapp" id="quickusapp" value="" /><input type="hidden" name="pct" id="quickpct" value="" /><input type="hidden" name="jp" id="quickjp" value="" /><input type="hidden" name="eupat" id="quickeu" value="" /><input type="hidden" name="depat" id="quickde" value="" /><input type="hidden" name="srch" id="quicksearch" value="top" /><input type="hidden" name="date_range" id="quickdaterange" value="" /><input type="hidden" name="hits" id="hits" value="3957919" /><input type="hidden" name="srch_name" id="srch_name" value="" /><input type="hidden" name="search_name" id="search_name" value="" /><input type="hidden" name="selected_doc_flag" id="selected_doc_flag" value="" /><input type="hidden" name="selected_portfolio" id="selected_portfolio" value="" /><input type="hidden" name="portfolio_name" id="portfolio_name" value="" />
+
+<div class="well well-small" style="margin-top:10px; margin-bottom: 0">
+    <table width="100%" border="0">
+        <tr>
+            <td width="36%">
+                Matches 1 - 50 out of 3957919            </td>
+            <td align="right" valign="middle" width="70%" colspan="3" class="paginate_spacing">
+                 <span margin-left:3px;'><b>1</b></span><a href='result.html?p=2&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 2 </a><a href='result.html?p=3&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 3 </a><a href='result.html?p=4&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 4 </a><a href='result.html?p=5&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 5 </a><a href='result.html?p=6&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 6 </a><a href='result.html?p=7&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 7 </a><a href='result.html?p=8&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 8 </a><a href='result.html?p=9&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 9 </a><a href='result.html?p=10&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 10 </a><a href='result.html?p=11&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 11 </a><a href='result.html?p=12&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 12 </a><a href='result.html?p=13&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 13 </a><a href='result.html?p=14&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 14 </a><a href='result.html?p=15&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 15 </a><a href='result.html?p=2&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> &gt; </a>                <br clear="all"/>
+            </td>
+        </tr>
+    </table>
+</div><br clear="all"/><!-- 728x90 Responsive 1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1586334167197709"
+     data-ad-slot="2270521617"
+     data-ad-format="auto">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br clear="all"/>
+
+<div class="legacy-container" style="margin-top: 0">
+    <div class="container_white" style="padding-top:3px;  padding-bottom:10px;">
+        <div align="center">
+            <table width="100%" border="0" cellpadding="2" cellspacing="1" class="listing_table">
+                <tr>
+                                        <th style="text-align:left;" width="10%">
+                        Match
+                    </th>
+                                        <th style="text-align:left;" width="15%"> Document</th>
+                    <th style="text-align:left;">Document Title</th>
+                    <th style='text-align:left;' width='10%'>Score</div></th>                </tr>
+                <tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                1            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8677436    </td>
+    <td  width="60%" valign="top">
+        <a href="/8677436.html">Stereoscopic video distribution system, stereoscopic video distribution method, stereoscopic video distribution apparatus, stereoscopic video viewing system, stereoscopic video viewing method, and stereoscopic video viewing apparatus</a>
+        &nbsp;
+                            <br/>
+                It is the object of the present invention to provide a stereoscopic video distribution system, a stereoscopic video distribution method, a stereoscopic video distribution apparatus, a stereoscopic...    </td>
+        <td width='5%'>
+        1000    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                2            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9792502    </td>
+    <td  width="60%" valign="top">
+        <a href="/9792502.html">Generating video summaries for a video using video summary templates</a>
+        &nbsp;
+                            <br/>
+                Video and corresponding metadata is accessed. Events of interest within the video are identified based on the corresponding metadata, and best scenes are identified based on the identified events...    </td>
+        <td width='5%'>
+        999    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                3            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8704868    </td>
+    <td  width="60%" valign="top">
+        <a href="/8704868.html">Video conferencing system, video conferencing apparatus, video conferencing control method, and video conferencing control program</a>
+        &nbsp;
+                            <br/>
+                To provide a video conferencing system that a user can continue to use even when the user leaves for a different location. The video conferencing system includes: a takeover information generation...    </td>
+        <td width='5%'>
+        998    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                4            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10356388    </td>
+    <td  width="60%" valign="top">
+        <a href="/10356388.html">Stereoscopic video distribution system, stereoscopic video distribution method, stereoscopic video distribution apparatus, stereoscopic video viewing system, stereoscopic video viewing method, and stereoscopic video viewing apparatus</a>
+        &nbsp;
+                            <br/>
+                It is the object of the present invention to provide a stereoscopic video distribution system, a stereoscopic video distribution method, a stereoscopic video distribution apparatus, a stereoscopic...    </td>
+        <td width='5%'>
+        997    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                5            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8208785    </td>
+    <td  width="60%" valign="top">
+        <a href="/8208785.html">Video recording system, video camera, video recording apparatus, method of controlling video recording apparatus by video camera, and method of recording video signal in video recording</a>
+        &nbsp;
+                            <br/>
+                A video recording system is provided in which reliability of information supplied from a video camera to control recording and the like is improved when video being obtained by a video camera is...    </td>
+        <td width='5%'>
+        996    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                6            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9131284    </td>
+    <td  width="60%" valign="top">
+        <a href="/9131284.html">Video-in-video video stream having a three layer video scene</a>
+        &nbsp;
+                            <br/>
+                A mobile computing device includes first, second and third cameras coupled to produce first, second and third camera video streams, respectively. The first camera is on a first side of the mobile...    </td>
+        <td width='5%'>
+        996    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                7            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9497413    </td>
+    <td  width="60%" valign="top">
+        <a href="/9497413.html">Filtering video for video telephony and video conferencing</a>
+        &nbsp;
+                            <br/>
+                In an approach to video filtering, a computer receives a first video frame of a presenter from a video feed that includes an audio feed. The computer receives a second video frame. The computer...    </td>
+        <td width='5%'>
+        994    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                8            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9525829    </td>
+    <td  width="60%" valign="top">
+        <a href="/9525829.html">Video display apparatus, video switching apparatus, and video display method</a>
+        &nbsp;
+                            <br/>
+                A video display apparatus includes video output units to output signals representing first videos captured or received, respectively, and when a predetermined signal is input from an outside, only...    </td>
+        <td width='5%'>
+        993    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                9            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8004542    </td>
+    <td  width="60%" valign="top">
+        <a href="/8004542.html">Video composition apparatus, video composition method and video composition program</a>
+        &nbsp;
+                            <br/>
+                Example video composition systems and methods involve scaling each of multiple input video images with scaling factors to generate a plurality of scaled input video images each corresponding to...    </td>
+        <td width='5%'>
+        992    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                10            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8633962    </td>
+    <td  width="60%" valign="top">
+        <a href="/8633962.html">Video decoder which processes multiple video streams</a>
+        &nbsp;
+                            <br/>
+                In some embodiments, a spatially multiplexed output decoder may spatially multiplex video packets received in a time multiplexed video stream. A video stream with video packets from two or more...    </td>
+        <td width='5%'>
+        991    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                11            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8754930    </td>
+    <td  width="60%" valign="top">
+        <a href="/8754930.html">Video transmission device, video display device, video display system, video transmission method and computer program</a>
+        &nbsp;
+                            <br/>
+                Provided is a video transmission device that includes: a transmission signal output portion that outputs a video signal that causes two-dimensional video or three-dimensional video to be...    </td>
+        <td width='5%'>
+        991    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                12            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9152708    </td>
+    <td  width="60%" valign="top">
+        <a href="/9152708.html">Target-video specific co-watched video clusters</a>
+        &nbsp;
+                            <br/>
+                Methods, systems, and apparatus, including computer programs encoded on computer storage media, for clustering videos and using video clusters to present content. One method includes generating...    </td>
+        <td width='5%'>
+        989    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                13            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8548063    </td>
+    <td  width="60%" valign="top">
+        <a href="/8548063.html">Video receiver providing video attributes with video data</a>
+        &nbsp;
+                            <br/>
+                A device and method for receiving a compressed video bit stream, and providing decoded video pixels and associated video attributes synchronously to a video processor are disclosed. A compressed...    </td>
+        <td width='5%'>
+        988    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                14            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8446490    </td>
+    <td  width="60%" valign="top">
+        <a href="/8446490.html">Video capture system producing a video summary</a>
+        &nbsp;
+                            <br/>
+                A digital video capture system for capturing a digital video sequence and for producing a corresponding video summary, comprising: an image sensor; an optical system; a processor, a softcopy...    </td>
+        <td width='5%'>
+        987    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                15            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8554061    </td>
+    <td  width="60%" valign="top">
+        <a href="/8554061.html">Video format for digital video recorder</a>
+        &nbsp;
+                            <br/>
+                Some embodiments provide a video camera. The video camera includes image sensing circuitry for capturing a sequence of video pictures, a user interface for allowing a user to select a video...    </td>
+        <td width='5%'>
+        987    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                16            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9253443    </td>
+    <td  width="60%" valign="top">
+        <a href="/9253443.html">Filtering video for video telephony and video conferencing</a>
+        &nbsp;
+                            <br/>
+                In an approach to video filtering, a computer receives a first video frame of a presenter from a video feed that includes an audio feed. The computer extracts a face of the presenter and a...    </td>
+        <td width='5%'>
+        987    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                17            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8731374    </td>
+    <td  width="60%" valign="top">
+        <a href="/8731374.html">Video format for digital video recorder</a>
+        &nbsp;
+                            <br/>
+                Some embodiments provide a video camera. The video camera includes image sensing circuitry for capturing a sequence of video pictures, a user interface for allowing a user to select a video...    </td>
+        <td width='5%'>
+        987    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                18            </label>
+        </td>
+    <td width="15%"  valign="top">
+      6188436    </td>
+    <td  width="60%" valign="top">
+        <a href="/6188436.html">Video broadcast system with video data shifting</a>
+        &nbsp;
+                            <br/>
+                An apparatus for temporally shifting video data within a video signal is provided with a video data source for providing a video signal and a signal splitter for generating a first video data...    </td>
+        <td width='5%'>
+        986    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                19            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8290341    </td>
+    <td  width="60%" valign="top">
+        <a href="/8290341.html">Video playing device, video playing method, and video playing program having automatic video selections based upon user concentration</a>
+        &nbsp;
+                            <br/>
+                A video playing device includes a classification unit classifying a video or a video section to be played according to a degree of user's necessary concentration on a video. A user's concentration...    </td>
+        <td width='5%'>
+        986    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                20            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9392276    </td>
+    <td  width="60%" valign="top">
+        <a href="/9392276.html">Video encoding apparatus, video decoding apparatus, video encoding method, and video decoding method</a>
+        &nbsp;
+                            <br/>
+                A video encoding apparatus appends decoding delay correction information and display delay correction information to encoded video data in order to ensure that even when one or more pictures that...    </td>
+        <td width='5%'>
+        986    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                21            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10441876    </td>
+    <td  width="60%" valign="top">
+        <a href="/10441876.html">Video game integrating recorded video</a>
+        &nbsp;
+                            <br/>
+                Aspects of the present invention relates to systems and methods of conducting video game play, comprising: displaying a game scene, the game scene including recorded video portions and graphically...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                22            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10382800    </td>
+    <td  width="60%" valign="top">
+        <a href="/10382800.html">Video surveillance system and video surveillance method</a>
+        &nbsp;
+                            <br/>
+                A video surveillance system includes surveillance cameras; a video converting and combining unit; an encoder for encoding a combined video from the video converting and combining unit; a decoder...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                23            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9118940    </td>
+    <td  width="60%" valign="top">
+        <a href="/9118940.html">Video bandwidth allocation in a video conference</a>
+        &nbsp;
+                            <br/>
+                Communicating information exchanged in a video conference. Responsive to detecting a change in an amount of audio information generated by at least one participant in the video conference,...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                24            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8315507    </td>
+    <td  width="60%" valign="top">
+        <a href="/8315507.html">Video generation device, video generation method, and video generation program</a>
+        &nbsp;
+                            <br/>
+                In a device for editing input video and generating a new video, it is possible to control how long each object appearing in an input video should be made to appear in a new video according to the...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                25            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8571379    </td>
+    <td  width="60%" valign="top">
+        <a href="/8571379.html">Video reproduction method, video reproduction device, and video distribution system</a>
+        &nbsp;
+                            <br/>
+                In case that a plurality of video reproduction devices obtains video data from one same camera, a distribution rate thereof may be decreased to be lower than that expected by a user. There is...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                26            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9357192    </td>
+    <td  width="60%" valign="top">
+        <a href="/9357192.html">Video sender and video receiver</a>
+        &nbsp;
+                            <br/>
+                According to one embodiment, a video sender comprises: a video processor and a communication module. The video processor creates video. The communication module is configured to communicate with a...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                27            </label>
+        </td>
+    <td width="15%"  valign="top">
+      7893996    </td>
+    <td  width="60%" valign="top">
+        <a href="/7893996.html">Video switcher and video switching method</a>
+        &nbsp;
+                            <br/>
+                A video switcher includes: a video signal switching device for switching a video signal to be transmitted to a video display unit from a first video signal supplied from a first video input unit...    </td>
+        <td width='5%'>
+        985    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                28            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10341726    </td>
+    <td  width="60%" valign="top">
+        <a href="/10341726.html">Video sender and video receiver</a>
+        &nbsp;
+                            <br/>
+                According to one embodiment, a video sender comprises: a video processor and a communication module. The video processor creates video. The communication module is configured to communicate with a...    </td>
+        <td width='5%'>
+        984    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                29            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9712838    </td>
+    <td  width="60%" valign="top">
+        <a href="/9712838.html">Video encoding apparatus, video decoding apparatus, video encoding method, and video decoding method</a>
+        &nbsp;
+                            <br/>
+                A video encoding apparatus appends decoding delay correction information and display delay correction information to encoded video data in order to ensure that even when one or more pictures that...    </td>
+        <td width='5%'>
+        984    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                30            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10387431    </td>
+    <td  width="60%" valign="top">
+        <a href="/10387431.html">Video recommendation based on video titles</a>
+        &nbsp;
+                            <br/>
+                A solution is provided to generate video recommendations in a video sharing environment. A video recommendation system selects a video as a target video and extracts target keywords from the title...    </td>
+        <td width='5%'>
+        983    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                31            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10263743    </td>
+    <td  width="60%" valign="top">
+        <a href="/10263743.html">Video-processing apparatus, video-processing system, and video-processing method</a>
+        &nbsp;
+                            <br/>
+                The present disclosure receives a frame where an identification data packet of a predetermined standard that identifies the frame from a head of the frame by a predetermined period is arranged via...    </td>
+        <td width='5%'>
+        983    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                32            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8591332    </td>
+    <td  width="60%" valign="top">
+        <a href="/8591332.html">Video game video editor</a>
+        &nbsp;
+                            <br/>
+                A video editor for a video game is discussed. The video editor manipulates information of video game play to provide videos of game play and in some embodiments scoring of videos.    </td>
+        <td width='5%'>
+        983    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                33            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8737825    </td>
+    <td  width="60%" valign="top">
+        <a href="/8737825.html">Video format for digital video recorder</a>
+        &nbsp;
+                            <br/>
+                Some embodiments provide a video recording device for capturing a video clip. The video recording device receives a selection of a non-temporally compressed encoding scheme from several different...    </td>
+        <td width='5%'>
+        982    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                34            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9215402    </td>
+    <td  width="60%" valign="top">
+        <a href="/9215402.html">Video format for digital video recorder</a>
+        &nbsp;
+                            <br/>
+                Some embodiments provide a video recording device for capturing a video clip. The video recording device receives a selection of a non-temporally compressed encoding scheme from several different...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                35            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8984181    </td>
+    <td  width="60%" valign="top">
+        <a href="/8984181.html">Video sender and video receiver</a>
+        &nbsp;
+                            <br/>
+                According to one embodiment, a video sender comprises: a video processor and a communication module. The video processor creates video. The communication module is configured to communicate with a...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                36            </label>
+        </td>
+    <td width="15%"  valign="top">
+      7667774    </td>
+    <td  width="60%" valign="top">
+        <a href="/7667774.html">Video switcher and video switching method</a>
+        &nbsp;
+                            <br/>
+                A video switcher includes: a video signal switching device for switching a video signal to be transmitted to a video display unit from a first video signal supplied from a first video input unit...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                37            </label>
+        </td>
+    <td width="15%"  valign="top">
+      US20170180741    </td>
+    <td  width="60%" valign="top">
+        <a href="/y2017/0180741.html">VIDEO CHROMINANCE INFORMATION CODING AND VIDEO PROCESSING</a>
+        &nbsp;
+                            <br/>
+                Luminance information and a subset of chrominance information associated with a video signal are encoded into a first encoded video signal. The subset of chrominance information does not include...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                38            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8705737    </td>
+    <td  width="60%" valign="top">
+        <a href="/8705737.html">Video transmission method, video transmission system, and video processing apparatus</a>
+        &nbsp;
+                            <br/>
+                Disclosed herein is a video processing apparatus for generating video data capable of representing a color gamut beyond a first color gamut specified by a predetermined requirement. The video...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                39            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9838692    </td>
+    <td  width="60%" valign="top">
+        <a href="/9838692.html">Detecting availabilities of neighboring video units for video coding</a>
+        &nbsp;
+                            <br/>
+                As part of a video encoding or decoding operation on video data, a video coder performs a coding operation for a current video unit of the video data. As part of performing the coding operation...    </td>
+        <td width='5%'>
+        981    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                40            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10491936    </td>
+    <td  width="60%" valign="top">
+        <a href="/10491936.html">Sharing video in a cloud video service</a>
+        &nbsp;
+                            <br/>
+                A security system images a large amount of data through routine use which is difficult to transfer or share. In one embodiment, through the use of a cloud-based video service and an application...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                41            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9438852    </td>
+    <td  width="60%" valign="top">
+        <a href="/9438852.html">Video share model-based video fixing</a>
+        &nbsp;
+                            <br/>
+                Systems and methods for model-based video fixing are disclosed. A video can be retrieved and analyzed to determine if any portion of the video can be represented by a model. If a portion that can...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                42            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8848792    </td>
+    <td  width="60%" valign="top">
+        <a href="/8848792.html">Video and graphics system with video scaling</a>
+        &nbsp;
+                            <br/>
+                A video and graphics system has a reduced memory mode in which video images are reduced in half in horizontal direction during decoding. The video and graphics system includes a video decoder for...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                43            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8954851    </td>
+    <td  width="60%" valign="top">
+        <a href="/8954851.html">Adding video effects for video enabled applications</a>
+        &nbsp;
+                            <br/>
+                A streaming video interface component receives video frames from a streaming driver before the frames are received by a consuming application. The streaming video interface component provides the...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                44            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10432954    </td>
+    <td  width="60%" valign="top">
+        <a href="/10432954.html">Video encoder, video encoding system and video encoding method</a>
+        &nbsp;
+                            <br/>
+                The present disclosure discloses a video encoder, a video encoding system and a video encoding method. The video encoder comprises a logic control module and an encoding module. Wherein, the logic...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                45            </label>
+        </td>
+    <td width="15%"  valign="top">
+      10070144    </td>
+    <td  width="60%" valign="top">
+        <a href="/10070144.html">Video encoding apparatus, video decoding apparatus, video encoding method, and video decoding method</a>
+        &nbsp;
+                            <br/>
+                A video encoding apparatus appends decoding delay correction information and display delay correction information to encoded video data in order to ensure that even when one or more pictures that...    </td>
+        <td width='5%'>
+        980    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                46            </label>
+        </td>
+    <td width="15%"  valign="top">
+      7899121    </td>
+    <td  width="60%" valign="top">
+        <a href="/7899121.html">Video encoding method, video encoder, and personal video recorder</a>
+        &nbsp;
+                            <br/>
+                A video encoding method, a video encoder, and a Personal Video Recorder (PVR) are disclosed. The PVR includes: a first video decoder for decoding an input MPEG-2 video signal, calculating...    </td>
+        <td width='5%'>
+        979    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                47            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8396004    </td>
+    <td  width="60%" valign="top">
+        <a href="/8396004.html">Video share model-based video fixing</a>
+        &nbsp;
+                            <br/>
+                Systems and methods for model-based video fixing are disclosed. A video can be retrieved and analyzed to determine if any portion of the video can be represented by a model. If a portion that can...    </td>
+        <td width='5%'>
+        979    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                48            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9143726    </td>
+    <td  width="60%" valign="top">
+        <a href="/9143726.html">Video media server for realizing video intercommunication gateway function and video intercommunication method</a>
+        &nbsp;
+                            <br/>
+                A certain embodiment of the invention provides a video media server (10) for implementing a video intercommunication gateway function and a video intercommunication method, the video media server...    </td>
+        <td width='5%'>
+        979    </td>
+    </tr><tr class=rowalt>
+        <td width="5%" valign="top" >
+            <label>
+                49            </label>
+        </td>
+    <td width="15%"  valign="top">
+      9077841    </td>
+    <td  width="60%" valign="top">
+        <a href="/9077841.html">Video processing apparatus and video processing method</a>
+        &nbsp;
+                            <br/>
+                There is provided a video processing apparatus including a video addition unit for receiving two systems of input interlaced video signals each including two fields, and adding the video signals...    </td>
+        <td width='5%'>
+        979    </td>
+    </tr><tr class=>
+        <td width="5%" valign="top" >
+            <label>
+                50            </label>
+        </td>
+    <td width="15%"  valign="top">
+      8310521    </td>
+    <td  width="60%" valign="top">
+        <a href="/8310521.html">Insertion of virtual video into live video</a>
+        &nbsp;
+                            <br/>
+                The present virtual video muting technique seamlessly inserts a virtual video into a live video when the user does not want to reveal his/her actual activity. The virtual video is generated based...    </td>
+        <td width='5%'>
+        978    </td>
+    </tr>            </table>
+        </div>
+    </div>
+</div>
+</form>
+<!-- 728x90 Responsive 2 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1586334167197709"
+     data-ad-slot="4118051210"
+     data-ad-format="auto">
+</ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br clear="all"/><form id="botSearch" name="botSearch" method="get" class="form-inline" action="/result.html"><input type="hidden" name="sort" id="" value="relevance" /><input type="hidden" name="srch" id="" value="top" /><input type="hidden" name="patents" id="" value="on" /><br/>
+<div class="well well-small">
+    <table>
+        <tr>
+            <td>Search</td>
+            <td style="width: 100%;padding: 0 14px 0 5px;"><input type="text" name="query_txt" id="query_txt" value="video" style="width: 100%;padding: 4px 0 4px 6px" /></td>
+            <td><input type="submit" name="search" value="Search" /></td>
+        </tr>
+    </table>
+</div>
+</form>
+<div class="well well-small" style="margin-top:10px; margin-bottom: 0">
+    <table width="100%" border="0">
+        <tr>
+            <td width="36%">
+                Matches 1 - 50 out of 3957919            </td>
+            <td align="right" valign="middle" width="70%" colspan="3" class="paginate_spacing">
+                 <span margin-left:3px;'><b>1</b></span><a href='result.html?p=2&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 2 </a><a href='result.html?p=3&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 3 </a><a href='result.html?p=4&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 4 </a><a href='result.html?p=5&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 5 </a><a href='result.html?p=6&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 6 </a><a href='result.html?p=7&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 7 </a><a href='result.html?p=8&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 8 </a><a href='result.html?p=9&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 9 </a><a href='result.html?p=10&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 10 </a><a href='result.html?p=11&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 11 </a><a href='result.html?p=12&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 12 </a><a href='result.html?p=13&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 13 </a><a href='result.html?p=14&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 14 </a><a href='result.html?p=15&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> 15 </a><a href='result.html?p=2&amp;sort=relevance&amp;srch=top&amp;query_txt=video&amp;patents=on'> &gt; </a>                <br clear="all"/>
+            </td>
+        </tr>
+    </table>
+</div> « <a href="/search.html">search again</a>
+        </div>
+
+        <div class="pageFooter">
+    <div class="row-fluid top">
+        <div class="figure"></div>
+        <ul>
+            <li>
+                <a href="/" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Home']);">Home</a>
+            </li>
+            <li>
+                <a href="/search.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Search']);">Search</a>
+            </li>
+            <li>
+                <a href="/services.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Services']);">Services</a>
+            </li>
+            <li>
+                <a href="http://research.freepatentsonline.com"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Data']);">Communities</a>
+            </li>
+            <li>
+                <a href="http://research.freepatentsonline.com/help"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Help']);">Help</a>
+            </li>
+            <li>
+                <a href="/contact.html"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Contact']);">Contact us</a></li>
+            <li>
+                <a href="http://research.freepatentsonline.com/help#advertising-on-site"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Advertise']);">Advertise on this Site</a>
+            </li>
+        </ul>
+        <ul class="socialIcons">
+            <li><a href="https://twitter.com/FPOCommunity" class="twitter"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social twitter']);"></a></li>
+            <li><a href="http://www.linkedin.com/groups/FPO-Community-4524797" class="linkedin"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social linkedin']);"></a></li>
+            <li><a href="/contact.html" class="email"
+                   onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'social email']);"></a></li>
+        </ul>
+    </div>
+    <div class="row-fluid bot">
+        <p>
+            &copy; 2004-2020 FreePatentsOnline.com. All rights reserved.
+            <a href="/privacy.html" onclick="_gaq.push(['_trackEvent', 'Footer', 'Click', 'Privacy']);">Privacy Policy
+                &amp; Terms of Use.</a>
+            <a href="http://www.sumobrainsolutions.com/">A SumoBrain Solutions Company</a>
+        </p>
+    </div>
+</div>    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    _gaq.push(['_setCustomVar', 2, 'User Origin Source', 'no referer', 2]);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script type="text/javascript">
+    function trackPageLoad() {
+        var plend = new Date();
+        var plload = plend.getTime() - plstart.getTime();
+        var pn = document.location.pathname;
+        var lc = 'slow';
+        var la = new Array(200, 300, 400, 500, 1000, 1500, 2000, 2500, 5000);
+        for (var i = 0, len = la.length; i < len; i++) {
+            if (plload <= la[i]) {
+                lc = String(la[i]);
+                break;
+            }
+        }
+        _gaq.push(['onLoadTracker._setAccount', 'UA-174791-5']);
+        _gaq.push(['onLoadTracker._trackEvent', "LoadTime", lc, pn, plload]);
+        }
+</script>
+<script type="text/javascript">
+    try {
+        if (window.onload != null) {
+            var oldOnload = window.onload;
+            window.onload = function (e) {
+                oldOnload(e);
+                trackPageLoad();
+            };
+        }
+        else {
+            window.onload = trackPageLoad();
+        }
+    } catch (err) {
+    }
+</script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="/js/fpo_2.js"></script>
+<script type="text/javascript">
+var topSearchBox = document.getElementById('topSearchBox');topSearchBox.value = 'video';
+</script>
+
+<!--[if IE 6]>
+    <script type="text/javascript" src="/js/ie6_compat.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+    (function () {
+        var hasPlaceholder = 'placeholder' in document.createElement('input');
+        if (!hasPlaceholder) {
+            $.cachedScript("/js/jquery.placeholder.min.js").success(function (script, textStatus) {
+                $('input, textarea').placeholder();
+            });
+        }
+    })();
+</script>
+</body>
+</html>
