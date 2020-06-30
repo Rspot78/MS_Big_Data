@@ -250,7 +250,6 @@ def mount_video(min_epoch, max_epoch, path, image_name, framerate, delete):
     # assemble all images in a single list
     image_list = []
     for epoch in range(min_epoch, max_epoch+1):
-        # filename = path + "/" + image_name + "_epoch_" + str(epoch) + ".png"
         filename = path + "/medias/" + image_name + "_epoch_" + str(epoch) + ".png"
         image = imread(filename)
         height, width, layers = image.shape
