@@ -1,0 +1,27 @@
+\newpage
+
+\section{Conclusion}
+\label{conclusion}
+
+This project gave us a unique opportunity to explore in-depth convolutional neural networks. We started with a thorough study of CNN, their applications, and also their limitations and weaknesses. This led us to consider the recent scientific litterature on diverse subjects such as saliency maps, dimension reduction, adversarial neural networks, and visualization atlasses.
+
+Based on the requests of our partner, we then decided to focus the project more specifically on visualization.  Because this concept is fairly large in scope, and because there exist different ways to tackle the visualization of a neural network, we thought the best decision was to develop several applications, each centered on one specific approach.
+
+The first application is the DNN-Monitor. Its principal objective consists in monitoring a CNN in the course of the training. It provides visualizations for essential metrics determining the quality of a training: loss and accuracy functions, weights and gradients, and activations along with their correlations.
+
+The second application is the Deep Embedding Viewer. It starts from the principle that it is difficult to visualize a network at the scale of individual elements as soon as the network becomes even moderately large. For this reason, it adopts a dimension reduction approach, relying on modern techniques such as t-SNE or UMAP. It then proposes 2d visualizations that provide a view on class separation and the spatial location of individua images.
+
+The final tool proposed for the project is the DNN-Viewer. It proposes to abstract from a specific layer of the model to adopt a more global approach that provides a full overview of the CNN as a combination of interrelated layers. It places the emphasis on the activations across layers, providing for instance custom visualizations on the most important transmission chanels within the network.
+
+Visualizing and interpreting neural networks currently represents a major axis of scientific research. There is thus much potential for further research and developments. This might prove challenging however since our industrial partner, the Ministry of Defense, has not provided us with feedback so far. Still, we may propose the following tracks to pursue the project:
+
+ \begin{itemize}
+	\item gather all the applications developed within a single unified software. The material constraints and the exceptional nature of this year's situation has rendered difficult the parallel creations of multiple applications and their integration in a single framework. Ideally however, it would prove more user-friendly to operate all the functionalities from a single programme.
+	\item integrate the research subjects that were studied during the first step of the project in our tools. That might for instance include saliency maps and adversarial attacks.
+	\item develop further metrics to assess with a maximum of efficiency whether a training is satisfactory, or wether a visualization provides useful hints about the network, its structure and its decisions.
+	\item explore and generalize the tools developed to other architectures and datasets. So far the project has focused on relatively standard architectures and datasets. Yet a natural step would imply the extension of our tools to a wider range of models. This might create new challenges, as alternative architectures may also imply the conception of new representations.
+	\item consider how to make sure that the visualizations are scale-robust. Screen space remains limited, even though CNN tend to get larger and larger. This question may become predominant to adequaltely visualize architectures that now include dozens of millions of parameters.
+\end{itemize}
+
+
+

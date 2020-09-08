@@ -1,0 +1,196 @@
+% documentclass
+% set font size=11 (11pt)
+% set paper format=A4 (a4paper)
+\documentclass[11pt,a4paper]{article}
+
+%---------------
+%   preamble   -
+%---------------
+
+% use the inputenc and fontenc packages to use French accents
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% use the babel package to handle the typographical rules and hyphenation patterns of the English language
+\usepackage[english]{babel}
+
+% allow for arbitrary font size
+\usepackage{anyfontsize}
+
+% set the font as Time New Roman (the Latex equivalent, at least)
+\usepackage{mathptmx}
+
+% set the size of the document margins using the geometry package
+\usepackage[lmargin=0.95in,rmargin=0.95in,tmargin=1in,bmargin=1in]{geometry}
+
+% turn the color of footnote markers to black
+\renewcommand\thefootnote{\textcolor{black}{\arabic{footnote}}}
+% suppress indents on footnotes
+\usepackage[hang,flushmargin]{footmisc}
+
+% automatically generates colored brackets around references
+\usepackage{fncylab} \labelformat{equation}{(#1)}
+
+% suppress indent on new paragraphs
+
+\setlength{\parindent}{0pt}
+
+% customize the bibliography by using the natbib package
+\usepackage{natbib, url}
+\bibliographystyle{plainnat} % was apa
+
+% use the multirow package to be able to merge rows in tables
+\usepackage{multirow}
+
+% use the enumitem package to include enumeration options
+\usepackage{enumitem}
+
+% use the booktabs package to create nice-looking, customized tables
+\usepackage{booktabs}
+
+% use float package to force figure to be positioned where indicated
+\usepackage{float}
+
+% use makecell package to use forced line breaks within individual cells in tables
+\usepackage{makecell}
+
+% use the rotating package to be able to rotate a table
+\usepackage{rotating}
+
+% use the graphicx package to be able to resize tables
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% use the color package to be able to color text
+\usepackage{color}
+
+% Use the caption package to customize captions (titles) of tables and graphs
+\usepackage[font=bf,labelfont=bf,justification=centering]{caption}
+
+% Use the subcaption package to use captions for figures with multiple panels
+\usepackage{subcaption}
+
+% set options for subfigure captions
+%\captionsetup[subfigure]{labelfont=normalfont,textfont=normalfont}
+
+% allow for equation cross-referencing (hyperlinks)
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+% use the amsmath package to use all sorts of math symbols
+\usepackage{amsmath}
+
+% use the ammssymb package to use mathematical symbols
+\usepackage{amssymb}
+% create new commands for mathematical symbols
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\Pb}{\mathbb{P}}
+\DeclareSymbolFont{epsilon}{OML}{ntxmi}{m}{it}
+\DeclareMathSymbol{\epsilon}{\mathord}{epsilon}{"0F}
+% declare the cmsy (computer modern symbol) math alphabet to define appropriate fonts for the U and N mathematical symbols
+\DeclareMathAlphabet\mathbcal{OMS}{cmsy}{m}{n}
+% create new commands for mathematical symbols
+\DeclareMathOperator{\E}{\mathbcal{E}}
+\DeclareMathOperator{\Ex}{\mathbb{E}}
+\DeclareMathOperator{\F}{\mathbcal{F}}
+\DeclareMathOperator{\G}{\mathbcal{G}}
+\DeclareMathOperator{\M}{\mathbcal{M}}
+\DeclareMathOperator{\HH}{\mathbcal{H}}
+\DeclareMathOperator{\QQ}{\mathbcal{Q}}
+\DeclareMathOperator{\PP}{\mathbcal{P}}
+\DeclareMathOperator{\Noo}{\mathbcal{N}}
+\DeclareMathOperator{\U}{\mathbcal{U}}
+% use the bbm package to be able to use the double stroke 1 for the indicator function
+\usepackage{bbm}
+\DeclareMathOperator{\ind}{\mathbbmss{1}}
+
+% use the bm package to use bold characters in math mode
+\usepackage{bm}
+
+% use the relsize package to be abe to change the size of mathematical symbols
+\usepackage{relsize}
+
+% define a new command for in-line small summation
+\newcommand{\ssumm}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Sigma}}}}} \hspace{0.5mm}}
+% define a new command for in-line small products
+\newcommand{\sprod}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Pi}}}}} \hspace{0.5mm}}
+
+% use the dcolumn package to align table entries on decimal separators
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{}{#1}}  % define "d" column type
+\newcommand\mc[1]{\multicolumn{1}{c}{#1}} % handy shortcut macro
+
+% create a new command for text superscript and subscripts (like 1st, 2nd, and so on)
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tb}{\textsubscript}
+
+% use the mathtools package to use the matrix* environment, allowing to align matrix entries
+\usepackage{mathtools}
+
+% use tocloft package to set dotted lines in the table of contents
+\usepackage{tocloft}
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand\cftsecdotsep{\cftdot}
+\renewcommand\cftsubsecdotsep{\cftdot}
+
+% manage paragraph line breaks
+\usepackage{parskip}
+
+% To get proper underline
+\usepackage{soul}
+
+
+%------------------------
+%     main document     -
+%------------------------
+
+
+\begin{document}
+	
+
+%----------------------
+%      title page     -
+%----------------------
+
+
+\include{sections/titlepage}
+	
+
+%------------------------
+%   table of contents   -
+%------------------------
+	
+	
+\tableofcontents
+\pagebreak
+
+
+%-------------------
+%     sections     -
+%-------------------
+
+
+\input{sections/section1}
+%\input{sections/section1a}
+\input{sections/section2}
+\input{sections/section3}
+\input{sections/section4}
+\input{sections/section5} % Embeddings
+\input{sections/section6} % Weights and Gradients
+\input{sections/section7} % DNN Viewer
+\input{sections/conclusion} % DNN Viewer
+\pagebreak
+
+
+%--------------------
+%    bibliography   -
+%--------------------
+
+
+\bibliography{sections/bibliography}
+
+\end{document}

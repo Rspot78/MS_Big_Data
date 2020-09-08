@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec1}
+
+
+Modern neural networks are the cornerstone of deep learning. The first representations of neural networks can be traced back to the early 1960's with the perceptron (\cite{Rosenblatt1958}) and Adaline/Madaline (\cite{Widrow1960}). These preliminary versions comprised only one layer and were limited to the solution of linear problems. However, many problems are non-linear by nature, so that the interest in perceptron models rapidly declined, leading to the beginning of the first AI winter.
+
+
+The 1980's witnessed renewed interest in learning models. The seminal paper of \cite{Rumelhart1986} introduced multiple layers perceptron, eventually expanding neural networks to nonlinear domains. It also popularised the mechanism of training by backpropagation initially developed by \cite{Werbos1974}. At the same time, the neocognitron of \cite{Fukushima1980} constituted the first attempt at building a convolution neural network. The initial model was then extended to multi-layer settings and gradient methods by the contributions of \cite{LeCun1989} and \cite{LeCun1998}. In parallel, mathematicians started to build firm theoretical foundations for multi-layer perceptrons. \cite{Hornik1991} showed with appropriate weights, a single hidden layer neural network could approximate an arbitrary nonlinear function.
+
+
+Despite those advance, interest in AI declined again at the end of the 1980's and machine learning entered its second winter. Neural networks in particular were deemed to be inefficient in practice, and support vector machines became the workhorse of machine learning. This long winter ended at the beginning of the 2010's through two major events. In 2011, Microsoft Research presented at the 12\ts{th} annual Conference of the International Speech Communication Association a neural network which dramatically improved speech recognition performance (\cite{Seide2011}). In 2012, the convolutional neural network AlexNet (\cite{Krizhevsky2012}) won the  ImageNet Large Scale Visual Recognition Challenge, outperforming by far its SVM challengers. These two events provided undeniable evidence that technological advance, in particular the improvement of GPUs, had rendered possible the training of sophisticated and highly efficient neural networks.
+
+
+Since then, neural networks have proved immensely successful. They have been widely adopted and effectively used in fields as diverse as computer vision (\cite{Szegedy2015}), medical research (\cite{Levy2016}), astronomy (\cite{Dieleman2014}), image captioning (\cite{Karpathy2015}), and even art (\cite{Gatys2016}).
+
+
+Despite their success, neural networks have been criticised for being  black boxes, that is, systems that hide their internal logic to the user, making it impossible to recover the logic behind their decisions (\cite{Benitez1997}, \cite{Alain2016}). Interpretability has now become a major concern among data scientist, and the prevailing opinion is that neural networks should not only be good at predicting outcomes, but that they should also provide some understanding of how they reach a specific decision. A number of strategies have already been proposed to clarify the decisional process of neural networks, essentially based on reverse engineering (\cite{Oh2017}, \cite{Roxlo2018}). The most promising direction so far however seems to be visualisation. Loosely defined, it consists in a set of methods which construct representations of what the different layers of the network are themselves perceiving from the input. This kind of strategy constitutes the basis of most recent methodologies such as the visualisation atlas of \cite{Carter2019}.
+
+
+In this project, we aim at providing metrics and views to better understand the decision process of neural networks, along with their successes and potential failures. 
+
+First two sections are a monography on the most complex vizualizations surveyed: 
+- Saliency and attribution maps, a method that offers a visualization of the pixels in the image that contribute the most to predictions by the model. 
+- Adversarial examples, that is, inputs that result in incorrect classification from the network by just adding a tiny perturbation to the original data. Adversarial is more focused on robustness.
+
+Last section of this intermediate report is providing directions for the project.
