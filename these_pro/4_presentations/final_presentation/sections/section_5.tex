@@ -1,0 +1,41 @@
+\section{Machine learning}
+
+\begin{frame}{5. Machine learning}
+\centering
+\Huge{Machine learning}
+\end{frame}
+
+
+\begin{frame}{5.1 - LSTM}
+\begin{itemize}
+	\item formulated as a (non-linear) VAR model, using lagged value $x_{t-1}, x_{t-2} \cdots$ of features as input
+	\item MSE used as loss function
+	\item dataset is split in train/test samples (80-20\%)
+	\item MSE on test is lowest with one layer, 3 units (encoder style)
+	\item optimizer has little impact: AdaDelta, RMSprop, Adam all yields same estimates
+	\item dropout is applied but has little impact
+	\item 500 epochs to train the model
+	\item uses the small dataset
+\end{itemize}	
+\end{frame}
+
+\begin{frame}{5.2 - Random forest}
+\begin{itemize}
+	\item formulated as a MIDAS regression to account for lagged values of all features (including quarterly GDP)
+	\item produces a non-linear MIDAS regression
+	\item difference with MIDAS: uses the full macro dataset: \\
+	random forest efficient at determining useful features
+	\item feature engineering (adding month or quarter) does not affect the results
+	\item 100 base learners, maximum depth of 5 (weak learner)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{5.3 - Boosting}
+\begin{itemize}
+	\item ``Boosted VAR''
+	\item estimated equation-by-equation by gradient boosting
+	\item produces a non-linear Vector Autoregression
+	\item 100 base learners, learning rate of $0.1$
+	\item uses the small macro dataset
+\end{itemize}
+\end{frame}

@@ -1,0 +1,22 @@
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+
+\begin{block}{GDP}
+	\begin{itemize}
+	\item BVAR is best at short horizon, though dfm is quite close
+	\item dfm is much better at longer horizons
+	\item lstm does poorly
+\end{itemize}
+\end{block}
+
+
+\begin{exampleblock}{features}
+		\begin{itemize}
+	\item dfm $>>$ BVAR $>>$ lstm
+	\item paradox: dfm does well for features (not intended), and worse than BVAR for gdp (dfm main target)
+	\item explanation: dfm trains at monthly frequency for features, quarterly frequency for gdp: less accurate! 
+\end{itemize}
+\end{exampleblock}
+	
+\end{frame}

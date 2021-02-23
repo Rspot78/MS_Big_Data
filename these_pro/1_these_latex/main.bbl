@@ -1,0 +1,179 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\astroncite{Banbura et~al.}{2010}]{Banbura2010}
+Banbura, M., Giannone, D., and Reichlin, L. (2010).
+\newblock Nowcasting.
+\newblock Working Papers 1275, European Central Bank.
+
+\bibitem[\protect\astroncite{Breiman}{2001}]{Breiman2001}
+Breiman, L. (2001).
+\newblock Random forests.
+\newblock {\em Machine Learning}, (45):5--32.
+
+\bibitem[\protect\astroncite{Breiman et~al.}{1984}]{Breiman1984}
+Breiman, L., Friedman, J.~H., Olshen, R.~A., and Stone, C.~J. (1984).
+\newblock {\em Classification and regression trees}.
+\newblock The Wadsworth statistics/probability series. Wadsworth \& Brooks/Cole
+  Advanced Books \& Software.
+
+\bibitem[\protect\astroncite{Carter and Kohn}{1994}]{Carter1994}
+Carter, C. and Kohn, R. (1994).
+\newblock On gibbs sampling for state space models.
+\newblock {\em Biometrika}, 81(3).
+
+\bibitem[\protect\astroncite{Del~Negro and Primiceri}{2015}]{DelNegro2015}
+Del~Negro, M. and Primiceri, G.~E. (2015).
+\newblock Time-varying structural vector autoregressions and monetary policy: a
+  corrigendum.
+\newblock {\em Review of Economic Studies}, 82(4):1342--1345.
+
+\bibitem[\protect\astroncite{Doan et~al.}{1984}]{Doan1984}
+Doan, T., Litterman, R., and Sims, C. (1984).
+\newblock Forecasting and conditional projection using realistic prior
+  distributions.
+\newblock {\em Econometric Reviews}, 3(1):1--100.
+
+\bibitem[\protect\astroncite{Doz et~al.}{2011}]{Doz2011}
+Doz, C., Giannone, D., and Reichlin, L. (2011).
+\newblock A two-step estimator for large approximate dynamic factor models
+  based on kalman filtering.
+\newblock {\em Journal of Econometrics}, 164(1):188--205.
+
+\bibitem[\protect\astroncite{Freund and Schapire}{1997}]{Freund1997}
+Freund, Y. and Schapire, R.~E. (1997).
+\newblock A decision-theoretic generalization of on-line learning and an
+  application to boosting.
+\newblock {\em journal of computer and system sciences}, 55:119--139.
+
+\bibitem[\protect\astroncite{Friedman}{2001}]{Friedman2001}
+Friedman, J.~H. (2001).
+\newblock Greedy function approximation: A gradient boosting machine.
+\newblock {\em Annals of Statistics}, 29(5):1189--1232.
+
+\bibitem[\protect\astroncite{Geurts et~al.}{2006}]{Geurts2006}
+Geurts, P., Ernst, D., and Wehenkel, L. (2006).
+\newblock Extremely randomized trees.
+\newblock {\em Machine Learning}, 63:3--42.
+
+\bibitem[\protect\astroncite{Ghysels et~al.}{2016}]{Ghysels2016}
+Ghysels, E., Kvedaras, V., and Zemlys, V. (2016).
+\newblock Mixed frequency data sampling regression models: The {R} package
+  midasr.
+\newblock {\em Journal of Statistical Software, Articles}, 72(4).
+
+\bibitem[\protect\astroncite{Ghysels and Qian}{2016}]{Ghysels2016b}
+Ghysels, E. and Qian, H. (2016).
+\newblock Estimating {MIDAS} regressions via {OLS} with polynomial parameter
+  profiling.
+\newblock {\em Econometrics and Statistics}, 9:1--16.
+
+\bibitem[\protect\astroncite{Ghysels et~al.}{2004}]{Ghysels2004}
+Ghysels, E., Santa-Clara, P., and Valkanov, R. (2004).
+\newblock The {MIDAS} touch: Mixed data sampling regression models.
+\newblock CIRANO Working Papers 2004s-20, CIRANO.
+
+\bibitem[\protect\astroncite{Ghysels et~al.}{2007}]{Ghysels2007}
+Ghysels, E., Sinko, A., and Valkanov, R. (2007).
+\newblock {MIDAS} regressions: Further results and new directions.
+\newblock {\em Econometric Reviews}, 26(1):53--90.
+
+\bibitem[\protect\astroncite{Ghysels and Wright}{2009}]{Ghysels2009}
+Ghysels, E. and Wright, J.~H. (2009).
+\newblock Forecasting professional forecasters.
+\newblock {\em Journal of Business \& Economic Statistics}, 27(4).
+
+\bibitem[\protect\astroncite{Giannone et~al.}{2015}]{Giannone2015}
+Giannone, D., Lenza, M., and Primiceri, G. (2015).
+\newblock Prior selection for vector autoregressions.
+\newblock {\em Review of Economics and Statistics}, 97(2):436--451.
+
+\bibitem[\protect\astroncite{Giannone et~al.}{2005}]{Giannone2005}
+Giannone, D., Reichlin, L., and Sala, L. (2005).
+\newblock Monetary policy in real time.
+\newblock pages 161--224.
+
+\bibitem[\protect\astroncite{Giannone et~al.}{2008}]{Giannone2008}
+Giannone, D., Reichlin, L., and Small, D. (2008).
+\newblock Nowcasting: The real-time informational content of macroeconomic
+  data.
+\newblock {\em Journal of Monetary Economics}, (55):665--676.
+
+\bibitem[\protect\astroncite{Hastie et~al.}{}]{Hastie2009}
+Hastie, T., Tibshirani, R., and Friedman, J.
+\newblock {\em The Elements of Statistical Learning}.
+\newblock 2 edition.
+
+\bibitem[\protect\astroncite{Hochreiter and Schmidhuber}{1997}]{Hochreiter1997}
+Hochreiter, S. and Schmidhuber, J. (1997).
+\newblock Long short-term memory.
+\newblock {\em Neural Computation}, 9(8):1735–1780.
+
+\bibitem[\protect\astroncite{Hopfield}{1982}]{Hopfield1982}
+Hopfield, J. (1982).
+\newblock Neural networks and physical systems with emergent collective
+  computational abilities.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 79:2554--2558.
+
+\bibitem[\protect\astroncite{James et~al.}{2013}]{Gareth2013}
+James, G., Witten, D., Hastie, T., and Tibshirani, R. (2013).
+\newblock {\em An Introduction to Statistical Learning: with Applications in
+  {R}}.
+\newblock Springer.
+
+\bibitem[\protect\astroncite{Karlsson}{2012}]{Karlsson2012}
+Karlsson, S. (2012).
+\newblock Forecasting with bayesian vector autoregressions.
+\newblock Working Papers 2012:12, Oerebro University, School of Business.
+
+\bibitem[\protect\astroncite{Kim et~al.}{1998}]{Kim1998}
+Kim, S., Shephard, N., and Chib, S. (1998).
+\newblock Stochastic volatility: likelihood inference and comparison with arch
+  models.
+\newblock {\em Review of Economic Studies}, 65:361--393.
+
+\bibitem[\protect\astroncite{Legrand}{2019}]{Legrand2019}
+Legrand, R. (2019).
+\newblock Time-varying vector autoregressions: Efficient estimation, random
+  inertia and random mean.
+\newblock Working Papers 95707, MPRA.
+
+\bibitem[\protect\astroncite{Litterman}{1986}]{Litterman1986}
+Litterman, R. (1986).
+\newblock Forecasting with bayesian vector autoregressions: Five years of
+  experience.
+\newblock {\em Journal of Business And Economic Statistics}, 4(1):25--38.
+
+\bibitem[\protect\astroncite{Primiceri}{2005}]{Primiceri2005}
+Primiceri, G. (2005).
+\newblock Time-varying structural vector autoregressions and monetary policy.
+\newblock {\em Review of Economic Studies}, 72:821--852.
+
+\bibitem[\protect\astroncite{Rosenblatt}{1958}]{Rosenblatt1958}
+Rosenblatt, F. (1958).
+\newblock The perceptron: A probabilistic model for information storage and
+  organization in the brain.
+\newblock {\em Psychological Review}, 65:386--408.
+
+\bibitem[\protect\astroncite{Rumelhart et~al.}{1986}]{Rumelhart1986}
+Rumelhart, D., Hinton, G., and Williams, R. (1986).
+\newblock Learning representations by back-propagating errors.
+\newblock {\em Nature}, 323:533–536.
+
+\bibitem[\protect\astroncite{Schorfheide and Song}{2015}]{Schorfheide2015}
+Schorfheide, F. and Song, D. (2015).
+\newblock Real-time forecasting with a mixed-frequency var.
+\newblock {\em Journal of Business and Economic Statistics}, 33(3):366--380.
+
+\bibitem[\protect\astroncite{Sims}{1980}]{Sims1980}
+Sims, C. (1980).
+\newblock Macroeconomics and reality.
+\newblock {\em Econometrica}, 48(1):1--48.
+
+\bibitem[\protect\astroncite{Warne et~al.}{2015}]{Warne2015}
+Warne, A., Droumaguet, M., and Woźniak, T. (2015).
+\newblock Granger causality and regime inference in bayesian markov-switching
+  {VAR}s.
+\newblock Working Papers 1794, European Central Bank.
+
+\end{thebibliography}

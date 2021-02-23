@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: apa.bst
+Database file #1: references.bib
+Repeated entry---line 463 of file references.bib
+ : @article{Giannone2015
+ :                      ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 633 of file references.bib
+ :  
+ :  year       = "2009",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 677 of file references.bib
+ : @article{Friedman2001
+ :                      ,
+I'm skipping whatever remains of this entry
+Warning--there's a number but no volume in Breiman2001
+Warning--empty journal in Giannone2005
+Warning--there's a number but no volume in Giannone2008
+Warning--empty year in Hastie2009
+Warning--empty publisher in Hastie2009
+You've used 32 entries,
+            1940 wiz_defined-function locations,
+            698 strings with 8585 characters,
+and the built_in function-call counts, 11970 in all, are:
+= -- 1146
+> -- 452
+< -- 22
++ -- 158
+- -- 146
+* -- 1080
+:= -- 2112
+add.period$ -- 97
+call.type$ -- 32
+change.case$ -- 231
+chr.to.int$ -- 32
+cite$ -- 37
+duplicate$ -- 444
+empty$ -- 844
+format.name$ -- 192
+if$ -- 2314
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 30
+newline$ -- 163
+num.names$ -- 96
+pop$ -- 179
+preamble$ -- 1
+purify$ -- 233
+quote$ -- 0
+skip$ -- 333
+stack$ -- 0
+substring$ -- 826
+swap$ -- 72
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 186
+warning$ -- 5
+while$ -- 86
+width$ -- 0
+write$ -- 414
+(There were 3 error messages)

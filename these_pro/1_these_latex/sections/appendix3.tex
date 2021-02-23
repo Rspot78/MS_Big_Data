@@ -1,0 +1,101 @@
+\section{The Kalman filter and the Carter-Kohn algorithm}
+\label{appendix3}
+
+
+\subsection{The Kalman filter}
+\label{appendix3_subsection1}
+
+A general linear Gaussian dynamic model can be written in state-space form as:
+
+\begin{lflalign}
+\text{Observation equation: } \hspace{2mm} y_t=A_t z_t + \upsilon_t \hspace{20mm} \upsilon_t \sim \No (0,\Upsilon_t) \nonumber \\
+\text{Transition equation: } \hspace{5mm} z_t=B_t w_t + C_t z_{t-1} + \kappa_t \hspace{10mm} \kappa_t \sim \No (0, K_t) \nonumber
+\end{lflalign}
+
+where $y_t$ denotes the observed variable, $z_t$ the state or unobserved variable, and $w_t$ the exogenous observed variable. $A_t, B_t$ and $C_t$ denote matrices of coefficients. $\upsilon_t$ and $\kappa_t$ are shocks with respective variance-covariance matrices $\Upsilon_t$ and $K_t$. 
+
+Table \ref{tbapp1_1} reports the state-space formulations for the project models: row 1 for the dynamic factor model of section \ref{chapter3_section1}, row 2 for the mixed frequency Bayesian VAR of section \ref{chapter3_section3}, rows 3-5 for the TV-BVAR of section \ref{chapter3_section6}. \vspace{2mm}
+
+\begin{table}[H] \centering
+\scalebox{1}{ \begin{tabular}{@{} l C{2.5cm} C{1cm} C{2cm} C{1.3cm} C{1cm} C{1cm} C{2cm} C{2cm}   @{}}
+\toprule[0.3mm]
+\phantom{a} & $y_t$ & $z_t$ & $w_t$ & $A_t$ & $B_t$ & $C_t$ & $\Upsilon_t$ & $K_t$ \\
+\midrule[0.3mm]
+$f$ & $x_t - \mu$ & $f_t$ & -- & $\Lambda$ & -- & $A$ & $diag(\psi)$ & $BB'$ \\ \midrule[0.1mm]
+$x$ & $y_t$ & $z_t$ & $\delta$ & $\Lambda_t$ & 1 & $\Phi$ & -- & $\Omega$ \\ \midrule[0.1mm]
+$\beta_i$ & $y_{i,t}+\delta_{i,t}' \varepsilon_{-i,t}$ & $\beta_{i,t}$ & $(1-\rho_i)b_i$ & $x_t$ & $1$ & $\rho_i$ & $s_i \ exp(\lambda_{i,t})$ & $\Omega_i$ \\ \midrule[0.1mm]
+$\lambda_i$ & $\hat{y}_{i,t}-m_J$ & $\lambda_{i,t}$ & -- & $1$ & -- & $\gamma_i$ & $v_J$ & $\phi_i$ \\ \midrule[0.1mm]
+$\delta_i$ & $\varepsilon_{i,t} $ & $\delta_{i,t}$ & $(1-\alpha_i)d_i$ & $-\varepsilon_{i,t}'$ & $1$ & $\alpha_i$ & $s_i \ exp(\lambda_{i,t})$ & $\Psi_i$ \\
+\bottomrule[0.3mm]
+\end{tabular}}
+\captionsetup{justification=centering}
+\caption{State-space representations for the dynamic parameters}
+\label{tbapp1_1} \vspace{-2mm}
+\end{table}
+
+Given a state-space representation, the Kalman filter is a simple procedure that derives conditional expectations of the unobserved dynamic parameters in a mostly mechanical way. To see this, introduce first the following notations:
+
+$y_{t|s}=\Ex(y_t|y_1,\cdots,y_s)$ \hspace{10mm} $z_{t|s}=\Ex(z_t|y_1,\cdots,y_s)$ \hspace{10mm} $\Upsilon_{t|s}=var(y_t|y_1,\cdots,y_s)$ \\
+$K_{t|s}=var(z_t|y_1,\cdots,y_s)$ \hspace{6mm} $\tilde{z}_{t|s}=\Ex(z_t|z_s, y_1,\cdots,y_t)$ \hspace{5.5mm} $\tilde{K}_{t|s}=var(z_t|z_s, y_1,\cdots,y_t)$
+
+By definition, this implies that: \\
+$z_t|y_1,\cdots,y_s \sim \No (z_{t|s},K_{t|s})$ \hspace{5mm} $z_t|z_s, y_1,\cdots,y_t \sim \No (\tilde{z}_{t|s},\tilde{K}_{t|s})$
+
+Using basic properties of the normal distribution, one can then derive the following 6 steps wich constitutes the Kalman filter algorithm:
+
+\textbf{Algorithm A.1: the Kalman filter:} \vspace{3mm} \\
+For $t=1,\cdots,T$, do\footnote{For the initial period $t=1$, the first two steps are slightly different; they become $z_{1|0}=B_1 w_1$ and $K_{1|0}=K_1$, respectively.}: \\
+\hspace*{4mm} step 1. state, prediction: \hspace{35mm} $z_{t|t-1}=B_t w_t+C_t z_{t-1|t-1}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 2. state, prediction error: \hspace{26mm} $K_{t|t-1}=C_t K_{t-1|t-1} C_t'+K_t$ \vspace{0.5mm} \\
+\hspace*{4mm} step 3. observed, prediction: \hspace{29mm} $y_{t|t-1}=A_t z_{t|t-1}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 4. observed, prediction error: \hspace{19.5mm} $\Upsilon_{t|t-1}=A_t K_{t|t-1} A_t'+\Upsilon_{t}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 5. state, correction: \hspace{36mm} $z_{t|t}=z_{t|t-1}+\Phi_t (y_t-y_{t|t-1})$ \vspace{0.5mm} \\
+\hspace*{4mm} step 6. state, prediction error correction: \hspace{8mm} $K_{t|t}=K_{t|t-1}-\Phi_t \Upsilon_{t|t-1} \Phi_t'$ \vspace{0.5mm} \\
+\hspace*{4mm} with: $\Phi_t=K_{t|t-1} A_t' \Upsilon_{t|t-1}^{-1}$ \vspace{3mm}
+
+This simple algorithm sequentially derives the mean and variance ($z_{t|t}$ and $K_{t|t}$) of the unoberved state variable for each sample period.
+
+
+\subsection{The Carter-Kohn algorithm}
+\label{appendix3_subsection2}
+
+The simple Kalman filter is suitable in a frequenctist approach. In a Bayesian context however, one must derive the full posterior distribution of the state variable (jointly for all sample periods), conditional on the observed variables. Formally, one seeks to derive: \\
+$\pi(z_1, z_2, \cdots, z_T | y_1, y_2, \cdots, y_T) = \pi(z|y)$
+
+To do so, one notes first that this joint posterior can be rewritten as:
+
+\begin{equation}
+\pi(z|y)=\pi(z_T|y_T) \prod\limits_{t=1}^{T-1}{\pi(z_t| z_{t+1}, y_t)}
+\nonumber \end{equation}
+
+\newpage
+
+Therefore, to obtain a draw from $\pi(z|y)$, it is sufficient to sample a value from $\pi(z_T|y_T)$, then sample recursively values from $\pi(z_t| z_{t+1}, y_t)$, for $t = T-1, T-2, \cdots, 1$. This supposes yet that one can first recover the distributions $\pi(z_T|y_T)$ and $\pi(z_t| z_{t+1}, y_t)$. \cite{Carter1994} notice that this is easily done thanks to the Kalman filter. Concretely, the authors propose a two-step procedure. The first step constitutes the forward pass of the algorithm, which is just a regular Kalman filter. The second step represents the backward pass, which obtains the distributions $\pi(z_t| z_{t+1}, y_t)$ from the forward pass elements.
+
+The full algorithm is as follows:
+
+\textbf{Algorithm A.2: the Carter-Kohn algorithm:} \vspace{3mm} \\
+1. Apply the Kalman filter: for $t=1,\cdots,T$, do (forward pass): \\
+\hspace*{4mm} step 1. state, prediction: \hspace{35mm} $z_{t|t-1}=B_t w_t+C_t z_{t-1|t-1}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 2. state, prediction error: \hspace{26mm} $K_{t|t-1}=C_t K_{t-1|t-1} C_t'+K_t$ \vspace{0.5mm} \\
+\hspace*{4mm} step 3. observed, prediction: \hspace{29mm} $y_{t|t-1}=A_t z_{t|t-1}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 4. observed, prediction error: \hspace{19.5mm} $\Upsilon_{t|t-1}=A_t K_{t|t-1} A_t'+\Upsilon_{t}$ \vspace{0.5mm} \\
+\hspace*{4mm} step 5. state, correction: \hspace{36mm} $z_{t|t}=z_{t|t-1}+\Phi_t (y_t-y_{t|t-1})$ \vspace{0.5mm} \\
+\hspace*{4mm} step 6. state, prediction error correction: \hspace{8mm} $K_{t|t}=K_{t|t-1}-\Phi_t \Upsilon_{t|t-1} \Phi_t'$ \vspace{0.5mm} \\
+\hspace*{4mm} with: $\Phi_t=K_{t|t-1} A_t' \Upsilon_{t|t-1}^{-1}$ \vspace{3mm}
+
+2. Sample $z_T$ from $\pi(z_T|y_T) \sim \No (z_{T|T},K_{T|T})$. \vspace{3mm}
+
+3. For $t=T-1,\cdots,1$, apply the following steps recursively (backward pass): \\
+\hspace*{4mm} step 1. state, correction: \hspace{35mm} $\tilde{z}_{t|t+1}=z_{t|t} + \Xi_t (z_{t+1}-z_{t+1|t})$ \vspace{0.5mm} \\
+\hspace*{4mm} step 2. state, prediction error correction: \hspace{7.5mm} $\tilde{K}_{t|t+1}=K_{t|t}-\Xi_t C_t K_{t|t}$ \vspace{0.5mm} \\
+\hspace*{4mm} with: $\Xi_t=K_{t|t} C_t' K_{t+1|t}^{-1}$ \\
+\hspace*{4mm} step 3. sampling: \hspace{47mm} $\pi(z_t| z_{t+1}, y_t) \sim \No (\tilde{z}_{t|t+1},\tilde{K}_{t|t+1})$. \\
+
+This provides a series of draws from $\pi(z_1| z_{2}, y_1), \pi(z_2| z_{3}, y_2), \cdots, \pi(z_{T-1}| z_{T}, y_{T-1}), \pi(z_T|y_T)$ which jointly constitute a draw from $\pi(z|y)$.
+
+
+\newpage
+
+
+

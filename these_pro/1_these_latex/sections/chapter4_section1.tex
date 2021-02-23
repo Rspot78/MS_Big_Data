@@ -1,0 +1,38 @@
+\chapter{The nowcasting exercise}
+\label{chapter4}
+
+
+This final chapter develops the nowcasting exercise run on the macroeconomic dataset introduced in chapter \ref{chapter2}, using the models detailed in chapter \ref{chapter3}. Before discussing the results, it is useful to describe formally the predictive setting used in the exercise, along with respective spectifications of the different models.
+
+
+\section{Predictive setting}
+\label{chapter4_section1}
+
+
+The main objective of the project is to evaluate the respective predictive performances of the models considered. The base dataset used to carry the exercise covers the period 1993m7 to 2019m12. This is for the models estimated in monthly frequency. Certain models however needs to be trained on a quarterly frequency (see next section for more information about the respective training frequencies of each model). For these models, the base sample becomes 1993q3-2019q4.
+
+Predicting over a single sample would most likely yield results that are not robust. For this reason, the prediction exercise follows a sequential window approach. That is, the models are estimated on sample windows that grow sequentially larger: the first period of the sample is always the same, but the final period is variable. Predictions are then obtained for each sample window.
+
+For monthly models, the first period of the sample is always 1993m7. For the final period, the sample of observations initially ends in 2016m1, then it is sequentially increased by one month. This is done over a period of 36 months or 3 years, so the largest sample covers the period 1993m7-2018m12. This gives 36 sequential predictions for monthly models.
+
+For quarterly models, The initial period is always 1993q1, and the sample initially ends in 2016q1. It is then sequentially increased by one quarter over a period of 12 quarters or 3 years, similarly to monthly models. This yields 12 sequential predictions.
+
+\newpage
+
+For each model and each sample, predictions are produced for 1, 2, 3 and 4 quarters ahead. What this implies in terms of timing depends on the model and the period considered. For monthly models, a one-quarter ahead predictions means a 3-month ahead prediction if the sample ends in March, June, September of December; a 2-month ahead prediction if the sample ends in January, April, July of October; and a one-month ahead prediction if the sample ends in February, May, August or November. For quarterly models, a one-quarter ahead prediction simply means predicting the next period. Even though the project is primarily focused on nowcasting, predicting at more than one quarter-ahead seems relevant as it may highlight the capacities of the different models at capturing the long-term nonlinearities.
+
+Given the sequential windows, the exercise implies that the latest predictions will be realised over the 2019m12/2019q4 period. This excludes the COVID period from the project. This is purposeful, as the exercise intends to determine the best prediction model in normal times, the prediction of crisis times being a different question on its own.
+
+For each prediction, the accuracy is measured using the root mean squared error as a criterion. The latter is defined as:
+
+\begin{equation}
+rmse(\hat{y}_t) = \sqrt{(\hat{y}_t - y_t)^2}
+\label{equation_c4_s1_ss1_1}
+\end{equation}
+
+The overall performance of the model is then obtained by averaging the RMSE over all the samples. The RMSE are also normalised by the feature variances to avoid scale effects.
+
+
+
+
+

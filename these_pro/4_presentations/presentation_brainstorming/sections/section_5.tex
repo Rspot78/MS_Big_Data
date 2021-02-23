@@ -1,0 +1,23 @@
+\section{LSTM}
+
+\begin{frame}{5.1 - LSTM: model tunning}
+\begin{itemize}
+	\item model: features $x_{t-1}$ and $x_{t-2}$ as input, $x_t$ and $GDP_t$ as output
+	\item MSE used as loss function
+	\item dataset is split in train/test samples (80-20\%)
+	\item MSE on test is lowest with only one layer
+	\item MSE on test decreases with units, and stabilizes at 1000 units
+	\item optimizer has little impact: AdaDelta, RMSprop, Adam all yields same estimates
+	\item 500 epochs to train the model
+\end{itemize}	
+\end{frame}
+
+\begin{frame}{5.1 - LSTM: model tunning}
+	\begin{block}{Predictions}
+	\begin{itemize}
+		\item obtained sequentially
+		\item predict $x_{t+1}$ and $GDP_{t+1}$ from $x_{t}$ and $x_{t-1}$
+		\item predict $x_{t+2}$ and $GDP_{t+2}$ from $x_{t+1}$ and $x_{t}$ ...
+	\end{itemize}
+\end{block}	
+\end{frame}

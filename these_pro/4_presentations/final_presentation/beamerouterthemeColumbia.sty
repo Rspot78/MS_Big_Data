@@ -1,0 +1,176 @@
+% Columbia Beamer Outer Theme - rax 04.10.12
+% Copyright Rodrigo A. Carrasco - rax <www.rax.cl>
+
+\mode<presentation>
+% package for command modification
+\usepackage{etoolbox}
+
+% ***** General Stuff *****
+% transition style
+\setbeamercovered{dynamic}
+
+% slides background
+\pgfdeclareimage[width = 160mm]{bkglogo}{ColumbiaShield}
+% set depending on slide
+\usebackgroundtemplate
+{
+	\ifnum\c@framenumber = 1
+		{}
+	%\else
+		%\pgfuseimage{bkglogo}
+	\fi
+}
+
+% compress slides
+\beamer@compresstrue
+
+% eliminate navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% ***** Title Page Changes *****
+\setbeamertemplate{title page}
+{
+	% IEOR logo
+	\ifthenelse{\equal{\sbtitle}{}}
+	{\vspace{-2.2mm}}
+	{\vspace{-1mm}}
+	\hbox{\hskip -10mm
+	\begin{beamercolorbox}[wd = 10mm, ht = 5ex, dp = .7ex, left]{logo bar}
+		\hskip 1ex
+		\includegraphics[width = 7mm]{cfm_white}
+		\hskip 1ex
+	\end{beamercolorbox}
+	\hskip 8mm
+	\begin{beamercolorbox}[wd = \paperwidth, ht = 5ex, dp = .7ex, left]{logo bar}
+		\hskip 1ex
+		\large{Capital Fund Management}
+		\newline
+		\tiny{\textcolor{darkblue}{rax - 2012}}
+	\end{beamercolorbox}
+	}
+	
+	% center stuff from now onwards
+	\vbox{}
+	\vfill
+	\begin{centering}
+	
+	% title and subtitle
+	\begin{beamercolorbox}[wd = \paperwidth, sep = 8pt, center]{title}
+	\usebeamerfont{title}\inserttitle\\
+	\usebeamerfont{subtitle}\insertsubtitle
+	\end{beamercolorbox}
+	\vskip-1.18em\par
+	\begin{beamercolorbox}[wd = \paperwidth, ht = 1pt]{logo bar}
+	\end{beamercolorbox}
+		
+	% authors
+	\vskip1em\par
+	\begin{beamercolorbox}[sep = 8pt, center]{author}
+	\usebeamerfont{author}\insertauthor
+	\end{beamercolorbox}
+	
+	% venue
+	\vskip-1em\par
+	\begin{beamercolorbox}[sep = 8pt, center]{institute}
+	\usebeamerfont{institute}\insertinstitute
+	\end{beamercolorbox}
+	
+	% date
+	\vskip-1em\par
+	\begin{beamercolorbox}[sep = 8pt, center]{date}
+	\usebeamerfont{date}\insertdate
+	\end{beamercolorbox}
+	\vskip0.5em
+	
+	\end{centering}
+	\vfill
+	
+	\vskip 6em\par
+	\hbox{
+	\begin{beamercolorbox}[wd = .5\paperwidth, sep = 8pt, left]{date}
+	\hskip -8mm
+	\ifthenelse{\equal{\presenter}{}}
+	{\tiny{\textcolor{white}{Presented by}}}
+	{\tiny{Presented by \presenter}}
+	\end{beamercolorbox}
+	
+	\begin{beamercolorbox}[wd = .4\paperwidth, sep = 8pt, right]{date}
+	\ifthenelse{\equal{\showver}{1}}
+	{\tiny{v.\ver~(b.\build)}}
+	{\tiny{\textcolor{white}{v.\ver~(b.\build)}}}
+	\end{beamercolorbox}
+	}
+}
+
+% ***** Headline Definition *****
+%\setbeamertemplate{headline}{
+%\begin{beamercolorbox}[ht = 6.2ex, dp = 5.1ex, leftskip = .3cm, rightskip = .3cm plus1fil]{section in head/foot}
+%\usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}
+%%\insertsectionhead
+%\insertnavigation{\paperwidth}
+%\end{beamercolorbox}
+%}
+
+% base outer theme
+\useoutertheme[subsection = false]{miniframes}
+
+% hack to show only current section in header
+\setbeamertemplate{mini frame in other subsection}{}
+\setbeamertemplate{mini frames}[default]
+\makeatletter
+\beamer@compresstrue
+\patchcmd{\sectionentry}{\beamer@section@set@min@width}{}{}{}
+\patchcmd{\insertnavigation}{\hskip -1.875ex plus-1fill}{}{}{}
+\patchcmd{\sectionentry}{\hskip 1.875ex plus 1fill}{}{}{}
+\patchcmd{\sectionentry}{\hyperlink{Navigation#3}{{\usebeamertemplate{section in head/foot shaded}}}}{}{}{}
+\patchcmd{\slideentry}{\beamer@ypos=#2\relax}{}{}{}
+\patchcmd{\fakeslideentry}{\beamer@ypos=#2\relax}{}{}{}
+\makeatother
+
+% hack to show circles when no subsections are defined
+\usepackage{remreset}
+\makeatletter
+\@removefromreset{subsection}{section}
+\makeatother
+\setcounter{subsection}{1}
+
+% ***** Footline Definitions *****
+% capture last real frame
+\makeatletter
+\@ifundefined{inserttotalframenumbernew}
+{
+	\gdef\inserttotalframenumbernew{1}
+}{}
+\gdef\inserttotalframenumber{\inserttotalframenumbernew}
+\makeatother
+
+% define footline
+\setbeamertemplate{footline}
+{
+	% make footline box to hold different beamer boxes
+	\hbox{\hspace{-1mm}
+	
+	% SEAS logo
+	\hskip 2ex
+	\includegraphics[width = 0.6cm]{cfm_blue}
+	\hskip 1ex
+	
+	% authors box
+	\begin{beamercolorbox}[wd = .25\paperwidth, ht = 2.75ex, dp = 1.5ex, left]{text in head/foot}
+	\usebeamerfont{text in head/foot}\insertshortauthor
+	\end{beamercolorbox}
+	
+	% title box
+	\begin{beamercolorbox}[wd= .415\paperwidth, ht = 2.25ex, dp = 1ex, center]{text in head/foot}
+	\usebeamerfont{text in head/foot}\insertshorttitle
+	\end{beamercolorbox}
+	
+	% slide number box
+	\begin{beamercolorbox}[wd = .25\paperwidth, ht = 2.75ex, dp = 1.5ex, right]{text in head/foot}
+	\insertframenumber{} / \inserttotalframenumbernew
+	\end{beamercolorbox}
+		
+	}
+}
+
+\mode<all>

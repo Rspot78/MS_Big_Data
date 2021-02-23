@@ -1,0 +1,19 @@
+% build definition
+% by rax - 2012.04.02
+
+% ******************************************************************
+% **** packages ****
+\usepackage{datetime}
+
+% ******************************************************************
+% **** build control ****
+% create 2-digit year
+\newcounter{buildyear}
+\setcounter{buildyear}{\the\year}
+\addtocounter{buildyear}{-2000}
+\newcommand{\tdyear}{\arabic{buildyear}}
+% create new time format
+\newtimeformat{vtime}{\twodigit{\THEHOUR}\twodigit{\THEMINUTE}}
+\settimeformat{vtime}
+% build macro
+\newcommand{\build}{\tdyear\twodigit{\the\month}\twodigit{\the\day}\currenttime}

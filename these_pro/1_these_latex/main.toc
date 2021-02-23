@@ -1,0 +1,64 @@
+\babel@toc {english}{}
+\contentsline {chapter}{\numberline {1}Capital Fund Management}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}General presentation}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Data Analytics}{2}{section.1.2}
+\contentsline {chapter}{\numberline {2}The project}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}The Nowcasting.com trial}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Project design}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}The dataset}{7}{section.2.3}
+\contentsline {chapter}{\numberline {3}The models}{12}{chapter.3}
+\contentsline {section}{\numberline {3.1}Nowcasting: the dynamic factor model}{12}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Formulation}{12}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Estimation}{13}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Prediction}{14}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Application}{15}{subsection.3.1.4}
+\contentsline {section}{\numberline {3.2}Nowcasting: MIDAS regression}{17}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Formulation}{17}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Estimation}{18}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Prediction}{21}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Application}{22}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Nowcasting: mixed frequency Bayesian VAR}{24}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Formulation}{24}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Estimation}{25}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Prediction}{29}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}Application}{29}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Econometrics: Vector Auto-Regression}{31}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Formulation}{31}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Estimation}{32}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Prediction}{32}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Econometrics: Bayesian VAR}{33}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Formulation}{33}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Estimation}{34}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Prediction}{38}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Application}{39}{subsection.3.5.4}
+\contentsline {section}{\numberline {3.6}Econometrics: Time-varying Bayesian VAR}{41}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Formulation}{41}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Estimation}{43}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Prediction}{49}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.6.4}Application}{50}{subsection.3.6.4}
+\contentsline {section}{\numberline {3.7}Machine learning: LSTM}{51}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}Formulation}{51}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Estimation}{55}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.3}Prediction}{55}{subsection.3.7.3}
+\contentsline {section}{\numberline {3.8}Machine learning: random forest}{56}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Formulation}{56}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.2}Estimation}{57}{subsection.3.8.2}
+\contentsline {subsection}{\numberline {3.8.3}Prediction}{58}{subsection.3.8.3}
+\contentsline {subsection}{\numberline {3.8.4}Application}{58}{subsection.3.8.4}
+\contentsline {section}{\numberline {3.9}Machine learning: boosting}{61}{section.3.9}
+\contentsline {subsection}{\numberline {3.9.1}Formulation}{61}{subsection.3.9.1}
+\contentsline {subsection}{\numberline {3.9.2}Estimation}{62}{subsection.3.9.2}
+\contentsline {subsection}{\numberline {3.9.3}Prediction}{63}{subsection.3.9.3}
+\contentsline {chapter}{\numberline {4}The nowcasting exercise}{64}{chapter.4}
+\contentsline {section}{\numberline {4.1}Predictive setting}{64}{section.4.1}
+\contentsline {section}{\numberline {4.2}Model specifications}{65}{section.4.2}
+\contentsline {section}{\numberline {4.3}Nowcasting GDP}{68}{section.4.3}
+\contentsline {section}{\numberline {4.4}Nowcasting monthly features}{75}{section.4.4}
+\contentsline {section}{\numberline {4.5}Future developments}{80}{section.4.5}
+\contentsline {chapter}{References}{84}{chapter*.32}
+\contentsline {chapter}{Appendix }{85}{Appendix*.33}
+\contentsline {section}{\numberline {A.1}Now-casting.com report}{85}{section.1..1}
+\contentsline {section}{\numberline {A.2}Transformations and sources of the monthly features}{100}{section.1..2}
+\contentsline {section}{\numberline {A.3}The Kalman filter and the Carter-Kohn algorithm}{101}{section.1..3}
+\contentsline {subsection}{\numberline {A.3.1}The Kalman filter}{101}{subsection.1..3.1}
+\contentsline {subsection}{\numberline {A.3.2}The Carter-Kohn algorithm}{102}{subsection.1..3.2}

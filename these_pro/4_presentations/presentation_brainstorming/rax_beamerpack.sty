@@ -1,0 +1,41 @@
+% Style and Definitions for Beamer - rax 03.10.12
+% Copyright Rodrigo A. Carrasco - rax <www.rax.cl>
+
+% ******************************************************************
+% **** packages ****
+% symbols and graphics
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{wasysym}
+\usepackage{makeidx}
+
+% styles
+\usepackage{setspace}
+\usepackage{psfrag}
+\usepackage{textcomp}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{subfig}
+
+% other
+\usepackage{xifthen}
+
+% ******************************************************************
+% **** rax definitions ****
+\usepackage{rax_build}
+
+% ******************************************************************
+% **** other stuff ****
+\DeclareGraphicsExtensions{.jpg,.eps,.png,.pdf,.mps,.gif}
+
+% function to capture last real frame
+\newcommand{\lastrealframe}
+{
+\makeatletter
+\immediate\write\@mainaux{\string\gdef\string\inserttotalframenumbernew{\insertframenumber}}
+\makeatother
+}

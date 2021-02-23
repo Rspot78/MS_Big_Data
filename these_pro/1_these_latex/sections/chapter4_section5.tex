@@ -1,0 +1,15 @@
+\section{Future developments}
+\label{chapter4_section5}
+
+This project was centered on one main objective: determine the best model to predict real GDP growth in the short run. The prediction exercise shed light on two models: a standard, quarterly Bayesian VAR, and a more sophisticated monthly mixed frequency Bayesian VAR. The former seems better when predicting one quarter before the release, while the latter proves more accurate closer to the release deadline.
+
+It is still uncertain what is the best model in-between, that is, around two months before the release of GDP. To establish this formally and establish a model that could be internally used by CFM, more exploration is needed. 
+
+\newpage
+
+In the first place, one should determine what can be an optimal dataset for the US. Both the large and small datasets used in this project are standard, but they may not be optimal for the specific case of the United States. Also, one should keep in mind the trade-off that exists bewteen the flexibility in the choice of features, and the available history of the data. Standard datasets may result in less sophisticated dynamics, but the additional history may more than compensate in terms of forecast accuracy. As a simple example, the dataset used for the project starts in 1993, due only to the limitted history of certain features, while most standard series provided by the FED/FRED start in the 1940's. One must also pay attention to the availability of the different series in both monthly and quarterly frequencies. With an optimized dataset, one might then conduct a prediction exercise similar to the one carried in this project, but possibly on a longer window for improved confidence in the conclusion. Based on this further exploration, a solid nowcasting model could be obtained for nowcasting GDP.
+
+Alternatively, a distinct exercise could be conducted to tackle a different issue: the building of an optimal predictor for GDP in a context of crisis. This question is important in general, and crucial for a hedge fund which will benefit from key information if a crisis is properly anticipated. The exercise would consist in detecting the crisis in the first place. This could be done for instance with a Markov-switching model in the line of \cite{Warne2015}. Then the rapidly changing dynamics could be predicted from time-varying models similar to the one used in the project, as developed by \cite{Primiceri2005}.
+
+I believe either of these tracks could be profitably pursued by CFM and significantly contribute to their investment decisions. 
+

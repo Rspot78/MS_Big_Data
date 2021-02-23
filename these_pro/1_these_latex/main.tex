@@ -1,0 +1,335 @@
+%****************************
+% Document class
+%****************************
+
+% use report, font size = 12pt, A4 format, left-aligned equations, chapter starts on any page (not only even ones)
+\documentclass[12pt,a4paper,fleqn,openany]{book}
+\renewcommand{\baselinestretch}{1.5}
+
+
+
+%****************************
+% page and text formatting
+%****************************
+
+% lipsum package to test page layout
+\usepackage{lipsum}
+
+% geometry package to set the size of the document margins 
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1.2in,bmargin=1.2in]{geometry}
+
+% babel package to handle the typographical rules and hyphenation patterns of the English language
+\usepackage[english]{babel}
+
+% inputenc and fontenc packages to use French accents
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% mathptmx package to set the font as the Latex equivalent of Times New Roman
+\usepackage{mathptmx}
+
+% set space between two paragraphs as text size (11pt), and remove indent at paragraph start
+\setlength{\parskip}{11pt}
+\setlength{\parindent}{0pt}
+
+% anyfontsize package to allow for arbitrary font size
+\usepackage{anyfontsize}
+
+% color package to color text
+\usepackage{color}
+
+% turn the color of footnote markers to black
+\renewcommand\thefootnote{\textcolor{black}{\arabic{footnote}}}
+
+% footmisc package to suppress indents on footnotes
+\usepackage[hang,flushmargin]{footmisc}
+
+% fncylab package to automatically generates colored brackets around references
+\usepackage{fncylab} \labelformat{equation}{(#1)}
+
+% titlesec package to customize titles of chapters and sections
+\usepackage{titlesec}
+\titleclass{\part}{page}
+
+% enumitem package to include enumeration options
+\usepackage{enumitem}
+
+% cutomize chapter titles:
+\titleformat{\chapter}
+[hang]
+{\bfseries\fontsize{22}{26}\selectfont}
+{\thechapter}
+{10pt}
+{}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt}
+
+% customize section titles:
+\titleformat{\section}
+[hang]
+{\bfseries\fontsize{16}{20}\selectfont}
+{\thesection \hspace{0.3cm}}
+{0pt}
+{}
+\titlespacing*{\section}{0pt}{10pt}{10pt}
+
+% new commands for text superscript and subscripts (like 1st, 2nd, and so on)
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\tb}{\textsubscript}
+
+% newclude package to avoid page break when using the \include command
+\usepackage{newclude}
+
+\usepackage{setspace}
+
+% tcolorbox package to create custom boxes e.g. for title page
+\usepackage{tcolorbox}
+
+% box format for title page
+\newtcolorbox{titlepagebox}{width=350pt,top=20pt,bottom=20pt,left=5pt,right=5pt,colframe=black,colback=white,arc=1mm,outer arc=1mm,boxrule=0.4mm,before=\vspace{5mm},after=\vspace{5mm}}
+
+% box format for title page
+\newtcolorbox{titlepagephantombox}{left=2pt,nobeforeafter,width=0.4\textwidth,colframe=white,colback=white,box align=center,baseline=3.5mm }
+
+
+
+%****************************
+% maths and equations
+%****************************
+
+% amsmath package to use all sorts of math symbols and equation formatting
+\usepackage{amsmath}
+
+% set space before/after equations/align to obtain line breaks equivalent to that of paragraphs
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\abovedisplayskip{-14pt}
+	\setlength\belowdisplayskip{-2pt}
+	\setlength\abovedisplayshortskip{-14pt}
+	\setlength\belowdisplayshortskip{-2pt}
+}
+\makeatother
+
+% new environment to left flush the equation with the align environment
+\makeatletter
+\newenvironment{lflalign}{%
+	\def\align@preamble{%
+		&\strut@
+		\setboxz@h{\@lign$\m@th\displaystyle{####}$}%
+		\ifmeasuring@\savefieldlength@\fi
+		\set@field
+		\hfil
+		\tabskip\z@skip
+		&\setboxz@h{\@lign$\m@th\displaystyle{{}####}$}%
+		\ifmeasuring@\savefieldlength@\fi
+		\set@field
+		\hfil
+		\tabskip\alignsep@
+	}
+	\flalign}
+{\endflalign}
+\makeatother
+
+% left equation left space to 0 (fleqn in documentclass still leaves some space by default)
+\setlength{\mathindent}{0pt}
+
+% hyperref package to allow for equation hyperlinks
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+% ammssymb package to use mathematical symbols
+\usepackage{amssymb}
+
+% new commands for mathematical symbols
+\DeclareMathOperator{\N}{\mathbb{N}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\R}{\mathbb{R}}
+\DeclareMathOperator{\Pb}{\mathbb{P}}
+
+% cmsy (computer modern symbol) math alphabet to define appropriate fonts for the U and N mathematical symbols
+\DeclareMathAlphabet\mathbcal{OMS}{cmsy}{m}{n}
+
+% new commands for mathematical symbols
+\DeclareMathOperator{\E}{\mathbcal{E}}
+\DeclareMathOperator{\F}{\mathbcal{F}}
+\DeclareMathOperator{\G}{\mathbcal{G}}
+\DeclareMathOperator{\HH}{\mathbcal{H}}
+\DeclareMathOperator{\QQ}{\mathbcal{Q}}
+\DeclareMathOperator{\PP}{\mathbcal{P}}
+\DeclareMathOperator{\No}{\mathbcal{N}}
+\DeclareMathOperator{\U}{\mathbcal{U}}
+\DeclareMathOperator{\Ex}{\mathbb{E}}
+\DeclareMathOperator{\LL}{\mathbcal{L}}
+\DeclareSymbolFont{fontsymb}{OML}{cmm}{m}{it}% Computer Modern math font
+\DeclareMathSymbol{\eps}{3}{fontsymb}{15}
+
+% bbm package to use the double stroke 1 for the indicator function
+\usepackage{bbm}
+\DeclareMathOperator{\ind}{\mathbbmss{1}}
+
+% bm package to use bold characters in math mode
+\usepackage{bm}
+
+% relsize package to change the size of mathematical symbols
+\usepackage{relsize}
+
+% new commands for in-line small summations and products
+\newcommand{\ssumm}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Sigma}}}}} \hspace{0.5mm}}
+\newcommand{\sprod}[2]{\underset{\scriptscriptstyle #1}{\overset{\scriptscriptstyle #2}{\mathlarger{\mathlarger{\mathlarger{\Pi}}}}} \hspace{0.5mm}}
+
+% mathtools package to use the matrix* environment, allowing to align matrix entries
+\usepackage{mathtools}
+
+
+
+%****************************
+% tables
+%****************************
+
+% booktabs package to create nice-looking, customized tables
+\usepackage{booktabs}
+
+% rotating package to rotate tables
+\usepackage{rotating}
+
+% graphicx package to resize tables
+\usepackage{graphicx}
+
+% multirow package to merge rows in tables
+\usepackage{multirow}
+
+% makecell package to force line breaks within individual cells in tables
+\usepackage{makecell}
+
+% graphicx package to resize tables
+\usepackage{graphicx}
+
+% dcolumn package to align table entries on decimal separators
+\usepackage{dcolumn}
+\newcolumntype{d}[1]{D{.}{}{#1}}  % define "d" column type
+\newcommand\mc[1]{\multicolumn{1}{c}{#1}} % handy shortcut macro
+
+% array package with a new command to create tables with custom column width
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% xcolor package and new command to color cells in tables created with booktabs
+\usepackage{xcolor}
+
+\definecolor{coolyellow}{rgb}{0.99, 0.93, 0}
+\definecolor{coolgreen}{rgb}{0.5, 0.98, 0}
+
+
+
+
+%****************************
+% figures
+%****************************
+
+% float package to force figure to be positioned where indicated
+\usepackage{float}
+
+% caption package to customize captions of tables and graphs
+\usepackage[font=bf,labelfont=bf,justification=centering]{caption}
+
+% subcaption package to use captions for figures with multiple panels
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelfont=normalfont,textfont=normalfont}
+
+% textpos package to place figures at arbitrary (x,y) position in page
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{1in}
+\setlength{\TPVertModule}{1in}
+
+% transparent package to set image opacity
+\usepackage{transparent}
+
+% pdfpages package to insert pdf documents
+\usepackage{pdfpages}
+
+
+
+%****************************
+% referencing
+%****************************
+
+% customize the bibliography by using the natbib package
+\usepackage{natbib, url}
+\bibliographystyle{apa}
+
+% set title of bibliography page, and format as chapter
+\renewcommand{\bibsection}{\chapter*{References}}
+
+% remove left indentation in references
+\setlength{\bibhang}{0pt}
+
+% refcheck package to check for unused references
+% \usepackage{refcheck}
+
+% tocloft package to set dotted lines in the table of contents
+\usepackage{tocloft}
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand\cftsecdotsep{\cftdot}
+\renewcommand\cftsubsecdotsep{\cftdot}
+
+% use package appendix to to use custom appendices
+\usepackage[title,titletoc]{appendix}
+
+
+%****************************
+% main document
+%****************************
+
+\begin{document}
+	
+% preamble of the report
+\frontmatter
+\include{sections/titlepage}
+\tableofcontents
+
+
+% core of the report
+\mainmatter
+\include*{sections/chapter1_section1}
+\include*{sections/chapter1_section2}
+\include*{sections/chapter2_section1}
+\include*{sections/chapter2_section2}
+\include*{sections/chapter2_section3}
+\include*{sections/chapter3_section1}
+\include*{sections/chapter3_section2}
+\include*{sections/chapter3_section3}
+\include*{sections/chapter3_section4}
+\include*{sections/chapter3_section5}
+\include*{sections/chapter3_section6}
+\include*{sections/chapter3_section7}
+\include*{sections/chapter3_section8}
+\include*{sections/chapter3_section9}
+\include*{sections/chapter4_section1}
+\include*{sections/chapter4_section2}
+\include*{sections/chapter4_section3}
+\include*{sections/chapter4_section4}
+\include*{sections/chapter4_section5}
+\clearpage
+
+
+% post part of the report
+\backmatter
+\bibliography{references}
+\addcontentsline{toc}{chapter}{References}
+\clearpage
+\appendix
+\renewcommand{\thesection}{A.\arabic{section}}
+\setcounter{section}{0}
+\begin{appendices}
+\include*{sections/appendix1}
+\include*{sections/appendix2}
+\include*{sections/appendix3}
+\end{appendices}
+
+
+\end{document}
+	
+
+
+

@@ -1,0 +1,83 @@
+% beamer presentation template - rax 05.10.12
+% main data
+\def \ver {1.0}			% version number
+\def \showver {0}		% 1 = show version/build; 0 = not show
+\def \maintitle {Nowcasting Economic Activity}
+\def \sbtitle {a comparison of nowcasting, econometrics and machine learning models}
+\def \shorttitle {nowcasting economic activity}
+\def \lauthors {Romain legrand}
+\def \sauthors {Romain Legrand}
+\def \presenter {Romain Legrand}
+\def \home {Capital Fund Management}
+\def \venue {}
+\def \location {}
+\def \ldate {\today}
+
+% ****************************************************************************
+% Document Start
+\documentclass[xcolor=svgnames]{beamer}
+
+% **** packages ****
+\usepackage[english]{babel}
+\usepackage{rax_beamerpack}
+
+%\usepackage{beamerthemeshadow}
+\usetheme{Columbia}
+
+\usepackage{natbib}
+% ****************************************************************************
+% Document Data
+\title[\shorttitle]{\maintitle}
+\subtitle{\sbtitle}
+\author[\sauthors]{\lauthors\\ \scriptsize{\em \home}}
+\institute{\venue\\ \tiny{\location}}
+\date[\sdate]{\scriptsize{\ldate}}
+
+% ****************************************************************************
+% ****************************************************************************
+\begin{document}
+
+%****************** Title Slide ******************
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+%****************** Outline Slide ******************
+\begin{frame}[plain]{Outline}
+	\tableofcontents
+\end{frame}
+
+%****************** Document ******************
+% *********************************************
+
+\include{sections/section_1}
+\include{sections/section_2}
+\include{sections/section_3}
+\include{sections/section_4}
+\include{sections/section_5}
+\include{sections/recap}
+\include{sections/section_6}
+\include{sections/section_7}
+\include{sections/appendix}
+
+% *********************************************
+
+
+
+
+%****************** Title Slide to Close ******************
+% capture slide number to correct total number of slides later
+\lastrealframe
+
+\section{}
+% clean background image if any
+\usebackgroundtemplate{}
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+
+
+\include{bibliography/references}
+
+\end{document}

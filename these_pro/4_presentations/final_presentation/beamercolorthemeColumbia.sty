@@ -1,0 +1,81 @@
+% Columbia Beamer Colour Theme - rax 04.10.12
+% Copyright Rodrigo A. Carrasco - rax <www.rax.cl>
+
+\mode<presentation>
+
+% ***** Colour Definitions *****
+\definecolor{columbiablue}{RGB}{117, 178, 221}
+\definecolor{darkblue}{RGB}{51, 103, 153}
+\colorlet{darkred}{red!85!black}
+\colorlet{darkgray}{gray!70!black}
+
+\colorlet{block}{columbiablue}
+\colorlet{example}{darkblue} %{Green!85!black}
+\colorlet{alert}{DarkRed!85!black}%{red!85!black}
+
+% ***** Set Colours *****
+% general colour scheme
+\setbeamercolor{structure}{fg = columbiablue}
+\setbeamercolor{palette primary}{fg = white, bg = columbiablue}
+\setbeamercolor{palette secondary}{fg = white, bg = darkblue}
+\setbeamercolor{palette tertiary}{fg = white, bg = darkgray}
+\setbeamercolor{palette quaternary}{fg = white, bg = black}
+
+%\setbeamercolor*{sidebar}{parent=palette primary}
+%\setbeamercolor*{palette sidebar primary}{fg=slidetitlebarcolor}
+%\setbeamercolor*{palette sidebar secondary}{fg=red}
+%\setbeamercolor*{palette sidebar tertiary}{fg=slidetitlebarcolor}
+%\setbeamercolor*{palette sidebar quaternary}{fg=red}
+
+% ***** Title Slide *****
+% presentation title page
+\setbeamercolor{title}{parent = palette primary}
+\setbeamercolor{subtitle}{parent = palette primary}
+\setbeamercolor{author}{fg = black}
+\setbeamercolor{date}{fg = darkgray}
+\setbeamercolor{institute}{fg = darkgray}
+
+\setbeamercolor{logo bar}{fg = white, bg = darkblue}
+
+% ***** Outline Slide *****
+\setbeamercolor{section in toc}{fg = darkblue}
+\setbeamercolor{subsection in toc}{fg = columbiablue}
+\setbeamercolor{section in toc shaded}{fg = columbiablue}
+
+% ***** Regular Slide *****
+% frame title
+\setbeamercolor{frametitle}{parent = palette primary}
+\setbeamercolor{framesubtitle}{parent = palette primary}
+% text
+\setbeamercolor{normal text}{fg = black}
+% items
+\setbeamercolor{item}{fg = darkblue}
+\setbeamercolor{subitem}{fg = darkblue}
+\setbeamercolor{subsubitem}{fg = darkblue}
+% captions and tables
+\setbeamercolor{caption}{fg = black}
+\setbeamercolor{caption name}{fg = darkgray}
+\setbeamercolor{background canvas}{bg = columbiablue!10!white}
+% headers and footers
+\setbeamercolor{author in head/foot}{fg = darkblue, bg = white}
+\setbeamercolor{title in head/foot}{fg = white, bg = columbiablue}
+\setbeamercolor{date in head/foot}{fg = white, bg = columbiablue}
+\setbeamercolor{section in head/foot}{fg = white, bg = darkblue}
+\setbeamercolor{subsection in head/foot}{fg = white, bg = darkblue}
+\setbeamercolor{text in head/foot}{fg = darkblue}
+
+% ***** Other Elements *****
+% alert color
+\setbeamercolor{alerted text}{fg = alert}
+
+% blocks
+\setbeamercolor{block title}{fg = white, bg = block}
+\setbeamercolor{block body}{fg = black, bg = block!10!white}
+
+\setbeamercolor{block title example}{fg = white, bg = example}
+\setbeamercolor{block body example}{fg = black, bg = example!10!white}
+
+\setbeamercolor{block title alerted}{fg = white, bg = alert}
+\setbeamercolor{block body alerted}{fg = black, bg = alert!10!white}
+
+\mode<all>

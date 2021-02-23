@@ -1,0 +1,109 @@
+\section{Machine learning: boosting}
+\label{chapter3_section9}
+
+The field of ensemble methods is not restricted to bagging methods such as random forests. Boosting methods represent popular alternatives. They rely on model upgrading rather than model averaging. The boosting strategy was first introduced by \cite{Freund1997}. The more general method of gradient boosting was then developed by \cite{Friedman2001}.
+
+\subsection{Formulation}
+\label{chapter3_section9_subsection1}
+
+Assume one has a sample of $n$ observations $y = (y_1, y_2, \cdots, y_n)$ explained by $n$ corresponding observations of the regressors $x = (x_1, x_2, \cdots, x_n)$. The objective is to fit some function $F(x)$ to predict the data $y$, and the corresponding loss function is expressed as:
+
+\begin{equation}
+L(F(x),y) = \sum_{i=1}^{n}{L(y_i, F(x_i))}
+\label{equation_c3_s9_ss1_1} 
+\end{equation}
+
+Minimizing the loss can be viewed as a numerical optimization problem:
+
+\begin{equation}
+\hat{F} = \underset{f}{argmin} \ \ L(F(x),y)
+\label{equation_c3_s9_ss1_2} 
+\end{equation}
+
+Numerical optimization procedures typically amount to solving \ref{equation_c3_s9_ss1_2} as a sum of component vectors:
+
+\begin{equation}
+F(x) = \sum_{m=0}^{M}{f_m(x)} \hspace{10mm} f_m(x) \in \R^n
+\label{equation_c3_s9_ss1_3} 
+\end{equation}
+
+where $F_0 = f_0$ is an initial guess, and each $F_m$ is induced from $F_{m-1}$, the increment $f_m$ aiming at improving the predictive capacity of the model.
+
+\newpage
+
+
+\subsection{Estimation}
+\label{chapter3_section9_subsection2}
+
+
+The gradient boosting methodology builds on the concept of steepest descent. Considering the loss function $L(F(x),y)$, one can obtain the direction of the steepest descent (fastest decrease of the loss function) as the negative of the gradient:
+
+\begin{equation}
+\nabla_m (x) = \frac{\partial L(F(x),y)}{\partial F(x)}
+\label{equation_c3_s9_ss2_1} 
+\end{equation}
+
+A natural procedure then consists in defining the increment $f_m$ as a fraction of the negative of the gradient, in order to decrease the induced loss function:
+
+\begin{equation}
+f_m(x) = - \alpha \ \nabla_m (x)
+\label{equation_c3_s9_ss2_2} 
+\end{equation}
+
+with $\alpha$ some small constant that represents the learning rate of the model. One then obtains the update formula:
+
+\begin{equation}
+F_{m} (x) = F_{m-1} (x) - \alpha \ \nabla_m (x)
+\label{equation_c3_s9_ss2_3}
+\end{equation}
+
+The problem with \ref{equation_c3_s9_ss2_3} is that the gradient $\nabla_m (x)$ is calculated only on the training points $x$, while the function F(x) should ideally generalize to new data not observed in the dataset. One possibility to solve this issue consists in replacing the gradient $\nabla_m (x)$ by a regression tree whose predictions will come as close as possible to it. To do so, one may simply fit a regression tree $T_m(x)$ to the negative gradient values. This will preserve most of the information provided by the gradient, but avoid the excessive specialisation of the model to the set of observations. In the case of regression models using the mean squared error $L(F(x),y) = \frac{1}{2} (y - F(x))^2$ as a loss function, it turns out that the gradient is trivial to compute:
+
+\begin{equation}
+\nabla_m (x) = \frac{\partial \frac{1}{2} (y - F(x))^2}{\partial F(x)} = - (y - F(x)) = - \varepsilon
+\label{equation_c3_s9_ss2_4}
+\end{equation}
+
+where $\varepsilon = y - F(x)$ represents the residual from the model $F(x)$. In other words, the gradient of the loss is just the negative of the residuals, which once substituted in \ref{equation_c3_s9_ss2_3} yields:
+
+\begin{equation}
+F_{m} (x) = F_{m-1} (x) + \alpha \ T_m(x)
+\label{equation_c3_s9_ss2_5}
+\end{equation}
+
+\newpage
+
+The model is typically initialized with a simple regressor such as $F_0(x) = \bar{y}$, with $\bar{y}$ the empirical mean of the observations. After $M$ iteration, the final model obtains from $\ref{equation_c3_s9_ss2_5}$:
+
+\begin{equation}
+F(x) = F_{M} (x) = F_0 + \alpha \sum_{m=1}^{M} T_m (x)
+\label{equation_c3_s9_ss2_6}
+\end{equation}
+
+The full estimation algorithm for the gradient boosting model is then given by:
+
+\textbf{Algorithm 11: gradient boosting} \vspace{3mm} \\
+1. Initialize $F_0(x) = \bar{y}$ (sample mean of the observations)
+
+2. For $m = 1, 2, \cdots, M$, repeat:
+
+3. Calculate the residual $\varepsilon_m = y - F_{m-1}(x)$.
+
+4. Fit a regression tree $T_m$ on $-\varepsilon_m$.
+
+5. Update: $F_{m} = F_{m-1} + \alpha T_m$
+
+6. final model: $F(x) = F_{M} (x) = F_0 + \alpha \sum_{m=1}^{M} T_m (x)$
+
+
+
+\subsection{Prediction}
+\label{chapter3_section9_subsection3}
+
+
+Prediction is straigtforward once the gradient boosting model is trained. It follows from direct application of \ref{equation_c3_s9_ss2_6}. Given a vector of regressors $x$, the prediction $\hat{y}$ is given by:
+
+\begin{equation}
+\hat{y} = F(x) = F_0 + \alpha \sum_{m=1}^{M} T_m (x)
+\label{equation_c3_s9_ss3_1} 
+\end{equation}

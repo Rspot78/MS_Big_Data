@@ -1,0 +1,50 @@
+\section{Bayesian VAR}
+
+\begin{frame}{4.1 - Bayesian VAR: the model in brief}
+\begin{itemize}
+	\item VAR model: \\
+	$y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + \varepsilon_t \hspace{1cm} \varepsilon_t \sim N(0, \Sigma)$ \\
+	\item stack $c, A_1, \cdots, A_p$ in a single vector $\beta$.
+	\item "estimate the model" = apply Bayes rule to get the posterior distribution of $\beta$ and $\Sigma$: \\
+	$\pi(\beta, \Sigma| y) \propto f(y|\beta, \Sigma) \pi(\beta, \Sigma)$
+	\item likelihood function is normal: \\
+	$f(y| \beta, \Sigma) = (2 \pi)^{-nT/2} |\bar{\Sigma}|^{-1/2} \exp \left[ -\frac{1}{2} (y-\bar{X} \beta)' \bar{\Sigma}^{-1} (y-\bar{X} \beta) \right]$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\begin{itemize}
+		\item prior for $\beta$ is normal: $N(b_0, \Omega_0)$: \\
+		$\pi(\beta) = (2 \pi)^{-nq/2} |\Omega_0|^{-1/2} \exp \left[ -\frac{1}{2} (\beta - b_0)' \Omega_0^{-1} (\beta - b_0) \right]$
+		\item $b_0$ and $\Omega_0$ set by following the "Minnesota" prior (\cite{Litterman1986})
+		\item $b_0$: most economic variables follow a random walk: 1 on first ar coefficient, 0 otherwise
+		\item $\Omega_0$: "Bayesian shrinkage", prior variance is tighter for further lags and cross equation coefficients
+	\end{itemize}
+	\pause
+	\begin{itemize}	
+		\item prior for $\Sigma$ is inverse Wishart: $IW(S_0, \nu_0)$: \\
+		$\pi(\Sigma) = (2^{\nu_0 n /2} \Gamma_n(\nu_0/2))^{-1} |S_0|^{\nu_0/2} |\Sigma|^{-(\nu_0+n+1)/2} \exp \left[ - \frac{1}{2} tr \{ \Sigma^{-1} S_0 \}  \right]$
+		\item $S_0$ and $\nu_0$ chosen to match OLS estimate $\hat{\Sigma}$.
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{4.2 - estimation procedure}
+	\begin{itemize}
+		\item impossible to marginalize the posterior analytically to get $\pi(\beta|y)$ and $\pi(\Sigma|y)$.
+		\item Gibbs sampling algorithm: draw sequentially from the \textit{conditional} posteriors $\pi(\beta|y, \Sigma)$ and $\pi(\Sigma|y, \beta)$.
+		\item repeat sufficiently to converge to $\pi(\beta|y)$ and $\pi(\Sigma|y)$
+		\item recover an \textit{empirical} posterior distribution 
+	\end{itemize}
+	\pause
+	\begin{block}{Predictions}
+		\begin{itemize}
+			\item $y_{t+h} = c + A_1 y_{t+h-1} + \cdots + A_p y_{t+h-p} + \varepsilon_t \hspace{1cm} \varepsilon_t \sim N(0, \Sigma)$
+			\item $\beta$ and $\Sigma$: use simulations from Gibbs sampler
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+

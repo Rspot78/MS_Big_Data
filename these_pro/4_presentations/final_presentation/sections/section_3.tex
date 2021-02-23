@@ -1,0 +1,44 @@
+\section{Nowcasting}
+
+\begin{frame}{3. Nowcasting}
+\centering
+\Huge{Nowcasting}
+\end{frame}
+
+\begin{frame}{3.1 - Dynamic factor model}
+	\begin{itemize}
+		\item model used by Now-casting.com \\
+		\item GDP predicted from a small number of factors $f_t$ \\
+		$\hat{y}_t = \alpha + \beta {f_t}$
+		\item intuition: factors $f_t$ obtained from dimension reduction of large set of monthly features $x_t$
+		\item concretely: factor values and dynamics obtained from \\
+		PCA on $x_t$ + Kalman filtering
+		\item estimate $\alpha$ and $\beta$ by simple OLS
+		\item predict: $\hat{y}_{t+h} = \alpha + \beta {\hat{f}_{t+h}}$ \\
+		$\hat{f}_{t+h}$ obtains directly from Kalman filter
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{3.2 - MIDAS regression}
+	\begin{itemize}
+		\item simple linear regression combining low and high frequency features \vspace{1mm}
+		\item $\hat{y}_{t+1} = \mu + \sum_{j=0}^{p} \gamma_i \ y_{t-j} + \sum_{i=1}^{n} \sum_{j=0}^{q} \beta_{ij} \  x_{i,t-j}$ \vspace{1mm}
+		\item possible curse of dimensionality in $\beta_{ij}$ \vspace{1mm}
+		\item reduce lag structure to simple polynomial: \\ \vspace{1mm}
+		Amon polynomial: $\beta_{ij} \propto \exp(\theta_{i1} \ j + \theta_{i2} \ j^2)$ \vspace{1mm}
+		\item only requires estimation of $\theta_{i1}$ and $\theta_{i2}$ for each feature $x_i$ \vspace{1mm}
+		\item makes the model non-linear, requires numerical methods \vspace{1mm}
+		\item uses the small macro dataset
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{3.3 - Mixed frequency Bayesian VAR}
+\begin{itemize}
+	\item a Bayesian VAR that combines low and high frequency features \vspace{1mm}
+	\item infer high frequency values for low frequency variables from high-frequency features \vspace{1mm}
+	\item hidden states $x_t$ are estimated by Bayesian Kalman filtering (Carter and Kohn algorithm) \vspace{1mm}
+	\item VAR is then estimated on full, high-frequency dataset $x_t$: \\ \vspace{1mm}
+	$x_t = c + A_1 x_{t-1} + \cdots + A_p x_{t-p} + \varepsilon_t$ \vspace{1mm}
+	\item uses the small macro dataset
+\end{itemize}
+\end{frame}

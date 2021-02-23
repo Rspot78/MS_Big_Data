@@ -1,0 +1,298 @@
+\section{Econometrics: Bayesian VAR}
+\label{chapter3_section5}
+
+
+Bayesian VAR models have first been proposed by \cite{Doan1984}. By the time, only very simple Bayesian models could be estimated due to the loack of computing power, so that the interest in Bayesian econometrics declined in the 1980's. From the 2000's on, the calculation capacities of computers started to increase exponentially, making it possible to use computationally intensive Monte Carlo Markov Chain algorithms. This marked the rebirth of Bayesian VAR models, which have since then attracted increasing interest. The presentation in this section follows the treatment of \cite{Karlsson2012}.
+
+
+\subsection{Formulation}
+\label{chapter3_section5_subsection1}
+
+
+The VAR model developed in this section is similar to the standard VAR:
+
+\begin{equation}
+y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + \varepsilon_t \hspace{2cm}
+\varepsilon_t \sim N(0, \Sigma)
+\label{equation_c3_s5_ss1_1}
+\end{equation}
+
+It is again convenient to reformulate the model in compact form as:
+
+\begin{equation}
+y = \bar{X} \beta + \varepsilon \hspace{2cm}
+\varepsilon \sim N(0, \bar{\Sigma})
+\label{equation_c3_s5_ss1_2}
+\end{equation}
+
+with:
+
+\begin{lflalign}
+y =  vec(Y) \hspace{10mm} 
+Y = \left( \begin{matrix} y_1' \\ y_2' \\ \vdots \\ y_T' \end{matrix} \right) \hspace{10mm}
+\bar{X} = I_n \otimes X \hspace{10mm}
+X = \left( \begin{matrix} 1 & y_0 & \cdots & y_{1-p} \\ 1 & y_1 & \cdots & y_{2-p} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & y_{T-1} & \cdots & y_{T-p} \end{matrix} \right) \nonumber \\
+\beta = vec(B) \hspace{10mm}
+B = \left( \begin{matrix} c' \\ A_1' \\ \vdots \\ A_p' \end{matrix} \right) \hspace{10mm}
+\varepsilon =  vec(E) \hspace{10mm} 
+E = \left( \begin{matrix} \varepsilon_1' \\ \varepsilon_2' \\ \vdots \\ \varepsilon_T' \end{matrix} \right) \hspace{10mm}
+\bar{\Sigma} = \Sigma \otimes I_T
+\label{equation_c3_s5_ss1_3}
+\end{lflalign}
+
+\newpage
+
+
+\subsection{Estimation}
+\label{chapter3_section5_subsection2}
+
+
+Given \ref{equation_c3_s5_ss1_2}, estimating the VAR model comes down to estimating the two parameters $\beta$ and $\Sigma$.
+
+The Bayesian approach consists in obtaining the posterior distributions of these two terms, from a basic application of Bayes rule:
+
+\begin{equation}
+\pi(\beta, \Sigma| y) = \frac{f(y|\beta, \Sigma) \pi(\beta, \Sigma)}{f(y)}
+\propto f(y|\beta, \Sigma) \pi(\beta, \Sigma)
+\label{equation_c3_s5_1}
+\end{equation}
+
+where $\pi(\beta, \Sigma| y)$ denotes the joint posterior distribution for $\beta$ and $\Sigma$, $f(y|\beta, \Sigma)$ is the likelihood function, $\pi(\beta, \Sigma)$ is the joint prior distribution, and $f(y)$ is the marginal likelihood. In practice, the latter is relegated to the normalizing constant of the density as it does not involve $\beta$ or $\Sigma$.
+
+The normality of the residuals in \ref{equation_c3_s5_ss1_2} implies that the likelihood function considered jointly for the $T$ time periods is multivariate normal:
+
+\begin{equation}
+f(y| \beta, \Sigma) = (2 \pi)^{-nT/2} |\bar{\Sigma}|^{-1/2} \exp \left[ -\frac{1}{2} (y-\bar{X} \beta)' \bar{\Sigma}^{-1} (y-\bar{X} \beta) \right]
+\label{equation_c3_s5_2}
+\end{equation}
+
+For the prior, assuming independence between $\beta$ and $\Sigma$ implies that $\pi(\beta, \Sigma) = \pi(\beta) \pi(\Sigma)$. So the joint prior can be expressed as the product of marginal priors, which makes things easier.
+
+For $\beta$, a natural choice consists in assuming a multivariate normal distribution: $\pi(\beta) \sim N(\beta_0, \Omega_0)$. Therefore, the prior density for $\beta$ is given by:
+
+\begin{equation}
+\pi(\beta) = (2 \pi)^{-nq/2} |\Omega_0|^{-1/2} \exp \left[ -\frac{1}{2} (\beta - \beta_0)' \Omega_0^{-1} (\beta - \beta_0) \right]
+\label{equation_c3_s5_3}
+\end{equation}
+
+To determine the values of $\beta_0$ and $\Omega_0$, \cite{Litterman1986} proposes the so-called Minnesota prior. For the prior mean $\beta_0$, the Minnesota prior states that most economic time-series are characterised by a random walk. Therefore, the VAR coefficients should take a value of 1 for each variable on its own first lag, and 0 otherwise. For instance, on a simple 2-variable VAR with 2 lags, this yields:
+
+\newpage
+
+\begin{equation}
+\left( \begin{matrix} y_{1,t} \\ y_{2,t} \end{matrix} \right) = 
+\left( \begin{matrix} 0 \\ 0 \end{matrix} \right) 
++ \left( \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} \right) \left( \begin{matrix} y_{1,t-1} \\ y_{2,t-2} \end{matrix} \right) 
++ \left( \begin{matrix} 0 & 0 \\ 0 & 0 \end{matrix} \right) \left( \begin{matrix} y_{1,t-2} \\ y_{2,t-2} \end{matrix} \right) 
++ \left( \begin{matrix} \varepsilon_{1,t} \\ \varepsilon_{2,t} \end{matrix} \right) \hspace{8mm}
+\Rightarrow \hspace{8mm} \beta_0 = \left( \begin{matrix} 0 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 0 \end{matrix} \right)
+\label{equation_c3_s5_4}
+\end{equation}
+
+In practice, when stationary data is used, a value around 0.9 is prefered to 1 to induce stationarity.
+
+For the prior covariance $\Omega_0$, the Minnesota prior postulates a diagonal matrix (no prior covariance between coefficients), with additional shrinkage for coefficients on further lags and related to other variables. This gives three cases:
+
+1. for coefficients in $\beta$ relating endogenous variables to their own lags, the variance is given by: $(\lambda_1 / l^{\lambda_3})^2$, with $\lambda_1$ an overall tightness parameter, and $\lambda_3$ a lag shrinkage parameter ($l$ designates the lag).
+
+2. for coefficients relating variable $i$ to variable $j$, the variance is given by: $(\sigma_i^2/ \sigma_j^2 ) (\lambda_1 \lambda_2 / l^{\lambda_3})^2$, where $\sigma_i^2$ and $\sigma_j^2$ denote the OLS residual variance of auto-regressive models estimated for variables $i$ and $j$, and $\lambda_2$ represents a cross-variable shrinkage parameter.
+
+3. for the constants, the variance is given by: $\sigma_i^2 (\lambda_1 \lambda_4)^2$, with $\lambda_4$ a constant-specific shrinkage coefficient.
+
+For the above simple VAR, $\Omega_0$ is thus given by:
+
+\begin{lflalign}
+\Omega_0 =  
+\left( \begin{smallmatrix}
+\sigma_1^2 (\lambda_1 \lambda_4)^2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & (\lambda_1)^2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & \frac{\sigma_1^2}{\sigma_2^2}(\lambda_1 \lambda_2)^2 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & ( \frac{\lambda_1}{2^{\lambda_3}} )^2 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & \frac{\sigma_1^2}{\sigma_2^2}(\frac{\lambda_1 \lambda_2}{2^\lambda_3})^2 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & \sigma_2^2 (\lambda_1 \lambda_4)^2 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & \frac{\sigma_2^2}{\sigma_1^2}(\lambda_1 \lambda_2)^2 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & (\lambda_2)^2 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \frac{\sigma_2^2}{\sigma_1^2}(\frac{\lambda_1 \lambda_2}{2^\lambda_3})^2 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & ( \frac{\lambda_1}{2^{\lambda_3}} )^2  
+\end{smallmatrix} \right)
+\label{equation_c3_s5_5}
+\end{lflalign}	
+
+As a guideline, \cite{Litterman1986} proposes the following hyperparameter values: $\lambda_1 = 0.1$, $\lambda_2 = 0.5$, $\lambda_3 = 2$ and $\lambda_4 = 100$.
+
+Finally, for $\Sigma$, a classical prior choice is an inverse Wishart distribution with scale $S_0$ and degrees of freedom $\nu_0$. The density is therefore given by:
+
+\begin{equation}
+\pi(\Sigma) = (2^{\nu_0 n /2} \Gamma_n(\nu_0/2))^{-1} |S_0|^{\nu_0/2} |\Sigma|^{-(\nu_0+n+1)/2} \exp \left[ - \frac{1}{2} tr \{ \Sigma^{-1} S_0 \}  \right]
+\label{equation_c3_s5_6}
+\end{equation} 
+
+Classical choices (see e.g. \cite{Karlsson2012}) for $S_0$ and $\nu_0$ consist in setting $S_0 = diag(\sigma_1^2 \cdots \sigma_n^2)$ and $\nu_0 = n+2$.
+
+Then from Bayes rule \ref{equation_c3_s5_1}, the likelihood function \ref{equation_c3_s5_2}, and the priors \ref{equation_c3_s5_3} and \ref{equation_c3_s5_6}, the kernel of the joint posterior is given by:
+
+\begin{lflalign}
+& \pi(\beta, \Sigma| y) \nonumber \\
+\propto & |\bar{\Sigma}|^{-1/2} \exp \left[ -\frac{1}{2} (y-\bar{X} \beta)' \bar{\Sigma}^{-1} (y-\bar{X} \beta) \right] \nonumber \\
+\times & \exp \left[ -\frac{1}{2} (\beta - \beta_0)' \Omega_0^{-1} (\beta - \beta_0) \right] \nonumber \\
+\times & |\Sigma|^{-(\nu_0+n+1)/2} \exp \left[ - \frac{1}{2} tr \{ \Sigma^{-1} S_0 \}  \right]
+\label{equation_c3_s5_7}
+\end{lflalign}
+
+\ref{equation_c3_s5_7} is not exploitable as such since it is a joint distribution. In theory, one could obtain the marginal posteriors as $\pi(\beta| y) = \int \pi(\beta, \Sigma| y) d \Sigma$ and $\pi(\Sigma| y) = \int \pi(\beta, \Sigma| y) d \beta$. In practice however, $\beta$ and $\Sigma$ are so interwoven in \ref{equation_c3_s5_7} that it is not possible to evaluate the integrals analytically. To obtain the posteriors, it is then necessary to rely on simulation methods.
+
+\newpage
+
+The Gibbs sampling algorithm represents the simplest solution. It belongs to the class of Monte Carlo Markov Chain (MCMC) algorithms, and relies on the convergence properties of Markov chains. In spirit, its principle is quite simple: draw the parameters in turn from their conditional posterior distributions, and repeat the process a large number of times. After a sufficient number of draws, the algorithm converges to the unconditional posteriors, so that an empirical distribution of the unconditional posteriors can be constructed.
+
+Indeed, if it is not possible to compute the unconditional marginals $\pi(\beta| y)$ and $\pi(\Sigma| y)$, it is straightforward to obtain the conditional posteriors $\pi(\beta| y, \Sigma)$ and $\pi(\Sigma| y, \beta)$. For $\beta$ for instance, note that $\pi(\beta| y, \Sigma) = \pi(\beta, \Sigma| y) / \pi(\Sigma| y) \propto \pi(\beta, \Sigma| y)$. In other words, to obtain the conditional posterior $\pi(\beta| y, \Sigma)$, one starts from the joint posterior \ref{equation_c3_s5_7} and relegates to the normalization constant any term not involving $\beta$. Applying this, the conditional posterior obtains as:
+
+\begin{equation}
+\pi(\beta| y, \Sigma) \propto \exp \left[ -\frac{1}{2} (y-\bar{X} \beta)' \bar{\Sigma}^{-1} (y-\bar{X} \beta) \right] \times \exp \left[ -\frac{1}{2} (\beta - \beta_0)' \Omega_0^{-1} (\beta - \beta_0) \right]
+\label{equation_c3_s5_8}
+\end{equation}
+
+After some manipulations, this rewrites as:
+
+\begin{equation}
+\pi(\beta| y, \Sigma) \propto \exp \left[ -\frac{1}{2} (\beta - \bar{\beta})' \bar{\Omega}^{-1} (\beta - \bar{\beta}) \right]
+\label{equation_c3_s5_9}
+\end{equation}
+
+with:
+
+\begin{equation}
+\bar{\Omega} = \left( \Omega_0^{-1} + \Sigma^{-1} \otimes X'X \right)^{-1} \hspace{10mm}
+\bar{\beta} = \bar{\Omega} \left( \Omega_0^{-1} \beta_0 + (\Sigma^{-1} \otimes X') y \right)
+\label{equation_c3_s5_10}
+\end{equation}
+
+\ref{equation_c3_s5_9} is the kernel of a multivariate normal distribution: $\pi(\beta| y, \Sigma) \sim N(\bar{\beta}, \bar{\Omega})$.
+
+Similarly, the conditional posterior $\pi(\Sigma| y, \beta)$ obtains from \ref{equation_c3_s5_7} by relegating to the normalization constant any term not involving $\Sigma$:
+
+\begin{lflalign}
+\pi(\Sigma| y, \beta) & \propto |\bar{\Sigma}|^{-1/2} \exp \left[ -\frac{1}{2} (y-\bar{X} \beta)' \bar{\Sigma}^{-1} (y-\bar{X} \beta) \right] \nonumber \\
+& \times |\Sigma|^{-(\nu_0+n+1)/2} \exp \left[ - \frac{1}{2} tr \{ \Sigma^{-1} S_0 \}  \right]
+\label{equation_c3_s5_11}
+\end{lflalign}
+
+\newpage
+
+After some manipulations, this rewrites as:
+
+\begin{equation}
+\pi(\Sigma| y, \beta) \propto |\Sigma|^{(\bar{\nu} + n + 1)/2} \exp \left[ -\frac{1}{2} tr \{ \Sigma^{-1} \bar{S} \} \right]
+\label{equation_c3_s5_12}
+\end{equation}
+
+with:
+
+\begin{equation}
+\bar{S} = (Y - XB)'(Y - XB) + S_0 \hspace{10mm} \bar{\nu} = T + \nu_0
+\label{equation_c3_s5_13}
+\end{equation}
+
+\ref{equation_c3_s5_12} is the kernel of an inverse Wishart distribution: $\pi(\Sigma| y, \beta) \sim IW(\bar{S}, \bar{\nu})$.
+
+The Gibbs sampling algorithm then goes as follows:
+
+\textbf{Algorithm 5: Gibbs sampling for the Bayesian VAR} \vspace{3mm} \\
+1. Initiate $\beta^{(0)}$ and $\Sigma^{(0)}$ with any values. In practice, the OLS estimates $\hat{\beta}$ and $\hat{\Sigma}$ are often used. Also decide the total number of repetitions of the algorithm (say $r$=2000 for instance), and the number of initial iterations to discard (for instance $d$ = 1000) to ensure convergence.
+
+2. Draw $\beta^{(1)}$ from the conditional distribution $\pi(\beta^{(1)}| y, \Sigma^{(0)}) \sim N(\bar{\beta}, \bar{\Omega})$.
+
+3. Draw $\Sigma^{(1)}$ from the conditional distribution $\pi(\Sigma^{(1)}| y, \beta^{(1)}) \sim IW(\bar{S}, \bar{\nu})$.
+
+4. Repeat $r$ times: \\
+draw $\beta^{(n)}$ from $\pi(\beta^{(n)}| y, \Sigma^{(n-1)}) \sim N(\bar{\beta}, \bar{\Omega})$. \\
+draw $\Sigma^{(n)}$ from the conditional distribution $\pi(\Sigma^{(n)}| y, \beta^{(n)}) \sim IW(\bar{S}, \bar{\nu})$.
+
+5. Discard $d$ initial observations as burn-in sample to make sure convergence is achieved. Then the remaining values are draws from the unconditional posteriors $\pi(\beta| y)$ and $\pi(\Sigma| y)$, which can be used to recover an empirical distribution.
+
+
+\subsection{Prediction}
+\label{chapter3_section5_subsection3}
+
+
+With the empirical posterior distribution recovered, it is easy to estimate predictions. Consider for instance a $h$-step ahead prediction for the model. Estimating the predictions amounts to obtaining the so-called the posterior predictive density $f(y_{t+1}, \cdots, y_{t+h}| y_t)$. 
+
+\newpage
+
+Noting that this density can be expressed as: \\
+$f(y_{T+1}, \cdots, y_{T+h}| y_T) = \int f(y_{T+1}, \cdots, y_{T+h}| \beta, \Sigma, y_T) \pi(\beta, \Sigma|y_T) d \beta, \Sigma$, \\ one can see that the posterior predictive distribution rewrites as an (integrated) product of two distributions: the
+posterior distribution, and the distribution of future observations, conditional on data and parameter values. This suggests a natural procedure to obtain draws from the predictive density. First, sample values for $\beta$ and $\Sigma$ from the posterior $\pi(\beta, \Sigma|y_T)$. This is done trivially by recycling the draws from the Gibbs sampling algorithm. Then, conditionally on these draws, generate values from $f(y_{T+1}, \cdots, y_{T+h}| \beta, \Sigma, y_T)$, which is done easily by applying recursively \ref{equation_c3_s5_ss1_1}. Finally, marginalise (compute the integral over $\beta$ and $\theta$) by simply discarding the values of $\beta$ and $\Sigma$.
+
+The MCMC algorithm for predictions is then given by:
+
+\textbf{Algorithm 6: prediction for the Bayesian VAR} \vspace{3mm} \\
+1. draw a value $\beta$ from $\pi(\beta, \Sigma|y)$. Recycle a draw from the Gibbs sampling algorithm.
+
+2. draw a value $\Sigma$ from $\pi(\beta, \Sigma|y)$. Recycle a draw from the Gibbs sampling algorithm.
+
+3. conditional on $\beta$ and $\Sigma$, compute recursively $y_{t+1}, \cdots, y_{t+h}$ from \ref{equation_c3_s5_ss1_1}.
+
+4. discard $\beta$ and $\Sigma$.
+
+5. repeat the process $r-d$ times to obtain $r-d$ draws from the posterior predictive distribution.
+
+
+
+\subsection{Application}
+\label{chapter3_section5_subsection4}
+
+
+To stress the difference between a regular VAR and a Bayesian VAR, it can be informative to examine the coefficients of the model. To do so, the two models are estimated on the reduced dataset for the project. The benchmark is realised on 2 lags, and Minnesota parameter values of $\rho = 0.85, \lambda_1 = 0.4, \lambda_2 = 0.3, \lambda_3 = 1.5, \lambda_4 = 1000$.
+
+\newpage
+
+Table \ref{table_c3_s5_ss4_1} reports the VAR coefficients for the GDP equation of both models.
+
+\begin{table}[H] \centering
+\scalebox{0.9}{ \begin{tabular}{@{} lccccc @{}}
+\toprule[0.5mm]
+& \multicolumn{2}{c}{Lag 1} & & \multicolumn{2}{c}{Lag 2} \\
+\cmidrule{2-3} \cmidrule{5-6}
+& \phantom {aa} OLS VAR \phantom {aaa} & Bayesian VAR & \phantom{aaa} & \phantom {aa} OLS VAR \phantom {aaa} & Bayesian VAR \\
+\cmidrule{1-6}
+business confidence index & 0.103 & 0.007 & & 0.050 & 0.004 \\
+industrial production & 0.095 & 0.044 & & 0.042 & 0.003 \\
+business sales & -0.005 & 0.001 & & -0.041 & -0.002 \\
+new residential sales & -0.001 & 0.002 & & 0.003 & 0.002 \\
+unemployment rate & 0.025 & 0.005 & & -0.037 & -0.006 \\
+weekly hours & -0.087 & -0.008 & & -0.058 & -0.014 \\
+cpi & -0.015 & -0.018 & & 0.052 & 0.009 \\
+bank assets & -0.005 & -0.004 & & 0.026 & 0.007 \\
+federal funds rate & -0.013 & 0.024 & & 0.091 & -0.011 \\
+gdp & -0.082 & 0.046 & & 0.056 & 0.159 \\
+\bottomrule[0.5mm]
+\end{tabular}}
+\captionsetup{justification=centering}
+\caption{\textbf{VAR coefficients of GDP equation}}
+\label{table_c3_s5_ss4_1}
+\end{table}
+
+The effects of the Minnesota prior on the Bayesian VAR are clearly visible. The coefficients on the lags of all variables but GDP are smaller on the Bayesian VAR than on the OLS VAR, reflecting the effect of the $\lambda_2$ hyperparameter in \ref{equation_c3_s5_5}. The effect is even more pronounced on the second lag, which results from the additional shrinkage generated by the hyperparameter $\lambda_3$.
+
+As a compensation, the Bayesian VAR attributes considerably more weight to the own lags of GDP. The first lag is smaller than its OLS counterpart in magnitude, but it now takes a positive sign. As for the second lag, its value is considerably larger than that of the OLS model.
+
+Overall, the results illustrate the impact of the Minnesota prior: more weight is given to the variables's own lags, while less weight is granted to the other variables and to further lags. This parsimonious representation typically performs better for out-of-sample predictions than the standard OLS estimate. 
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,124 @@
+\section{Econometrics: Vector Auto-Regression}
+\label{chapter3_section4}
+
+Vector autoregressions (VAR in short) have become popular since the contribution of \cite{Sims1980}. In the field of econometrics, they represent the state-of-the-art approach to model and predict time-series. VAR models can be very simple, like the one developed in this section, or adopt more sophisticated formulations and estimation methods, as demonstrated by the incoming econometric sections.
+
+\subsection{Formulation}
+\label{chapter3_section4_subsection1}
+
+Assume one wants to model $n$ variables jointly. This can be done by the way of a VAR model, which is simply a system of $n$ linear equations. Each equation explains the current value of one feature by its own lagged values, and the lagged values of the other features of the system. Concretely, a standard VAR model can be written as:
+
+\begin{equation}
+y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + \varepsilon_t \hspace{2cm}
+\varepsilon_t \sim N(0, \Sigma)
+\label{equation_c3_s4_ss1_1}
+\end{equation}
+
+where $y_t$ is a $n$-dimensional vector of endogenous variables, $c$ is a constant term, the series $A_1 + \cdots + A_p$ represent a series of $n \times n$ matrices of autoregressive coefficients, and $\varepsilon_t$ is a White noise error term with variance-covariance matrix $\Sigma$. The sample is considered over the time periods $t= 1, \cdots, T$.)
+
+For estimation purposes, it is convenient to rewrite the model in compact form as:
+
+\begin{equation}
+Y = XB + E
+\label{equation_c3_s4_ss1_2}
+\end{equation}
+
+with:
+
+\begin{equation}
+Y = \left( \begin{matrix} y_1' \\ y_2' \\ \vdots \\ y_T' \end{matrix} \right) \hspace{8mm}
+X = \left( \begin{matrix} 1 & y_0 & \cdots & y_{1-p} \\ 1 & y_1 & \cdots & y_{2-p} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & y_{T-1} & \cdots & y_{T-p} \end{matrix} \right) \hspace{8mm}
+B = \left( \begin{matrix} c' \\ A_1' \\ \vdots \\ A_p' \end{matrix} \right) \hspace{8mm}
+E = \left( \begin{matrix} \varepsilon_1' \\ \varepsilon_2' \\ \vdots \\ \varepsilon_T' \end{matrix} \right)
+\label{equation_c3_s4_ss1_3}
+\end{equation}
+
+\newpage
+
+\subsection{Estimation}
+\label{chapter3_section4_subsection2}
+
+
+Given \ref{equation_c3_s4_ss1_1} and \ref{equation_c3_s4_ss1_2}, estimating a VAR amounts to obtain estimates for $\Sigma$ and $B$. \ref{equation_c3_s4_ss1_2} can be recognised as a standard linear regression model that can be estimated by least squares. Therefore, a least square estimate $\hat{B}$ of $B$ is given by:
+
+\begin{equation}
+\hat{B} = (X'X)^{-1} X'Y
+\label{equation_c3_s4_ss2_1}
+\end{equation}
+
+Once $\hat{B}$ is obtained, one may obtain an estimate of the residuals from \ref{equation_c3_s4_ss1_2} as $\hat{E} = Y - X \hat{B}$. A (degree of freedom adjusted) OLS estimate for $\Sigma$ is then given by:
+
+\begin{equation}
+\hat{\Sigma} = \frac{1}{T - k - 1}(\hat{E}'\hat{E})
+\label{equation_c3_s4_ss2_2}
+\end{equation}
+
+where $k = np + 1$ denotes the number of parameters to estimate per equation. 
+
+
+\subsection{Prediction}
+\label{chapter3_section4_subsection3}
+
+
+Predicting with a VAR model is straightforward. Assume one wants to predict at the horizon $t+h$. First, update \ref{equation_c3_s4_ss1_1} by one period and take expectation conditional to the information set up to period $t$ to obtain:
+
+\begin{equation}
+\hat{y}_{t+1} = c + A_1 y_{t} + \cdots + A_p y_{t-(p-1)}
+\label{equation_c3_s4_ss3_1}
+\end{equation}
+
+To obtain a prediction at $t+2$, update instead \ref{equation_c3_s4_ss1_1} by two periods and take again conditional expectation to obtain:
+
+\begin{equation}
+\hat{y}_{t+2} = c + A_1 \hat{y}_{t+1} + \cdots + A_p y_{t-(p-2)}
+\label{equation_c3_s4_ss3_2}
+\end{equation}
+
+where it can be seen that the prediction $\hat{y}_{t+2}$ makes use of the projection $\hat{y}_{t+1}$. Continuing sequentially up to period $t+h$ yields:
+
+\begin{equation}
+\hat{y}_{t+h} = c + A_1 \hat{y}_{t+h-1} + \cdots + A_p \hat{y}_{t+h-p}
+\label{equation_c3_s4_ss3_3}
+\end{equation}
+
+\newpage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

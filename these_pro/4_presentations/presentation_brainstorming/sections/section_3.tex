@@ -1,0 +1,28 @@
+\section{Dynamic Factor Model}
+
+\begin{frame}{3.1 - Dynamic factor: the model in brief}
+	\begin{itemize}
+		\item features $x_t$ are linear functions of a few factors $f_t$: \\
+		$x_t = \mu + \Lambda f_t + \xi_t \hspace{2cm} \xi_t \sim N(0, diag(\psi))$
+		\item factors $f_t$ follow an AR process: \\
+		$f_t = A f_{t-1} + B u_t \hspace{2cm} u_t \sim N(0, I_q)$
+		\item gdp growth $\hat{y}_t$ is a linear function of projected factors: \\
+		$\hat{y}_t = \alpha + \beta \hat{f_t} \hspace{2cm} \hat{f_t} = E(f_t|\Omega_t)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{3.2 - estimation procedure}
+	\begin{itemize}
+		\item raw estimates of $f_t$ by running PCA on $x_t$.
+		\item estimation of $\mu, \Lambda, A$ and $B$ from $f_t$.
+		\item model in state-space form: obtain smoothed estimates $\hat{f_t}$ from Kalman filtering
+		\item estimate $\alpha$ and $\beta$ by simple OLS
+	\end{itemize}
+	\pause
+	\begin{block}{Predictions}
+		\begin{itemize}
+			\item $\hat{y}_{t+h} = \alpha + \beta \hat{f}_{t+h}$
+			\item $\hat{f}_{t+h}$ from Kalman filter
+		\end{itemize}
+	\end{block}
+\end{frame}

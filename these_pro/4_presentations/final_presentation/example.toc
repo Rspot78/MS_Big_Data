@@ -1,0 +1,10 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Motivation}{3}{0}{1}
+\beamer@sectionintoc {2}{Dataset}{5}{0}{2}
+\beamer@sectionintoc {3}{Nowcasting}{7}{0}{3}
+\beamer@sectionintoc {4}{Econometrics}{11}{0}{4}
+\beamer@sectionintoc {5}{Machine learning}{15}{0}{5}
+\beamer@sectionintoc {6}{Model recap}{19}{0}{6}
+\beamer@sectionintoc {7}{Results: predicting GDP}{20}{0}{7}
+\beamer@sectionintoc {8}{Results: predicting features}{26}{0}{8}
+\beamer@sectionintoc {9}{Additional slides}{30}{0}{9}

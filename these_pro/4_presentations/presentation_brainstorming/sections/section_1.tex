@@ -1,0 +1,44 @@
+\section{Motivation}
+
+
+\begin{frame}{1.1 - Context: Now-casting.com}
+	\begin{itemize}
+	\item now-casting.com trial at CFM
+	\item Now-casting.com: real time forecasts (nowcasts) for quaterly GDP growth
+	\item based on large monthly macro dataset 
+	\item use the Dynamic Factor Model of \cite{Giannone2008}
+	\end{itemize}
+
+	\pause
+	
+	\begin{block}{Conclusion}
+		\begin{itemize}
+		\item GDP: works well for some countries (Euro area, Japan), poorly for others (US)
+		\item other features: some well predicted, others terribly predicted
+		\end{itemize}
+	\end{block}	
+\end{frame}
+
+
+\begin{frame}{1.2 - The project}
+	\begin{itemize}
+		\item replicate the dfm (possibly: improve the results)
+		\item compare its performance with other models
+	\end{itemize}
+
+	\pause
+	
+	\begin{block}{Proposition}
+		\begin{itemize}
+			\item nowcasting dataset for the US: quarterly GDP + monthly features
+			\item nowcasting: dynamic factor model, MIDAS, mixed frequency Bayesian VAR
+			\item econometrics: Bayesian VAR, time-varying Bayesian VAR
+			\item machine learning: LSTM, boosting, random forest
+			\item compare predictive performance
+		\end{itemize}
+	\end{block}	
+\end{frame}
+
+
+
+

@@ -1,0 +1,45 @@
+\section{Econometrics}
+
+\begin{frame}{4. Econometrics}
+\centering
+\Huge{Econometrics}
+\end{frame}
+
+\begin{frame}{4.1 - Vector Autoregression}
+\begin{itemize}
+	\item VAR model: \\ \vspace{2mm}
+	$y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + \varepsilon_t \hspace{1cm} \varepsilon_t \sim N(0, \Sigma)$ \\ \vspace{2mm}
+	\item stack VAR coefficients $c, A_1, \cdots, A_p$ in a single vector $\beta$ \vspace{2mm}
+	\item $\beta$ and $\Sigma$ estimated by OLS \vspace{2mm}
+	\item uses the small macro dataset \vspace{2mm}
+	\item trained on two lags, using AIC
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{4.2 - Bayesian VAR}
+\begin{itemize}
+	\item same model: \\ \vspace{1mm}
+	$y_t = c + A_1 y_{t-1} + \cdots + A_p y_{t-p} + \varepsilon_t \hspace{1cm} \varepsilon_t \sim N(0, \Sigma)$ \\ \vspace{1mm}
+	\item "estimate the model" = apply Bayes rule to get the posterior distribution of $\beta$ and $\Sigma$: \\ \vspace{1mm}
+	$\pi(\beta, \Sigma| y) \propto f(y|\beta, \Sigma) \pi(\beta, \Sigma)$ \vspace{1mm}
+	\item use a prior strategy known as the ``Minnesota prior'' \vspace{1mm}
+	\item Bayesian shrinkage: reduces weight of less useful coefficients \vspace{1mm}
+	\item estimation an predictions: simulation methods (Gibbs sampling algorithm)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{4.3 - Time-varying Bayesian VAR}
+	\begin{itemize}
+		\item model of the form: \\ \vspace{2mm}
+		$y_t \ = \ c_t \ + \ A_{1,t} \ y_{t-1} \ + \ \cdots \ + \ A_{p,t} y_{t-p} \ + \ \varepsilon_t \hspace{8mm}
+		\varepsilon_t \sim N(0, \Sigma_t)$ \vspace{-1mm}
+		\item VAR coefficients $\beta_t$ and volatility $\Sigma_t$ are time-varying \vspace{2mm}
+		\item hidden states following auto-regressive stochastic processes \vspace{2mm}
+		\item estimated by Bayesian Kalman filter (Carter-Kohn algorithm)
+	\end{itemize}
+\end{frame}
+
+
+
